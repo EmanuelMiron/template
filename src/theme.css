@@ -1,0 +1,281 @@
+/* Theme CSS Variables */
+:root {
+  /* Light theme (default) */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-disabled: #93c5fd;
+  
+  --color-secondary: #6b7280;
+  --color-secondary-hover: #4b5563;
+  --color-secondary-disabled: #d1d5db;
+  
+  --color-outline: transparent;
+  --color-outline-border: #d1d5db;
+  --color-outline-hover: #f3f4f6;
+  --color-outline-disabled: #f9fafb;
+  --color-outline-border-disabled: #e5e7eb;
+  
+  --color-foreground: #111827;
+  --color-foreground-secondary: #6b7280;
+  --color-foreground-disabled: #9ca3af;
+  
+  --color-background: #ffffff;
+  --color-background-secondary: #f9fafb;
+  
+  --color-border: #d1d5db;
+  --color-border-hover: #9ca3af;
+  
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-disabled: #1e3a8a;
+  
+  --color-secondary: #9ca3af;
+  --color-secondary-hover: #6b7280;
+  --color-secondary-disabled: #374151;
+  
+  --color-outline: transparent;
+  --color-outline-border: #4b5563;
+  --color-outline-hover: #374151;
+  --color-outline-disabled: #1f2937;
+  --color-outline-border-disabled: #374151;
+  
+  --color-foreground: #f9fafb;
+  --color-foreground-secondary: #d1d5db;
+  --color-foreground-disabled: #6b7280;
+  
+  --color-background: #111827;
+  --color-background-secondary: #1f2937;
+  
+  --color-border: #4b5563;
+  --color-border-hover: #6b7280;
+  
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-hover: rgba(0, 0, 0, 0.4);
+} 
+
+[data-theme="brutalist"] {
+  --color-primary: #ff00aa;
+  --color-primary-hover: #ff5500;
+  --color-primary-disabled: #ffb3e6;
+
+  --color-secondary: #00ffe7;
+  --color-secondary-hover: #00bfff;
+  --color-secondary-disabled: #b3fff6;
+
+  --color-outline: #fff700;
+  --color-outline-border: #000000;
+  --color-outline-hover: #fff70033;
+  --color-outline-disabled: #f7f700;
+  --color-outline-border-disabled: #222222;
+
+  --color-foreground: #000000;
+  --color-foreground-secondary: #444444;
+  --color-foreground-disabled: #bbbbbb;
+
+  --color-background: #fff700;
+  --color-background-secondary: #ff00aa;
+  --color-border: #000000;
+  --color-border-hover: #ff00aa;
+
+  --color-shadow: #00000033;
+  --color-shadow-hover: #00000066;
+} 
+
+[data-theme="default"] {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-disabled: #93c5fd;
+  --color-secondary: #64748b;
+  --color-secondary-hover: #475569;
+  --color-secondary-disabled: #cbd5e1;
+  --color-outline: #f1f5f9;
+  --color-outline-border: #e2e8f0;
+  --color-outline-hover: #e0e7ef;
+  --color-outline-disabled: #f8fafc;
+  --color-outline-border-disabled: #e2e8f0;
+  --color-foreground: #1e293b;
+  --color-foreground-secondary: #64748b;
+  --color-foreground-disabled: #cbd5e1;
+  --color-background: #f8fafc;
+  --color-background-secondary: #e0e7ef;
+  --color-border: #e2e8f0;
+  --color-border-hover: #2563eb;
+  --color-shadow: 0 1px 2px 0 rgba(16, 30, 54, 0.04);
+  --color-shadow-hover: 0 2px 8px 0 rgba(16, 30, 54, 0.08);
+  --font-family: 'Inter', system-ui, sans-serif;
+}
+
+[data-theme="pastel"] {
+  --color-primary: #ffb7b2;
+  --color-primary-hover: #ffdac1;
+  --color-primary-disabled: #ffe5d9;
+  --color-secondary: #b5ead7;
+  --color-secondary-hover: #c7ceea;
+  --color-secondary-disabled: #e2f0cb;
+  --color-outline: #f3e8ff;
+  --color-outline-border: #e0c3fc;
+  --color-outline-hover: #f3e8ff;
+  --color-outline-disabled: #f8edeb;
+  --color-outline-border-disabled: #e0c3fc;
+  --color-foreground: #5e548e;
+  --color-foreground-secondary: #b8bedd;
+  --color-foreground-disabled: #cfcfcf;
+  --color-background: #fff1f1;
+  --color-background-secondary: #e0c3fc;
+  --color-border: #e0c3fc;
+  --color-border-hover: #b5ead7;
+  --color-shadow: 0 1px 2px 0 rgba(255, 183, 178, 0.08);
+  --color-shadow-hover: 0 2px 8px 0 rgba(181, 234, 215, 0.12);
+  --font-family: 'Quicksand', system-ui, sans-serif;
+}
+
+[data-theme="editorial"] {
+  --color-primary: #b68973;
+  --color-primary-hover: #a17c6b;
+  --color-primary-disabled: #e2cfc3;
+  --color-secondary: #a3a380;
+  --color-secondary-hover: #d6ce93;
+  --color-secondary-disabled: #e2cfc3;
+  --color-outline: #f6f5f2;
+  --color-outline-border: #e2cfc3;
+  --color-outline-hover: #f6f5f2;
+  --color-outline-disabled: #f6f5f2;
+  --color-outline-border-disabled: #e2cfc3;
+  --color-foreground: #3e2723;
+  --color-foreground-secondary: #a17c6b;
+  --color-foreground-disabled: #bdbdbd;
+  --color-background: #f6f5f2;
+  --color-background-secondary: #e2cfc3;
+  --color-border: #e2cfc3;
+  --color-border-hover: #b68973;
+  --color-shadow: none;
+  --color-shadow-hover: none;
+  --font-family: 'Merriweather', serif;
+}
+
+[data-theme="minimal"] {
+  --color-primary: #222;
+  --color-primary-hover: #000;
+  --color-primary-disabled: #bbb;
+  --color-secondary: #444;
+  --color-secondary-hover: #222;
+  --color-secondary-disabled: #bbb;
+  --color-outline: #fff;
+  --color-outline-border: #fff;
+  --color-outline-hover: #f5f5f5;
+  --color-outline-disabled: #fff;
+  --color-outline-border-disabled: #eee;
+  --color-foreground: #111;
+  --color-foreground-secondary: #888;
+  --color-foreground-disabled: #ccc;
+  --color-background: #fff;
+  --color-background-secondary: #f5f5f5;
+  --color-border: #fff;
+  --color-border-hover: #222;
+  --color-shadow: none;
+  --color-shadow-hover: none;
+  --font-family: 'Inter', system-ui, sans-serif;
+}
+
+[data-theme="accessible"] {
+  --color-primary: #0000ff;
+  --color-primary-hover: #000099;
+  --color-primary-disabled: #ccccff;
+  --color-secondary: #ffcc00;
+  --color-secondary-hover: #ff9900;
+  --color-secondary-disabled: #fff2cc;
+  --color-outline: #fff;
+  --color-outline-border: #000;
+  --color-outline-hover: #ffff00;
+  --color-outline-disabled: #fff;
+  --color-outline-border-disabled: #000;
+  --color-foreground: #000;
+  --color-foreground-secondary: #222;
+  --color-foreground-disabled: #888;
+  --color-background: #fff;
+  --color-background-secondary: #ffff00;
+  --color-border: #000;
+  --color-border-hover: #0000ff;
+  --color-shadow: none;
+  --color-shadow-hover: none;
+  --font-family: 'Inter', system-ui, sans-serif;
+}
+
+[data-theme="kids"] {
+  --color-primary: #ff5e5b;
+  --color-primary-hover: #fbb13c;
+  --color-primary-disabled: #ffd6e0;
+  --color-secondary: #00cecb;
+  --color-secondary-hover: #ffed66;
+  --color-secondary-disabled: #d0f4de;
+  --color-outline: #fff;
+  --color-outline-border: #00cecb;
+  --color-outline-hover: #ffed66;
+  --color-outline-disabled: #fff;
+  --color-outline-border-disabled: #ffd6e0;
+  --color-foreground: #22223b;
+  --color-foreground-secondary: #4a4e69;
+  --color-foreground-disabled: #bcbcbc;
+  --color-background: #f7fff7;
+  --color-background-secondary: #ffed66;
+  --color-border: #00cecb;
+  --color-border-hover: #ff5e5b;
+  --color-shadow: 0 4px 16px 0 rgba(0, 206, 203, 0.12);
+  --color-shadow-hover: 0 8px 32px 0 rgba(251, 177, 60, 0.16);
+  --font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  --border-radius: 1.5rem;
+}
+
+[data-theme="retro"] {
+  --color-primary: #ff0080;
+  --color-primary-hover: #00bfff;
+  --color-primary-disabled: #ffb3e6;
+  --color-secondary: #00ff00;
+  --color-secondary-hover: #ffff00;
+  --color-secondary-disabled: #b3ffb3;
+  --color-outline: #fff;
+  --color-outline-border: #000;
+  --color-outline-hover: #ff0;
+  --color-outline-disabled: #fff;
+  --color-outline-border-disabled: #000;
+  --color-foreground: #000;
+  --color-foreground-secondary: #333;
+  --color-foreground-disabled: #bbb;
+  --color-background: #fff;
+  --color-background-secondary: #ff0;
+  --color-border: #000;
+  --color-border-hover: #ff0080;
+  --color-shadow: none;
+  --color-shadow-hover: none;
+  --font-family: 'Press Start 2P', 'VT323', monospace;
+}
+
+[data-theme="terminal"] {
+  --color-primary: #00ff00;
+  --color-primary-hover: #00cc00;
+  --color-primary-disabled: #b3ffb3;
+  --color-secondary: #00bfff;
+  --color-secondary-hover: #0080ff;
+  --color-secondary-disabled: #b3e6ff;
+  --color-outline: #000;
+  --color-outline-border: #00ff00;
+  --color-outline-hover: #222;
+  --color-outline-disabled: #111;
+  --color-outline-border-disabled: #333;
+  --color-foreground: #00ff00;
+  --color-foreground-secondary: #00bfff;
+  --color-foreground-disabled: #333;
+  --color-background: #111;
+  --color-background-secondary: #000;
+  --color-border: #00ff00;
+  --color-border-hover: #00bfff;
+  --color-shadow: none;
+  --color-shadow-hover: none;
+  --font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+} 
