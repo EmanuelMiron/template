@@ -59,6 +59,8 @@ Create a reusable [Input (TextField)] component using Tailwind CSS and the theme
 - Ensure accessibility best practices (e.g., ARIA attributes, keyboard navigation) where relevant.
 - The component should work with the theme system (switching themes via data-theme and CSS variables).
 - Add a short JSDoc or comment at the top describing the component and its intended use.
->
+- Include icon support if necessary ( lucite-react icons )
+- Add on Homepage examples for this component
+
 Description:
 Single-line text input with label, error, and helper text.
