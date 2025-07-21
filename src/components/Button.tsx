@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button as ShadButton } from '@/components/ui/button';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
@@ -78,13 +79,13 @@ const Button: React.FC<ButtonProps> = ({
   ].join(' ');
 
   return (
-    <button
+    <ShadButton
       className={classes}
       disabled={disabled}
       {...props}
     >
       {children}
-    </button>
+    </ShadButton>
   );
 };
 
