@@ -2,10 +2,12 @@
  * Input (TextField) Component
  *
  * A reusable, themeable, and accessible single-line text input with label, error, and helper text.
- * Supports variants (primary, secondary, outline), sizes (sm, md, lg), and full customization via className and props.
- * All colors are set via CSS variables for theme compatibility. Built with Tailwind utility classes for layout and spacing.
+ * Built on top of shadcn/ui Input component with additional features like variants, sizes, and icon support.
+ * All colors are set via CSS variables for theme compatibility.
  */
 import React from 'react';
+import { Input as ShadInput } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -91,7 +93,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       .join(' ') || undefined;
 
     return (
-      <div className={`flex flex-col gap-1 ${containerClassName}`}>
+      <div className={cn('flex flex-col gap-1', containerClassName)}>
         {label && (
           <label
             htmlFor={inputId}
@@ -101,17 +103,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <div className="relative flex items-center">
-          <input
+          <ShadInput
             id={inputId}
             ref={ref}
-            className={[
-              'block w-full rounded-lg transition-all duration-200 outline-none',
+            className={cn(
               sizeClasses[inputSize],
               ...variantClasses[variant],
-              error ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]' : '',
-              icon ? 'pr-10' : '',
-              className,
-            ].join(' ')}
+              icon && 'pr-10',
+              error && [
+                '!border-[hsl(var(--destructive))]',
+                '!ring-2',
+                '!ring-[hsl(var(--destructive))]',
+                'focus:!border-[hsl(var(--destructive))]',
+                'focus:!ring-[hsl(var(--destructive))]',
+                'hover:!border-[hsl(var(--destructive))]'
+              ],
+              className
+            )}
             aria-invalid={!!error}
             aria-describedby={describedBy}
             disabled={disabled}
@@ -126,7 +134,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {error ? (
           <span
             id={inputId ? `${inputId}-error` : undefined}
-            className="text-xs text-[var(--color-primary)] mt-1"
+            className="text-xs text-[hsl(var(--destructive))] mt-1"
             role="alert"
           >
             {error}

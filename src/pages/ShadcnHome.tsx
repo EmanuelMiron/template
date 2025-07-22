@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import CustomInput from '@/components/Input';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -105,7 +106,7 @@ const ShadcnHome = () => {
 
           {/* Input Examples */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Input Examples</h2>
+            <h2 className="text-2xl font-semibold mb-4">Shadcn Input Examples</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block mb-1 text-sm font-medium" htmlFor="input1">Primary</label>
@@ -131,6 +132,109 @@ const ShadcnHome = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input id="input5" placeholder="Search..." className="pl-10" />
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Custom Input Examples */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Custom Input Component Examples</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <CustomInput 
+                  label="Primary Variant"
+                  placeholder="Primary input with label"
+                  variant="primary"
+                  inputSize="md"
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Secondary Variant"
+                  placeholder="Secondary input with label"
+                  variant="secondary"
+                  inputSize="md"
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Outline Variant"
+                  placeholder="Outline input with label"
+                  variant="outline"
+                  inputSize="md"
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Disabled Input"
+                  placeholder="Disabled input"
+                  variant="primary"
+                  inputSize="md"
+                  disabled
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="With Helper Text"
+                  placeholder="Input with helper text"
+                  variant="primary"
+                  inputSize="md"
+                  helperText="This is some helpful information about this field."
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="With Error"
+                  placeholder="Input with error"
+                  variant="primary"
+                  inputSize="md"
+                  error="This field is required and cannot be empty."
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="With Icon"
+                  placeholder="Search with icon"
+                  variant="primary"
+                  inputSize="md"
+                  icon={<Search className="w-4 h-4 text-muted-foreground" />}
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Small Size"
+                  placeholder="Small input"
+                  variant="outline"
+                  inputSize="sm"
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Large Size"
+                  placeholder="Large input"
+                  variant="secondary"
+                  inputSize="lg"
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Email Input"
+                  type="email"
+                  placeholder="Enter your email"
+                  variant="primary"
+                  inputSize="md"
+                  helperText="We'll never share your email with anyone else."
+                />
+              </div>
+              <div>
+                <CustomInput 
+                  label="Password Input"
+                  type="password"
+                  placeholder="Enter your password"
+                  variant="outline"
+                  inputSize="md"
+                  error="Password must be at least 8 characters long."
+                />
               </div>
             </div>
           </section>

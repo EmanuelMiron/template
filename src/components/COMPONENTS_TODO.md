@@ -3,9 +3,9 @@
 Below is a list of 39 reusable UI components to build for your template. Check them off as you complete them!
 
 - [x] **Input (TextField)** — Single-line text input with label, error, and helper text.
-- [x] **Textarea** — Multi-line input for longer text.
-- [x] **Select (Dropdown)** — Customizable dropdown with search and option groups.
-- [x] **Checkbox** — Styled checkbox with label and indeterminate state.
+- [ ] **Textarea** — Multi-line input for longer text.
+- [ ] **Select (Dropdown)** — Customizable dropdown with search and option groups.
+- [ ] **Checkbox** — Styled checkbox with label and indeterminate state.
 - [ ] **Radio Group** — Radio buttons with group label and description.
 - [ ] **Switch (Toggle)** — Accessible toggle switch for on/off states.
 - [ ] **Slider** — Range slider for numeric input.

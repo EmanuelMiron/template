@@ -4,7 +4,6 @@ import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 import Select from '../components/Select';
 import type { SelectOption, SelectGroup } from '../components/Select';
-import Checkbox from '../components/Checkbox';
 import { MessageSquare, Search } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -122,24 +121,6 @@ const Home = () => {
               <Select label="With Icon" options={selectOptions} variant="outline" selectSize="md" icon={<Search className="w-5 h-5 text-[var(--color-foreground-secondary)]" />} />
               <Select label="With Search" options={selectOptions} variant="primary" selectSize="md" searchable />
               <Select label="With Option Groups" optionGroups={selectGroups} variant="primary" selectSize="md" />
-            </div>
-          </section>
-          {/* Checkbox Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Checkbox Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Checkbox label="Primary" variant="primary" checkboxSize="md" />
-              <Checkbox label="Secondary" variant="secondary" checkboxSize="md" />
-              <Checkbox label="Outline" variant="outline" checkboxSize="md" />
-              <Checkbox label="Disabled" variant="primary" checkboxSize="md" disabled />
-              <Checkbox label="With Helper" helperText="This is some helper text." variant="primary" checkboxSize="md" />
-              <Checkbox label="With Error" error="This field is required." variant="primary" checkboxSize="md" />
-              <Checkbox label="Small" variant="primary" checkboxSize="sm" />
-              <Checkbox label="Large" variant="primary" checkboxSize="lg" />
-              <Checkbox label="Indeterminate" variant="primary" checkboxSize="md" indeterminate />
-              <Checkbox label="With Custom Content">
-                <span className="ml-1 text-xs text-[var(--color-foreground-secondary)]">(custom label content)</span>
-              </Checkbox>
             </div>
           </section>
           {/* Primary Buttons */}
