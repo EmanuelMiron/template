@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import CustomInput from '@/components/Input';
+import CustomSelect from '@/components/Select';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -44,6 +45,9 @@ const ShadcnHome = () => {
   const { theme, toggleTheme } = useTheme();
   const [selectedDate, setSelectedDate] = useState('');
   const [rating, setRating] = useState(0);
+  const [customSelectValue, setCustomSelectValue] = useState('');
+  const [customSelectValue2, setCustomSelectValue2] = useState('');
+  const [customSelectValue3, setCustomSelectValue3] = useState('');
 
   // Debug function to get CSS variable values
   const getCSSVariable = (variable: string) => {
@@ -56,38 +60,237 @@ const ShadcnHome = () => {
   return (
     <div className="min-h-screen p-8 bg-background text-foreground">
       <div className="max-w-4xl mx-auto">
-        {/* Debug Section */}
-        <div className="mb-8 p-4 bg-card border border-border rounded-[var(--radius)]">
-          <h3 className="font-semibold mb-2">Debug: CSS Variables (Terminal Theme)</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-            <div>--foreground: <span className="font-mono">{getCSSVariable('--foreground')}</span></div>
-            <div>--muted-foreground: <span className="font-mono">{getCSSVariable('--muted-foreground')}</span></div>
-            <div>--background: <span className="font-mono">{getCSSVariable('--background')}</span></div>
-            <div>--primary: <span className="font-mono">{getCSSVariable('--primary')}</span></div>
-            <div>--border: <span className="font-mono">{getCSSVariable('--border')}</span></div>
-            <div>--input: <span className="font-mono">{getCSSVariable('--input')}</span></div>
-          </div>
-          <div className="mt-2 text-xs">
-            <div>Current Theme: <span className="font-mono">{theme}</span></div>
-            <div>data-theme attribute: <span className="font-mono">{typeof window !== 'undefined' ? document.documentElement.getAttribute('data-theme') : 'N/A'}</span></div>
-          </div>
-          <div className="mt-2 text-xs">
-            <h4 className="font-semibold">Custom Theme Variables:</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <div>--color-foreground: <span className="font-mono">{getCSSVariable('--color-foreground')}</span></div>
-              <div>--color-foreground-secondary: <span className="font-mono">{getCSSVariable('--color-foreground-secondary')}</span></div>
-              <div>--color-background: <span className="font-mono">{getCSSVariable('--color-background')}</span></div>
-              <div>--color-primary: <span className="font-mono">{getCSSVariable('--color-primary')}</span></div>
-            </div>
-          </div>
-        </div>
-
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold">Shadcn UI Component Demo</h1>
           <Button variant="outline" onClick={toggleTheme}>
             {themeIcons[theme] || '🎨'} {themeLabels[theme] || theme} Mode
           </Button>
         </div>
+
+        {/* Custom Select Examples */}
+        <section>
+            <h2 className="text-2xl font-semibold mb-4">Custom Select Component Examples</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <CustomSelect 
+                  label="Primary Variant"
+                  placeholder="Select an option"
+                  variant="primary"
+                  selectSize="md"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                  value={customSelectValue}
+                  onValueChange={setCustomSelectValue}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Secondary Variant"
+                  placeholder="Select an option"
+                  variant="secondary"
+                  selectSize="md"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                  value={customSelectValue2}
+                  onValueChange={setCustomSelectValue2}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Outline Variant"
+                  placeholder="Select an option"
+                  variant="outline"
+                  selectSize="md"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                  value={customSelectValue3}
+                  onValueChange={setCustomSelectValue3}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Disabled Select"
+                  placeholder="Select an option"
+                  variant="primary"
+                  selectSize="md"
+                  disabled
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="With Helper Text"
+                  placeholder="Select an option"
+                  variant="primary"
+                  selectSize="md"
+                  helperText="This is some helpful information about this field."
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="With Error"
+                  placeholder="Select an option"
+                  variant="primary"
+                  selectSize="md"
+                  error="This field is required and cannot be empty."
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Small Size"
+                  placeholder="Select an option"
+                  variant="outline"
+                  selectSize="sm"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Large Size"
+                  placeholder="Select an option"
+                  variant="secondary"
+                  selectSize="lg"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2' },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Searchable Select"
+                  placeholder="Search and select..."
+                  variant="primary"
+                  selectSize="md"
+                  searchable
+                  options={[
+                    { value: 'apple', label: 'Apple' },
+                    { value: 'banana', label: 'Banana' },
+                    { value: 'cherry', label: 'Cherry' },
+                    { value: 'date', label: 'Date' },
+                    { value: 'elderberry', label: 'Elderberry' },
+                    { value: 'fig', label: 'Fig' },
+                    { value: 'grape', label: 'Grape' },
+                    { value: 'honeydew', label: 'Honeydew' },
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="With Option Groups"
+                  placeholder="Select a category"
+                  variant="outline"
+                  selectSize="md"
+                  optionGroups={[
+                    {
+                      label: 'Fruits',
+                      options: [
+                        { value: 'apple', label: 'Apple' },
+                        { value: 'banana', label: 'Banana' },
+                        { value: 'cherry', label: 'Cherry' },
+                      ]
+                    },
+                    {
+                      label: 'Vegetables',
+                      options: [
+                        { value: 'carrot', label: 'Carrot' },
+                        { value: 'broccoli', label: 'Broccoli' },
+                        { value: 'spinach', label: 'Spinach' },
+                      ]
+                    },
+                    {
+                      label: 'Grains',
+                      options: [
+                        { value: 'rice', label: 'Rice' },
+                        { value: 'wheat', label: 'Wheat' },
+                        { value: 'oats', label: 'Oats' },
+                      ]
+                    }
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="Searchable with Groups"
+                  placeholder="Search categories..."
+                  variant="secondary"
+                  selectSize="md"
+                  searchable
+                  optionGroups={[
+                    {
+                      label: 'Programming Languages',
+                      options: [
+                        { value: 'javascript', label: 'JavaScript' },
+                        { value: 'typescript', label: 'TypeScript' },
+                        { value: 'python', label: 'Python' },
+                        { value: 'java', label: 'Java' },
+                      ]
+                    },
+                    {
+                      label: 'Frameworks',
+                      options: [
+                        { value: 'react', label: 'React' },
+                        { value: 'vue', label: 'Vue' },
+                        { value: 'angular', label: 'Angular' },
+                        { value: 'svelte', label: 'Svelte' },
+                      ]
+                    }
+                  ]}
+                />
+              </div>
+              <div>
+                <CustomSelect 
+                  label="With Disabled Options"
+                  placeholder="Select an option"
+                  variant="primary"
+                  selectSize="md"
+                  options={[
+                    { value: 'option1', label: 'Option 1' },
+                    { value: 'option2', label: 'Option 2 (Disabled)', disabled: true },
+                    { value: 'option3', label: 'Option 3' },
+                    { value: 'option4', label: 'Option 4 (Disabled)', disabled: true },
+                    { value: 'option5', label: 'Option 5' },
+                  ]}
+                />
+              </div>
+            </div>
+          </section>
 
         <div className="space-y-8">
           {/* Button Examples */}
@@ -292,7 +495,7 @@ const ShadcnHome = () => {
 
           {/* Select Examples */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Select Examples</h2>
+            <h2 className="text-2xl font-semibold mb-4">Shadcn Select Examples</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block mb-1 text-sm font-medium">Primary</label>

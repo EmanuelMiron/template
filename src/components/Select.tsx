@@ -2,12 +2,22 @@
  * Select (Dropdown) Component
  *
  * A reusable, themeable, and accessible dropdown select with label, error, helper text, and option groups.
- * Supports variants (primary, secondary, outline), sizes (sm, md, lg), and full customization via className and props.
- * All colors are set via CSS variables for theme compatibility. Built with Tailwind utility classes for layout and spacing.
- * Optionally supports a search input (native for now, can be extended for custom search UI).
+ * Built on top of shadcn/ui Select components with additional features like variants, sizes, and search functionality.
+ * All colors are set via CSS variables for theme compatibility.
  */
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import { 
+  Select as ShadSelect,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 export interface SelectOption {
   value: string;
@@ -20,7 +30,7 @@ export interface SelectGroup {
   options: SelectOption[];
 }
 
-export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps {
   label?: string;
   helperText?: string;
   error?: string;
@@ -32,6 +42,10 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   options?: SelectOption[];
   optionGroups?: SelectGroup[];
   searchable?: boolean;
+  placeholder?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  disabled?: boolean;
   children?: React.ReactNode; // for custom option rendering or icons
   icon?: React.ReactNode; // for custom dropdown icon
 }
@@ -78,7 +92,7 @@ const variantClasses = {
   ],
 };
 
-const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   (
     {
       label,
@@ -92,8 +106,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       options = [],
       optionGroups = [],
       searchable = false,
-      children,
+      placeholder = 'Select an option',
+      value,
+      onValueChange,
       disabled = false,
+      children,
       icon,
       ...props
     },
@@ -107,83 +124,100 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       .filter(Boolean)
       .join(' ') || undefined;
 
-    // For native search, filter options if searchable and value changes
+    // For search functionality
     const [search, setSearch] = React.useState('');
     const filteredOptions = searchable && search
       ? options.filter(opt => opt.label.toLowerCase().includes(search.toLowerCase()))
       : options;
 
+    const filteredGroups = searchable && search
+      ? optionGroups.map(group => ({
+          ...group,
+          options: group.options.filter(opt => 
+            opt.label.toLowerCase().includes(search.toLowerCase())
+          )
+        })).filter(group => group.options.length > 0)
+      : optionGroups;
+
     return (
-      <div className={`flex flex-col gap-1 ${containerClassName}`}>
+      <div className={cn('flex flex-col gap-1', containerClassName)} ref={ref}>
         {label && (
           <label
             htmlFor={selectId}
-            className="font-medium text-[var(--color-foreground)] mb-1"
+            className="font-medium text-[hsl(var(--foreground))] mb-1"
           >
             {label}
           </label>
         )}
-        {searchable && (
-          <input
-            type="text"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search..."
-            className={[
-              'mb-2 block w-full rounded-lg transition-all duration-200 outline-none',
-              sizeClasses[selectSize],
-              'border border-[var(--color-outline-border)]',
-              'focus:border-[var(--color-primary)]',
-              'focus:ring-2 focus:ring-[var(--color-primary)]',
-              'bg-[var(--color-background-secondary)]',
-              'text-[var(--color-foreground)]',
-              'placeholder-[var(--color-foreground-secondary)]',
-            ].join(' ')}
-            aria-label="Search options"
-            disabled={disabled}
-          />
-        )}
-        <div className="relative flex items-center">
-          <select
+        
+        <ShadSelect value={value} onValueChange={onValueChange} disabled={disabled}>
+          <SelectTrigger
             id={selectId}
-            ref={ref}
-            className={[
-              'block w-full rounded-lg transition-all duration-200 outline-none appearance-none',
+            className={cn(
               sizeClasses[selectSize],
               ...variantClasses[variant],
-              error ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]' : '',
-              className,
-            ].join(' ')}
+              error && [
+                '!border-[hsl(var(--destructive))]',
+                '!ring-2',
+                '!ring-[hsl(var(--destructive))]',
+                'focus:!border-[hsl(var(--destructive))]',
+                'focus:!ring-[hsl(var(--destructive))]',
+              ],
+              className
+            )}
             aria-invalid={!!error}
             aria-describedby={describedBy}
-            disabled={disabled}
-            {...props}
           >
+            <SelectValue placeholder={placeholder} />
+            {icon && <span className="ml-2">{icon}</span>}
+          </SelectTrigger>
+          
+          <SelectContent className="bg-[var(--color-background)] border border-[var(--color-outline-border)] shadow-lg">
+            {searchable && (
+              <div className="p-2 border-b border-[var(--color-outline-border)]">
+                <Input
+                  type="text"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  placeholder="Search options..."
+                  className="h-8 text-sm"
+                  aria-label="Search options"
+                  disabled={disabled}
+                />
+              </div>
+            )}
             {optionGroups.length > 0
-              ? optionGroups.map(group => (
-                  <optgroup key={group.label} label={group.label}>
+              ? filteredGroups.map(group => (
+                  <SelectGroup key={group.label}>
+                    <SelectLabel>{group.label}</SelectLabel>
                     {group.options.map(opt => (
-                      <option key={opt.value} value={opt.value} disabled={opt.disabled}>
+                      <SelectItem 
+                        key={opt.value} 
+                        value={opt.value}
+                        disabled={opt.disabled}
+                      >
                         {opt.label}
-                      </option>
+                      </SelectItem>
                     ))}
-                  </optgroup>
+                  </SelectGroup>
                 ))
               : filteredOptions.map(opt => (
-                  <option key={opt.value} value={opt.value} disabled={opt.disabled}>
+                  <SelectItem 
+                    key={opt.value} 
+                    value={opt.value}
+                    disabled={opt.disabled}
+                  >
                     {opt.label}
-                  </option>
+                  </SelectItem>
                 ))}
             {children}
-          </select>
-          <span className="absolute right-2 pointer-events-none flex items-center">
-            {icon || <ChevronDown className="w-5 h-5 text-[var(--color-foreground-secondary)]" />}
-          </span>
-        </div>
+          </SelectContent>
+        </ShadSelect>
+
         {error ? (
           <span
             id={selectId ? `${selectId}-error` : undefined}
-            className="text-xs text-[var(--color-primary)] mt-1"
+            className="text-xs text-[hsl(var(--destructive))] mt-1"
             role="alert"
           >
             {error}
@@ -191,7 +225,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         ) : helperText ? (
           <span
             id={selectId ? `${selectId}-helper` : undefined}
-            className="text-xs text-[var(--color-foreground-secondary)] mt-1"
+            className="text-xs text-[hsl(var(--muted-foreground))] mt-1"
           >
             {helperText}
           </span>
