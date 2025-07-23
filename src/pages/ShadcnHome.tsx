@@ -13,6 +13,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
+import CustomTextarea from '@/components/Textarea';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -467,7 +468,7 @@ const ShadcnHome = () => {
 
           {/* Textarea Examples */}
           <section>
-            <h2 className="text-2xl font-semibold mb-4">Textarea Examples</h2>
+            <h2 className="text-2xl font-semibold mb-4">Shadcn Textarea Examples</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block mb-1 text-sm font-medium" htmlFor="textarea1">Primary</label>
@@ -489,6 +490,129 @@ const ShadcnHome = () => {
                   <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Textarea id="textarea4" placeholder="Comment..." className="pl-10" />
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Custom Textarea Examples */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Custom Textarea Component Examples</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <CustomTextarea 
+                  label="Primary Variant"
+                  placeholder="Primary textarea with label"
+                  variant="primary"
+                  textareaSize="md"
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Secondary Variant"
+                  placeholder="Secondary textarea with label"
+                  variant="secondary"
+                  textareaSize="md"
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Outline Variant"
+                  placeholder="Outline textarea with label"
+                  variant="outline"
+                  textareaSize="md"
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Disabled Textarea"
+                  placeholder="Disabled textarea"
+                  variant="primary"
+                  textareaSize="md"
+                  disabled
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="With Helper Text"
+                  placeholder="Textarea with helper text"
+                  variant="primary"
+                  textareaSize="md"
+                  helperText="This is some helpful information about this field."
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="With Error"
+                  placeholder="Textarea with error"
+                  variant="primary"
+                  textareaSize="md"
+                  error="This field is required and cannot be empty."
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="With Icon"
+                  placeholder="Comment with icon"
+                  variant="primary"
+                  textareaSize="md"
+                  icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Small Size"
+                  placeholder="Small textarea"
+                  variant="outline"
+                  textareaSize="sm"
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Large Size"
+                  placeholder="Large textarea"
+                  variant="secondary"
+                  textareaSize="lg"
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Bio Textarea"
+                  placeholder="Tell us about yourself..."
+                  variant="primary"
+                  textareaSize="md"
+                  helperText="Share a brief description about yourself."
+                  rows={4}
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Feedback Textarea"
+                  placeholder="Your feedback..."
+                  variant="outline"
+                  textareaSize="md"
+                  error="Please provide more detailed feedback."
+                  rows={5}
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Code Snippet"
+                  placeholder="Paste your code here..."
+                  variant="secondary"
+                  textareaSize="md"
+                  helperText="Use this area to share code snippets."
+                  rows={6}
+                />
+              </div>
+              <div>
+                <CustomTextarea 
+                  label="Notes"
+                  placeholder="Write your notes here..."
+                  variant="outline"
+                  textareaSize="md"
+                  icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
+                  rows={3}
+                />
               </div>
             </div>
           </section>

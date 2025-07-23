@@ -2,10 +2,12 @@
  * Textarea Component
  *
  * A reusable, themeable, and accessible multi-line text input with label, error, and helper text.
- * Supports variants (primary, secondary, outline), sizes (sm, md, lg), and full customization via className and props.
- * All colors are set via CSS variables for theme compatibility. Built with Tailwind utility classes for layout and spacing.
+ * Built on top of shadcn/ui Textarea component with additional features like variants, sizes, and icon support.
+ * All colors are set via CSS variables for theme compatibility.
  */
 import React from 'react';
+import { Textarea as ShadTextarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
@@ -91,27 +93,33 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       .join(' ') || undefined;
 
     return (
-      <div className={`flex flex-col gap-1 ${containerClassName}`}>
+      <div className={cn('flex flex-col gap-1', containerClassName)}>
         {label && (
           <label
             htmlFor={textareaId}
-            className="font-medium text-[var(--color-foreground)] mb-1"
+            className="font-medium text-[hsl(var(--foreground))] mb-1"
           >
             {label}
           </label>
         )}
-        <div className="relative flex items-center">
-          <textarea
+        <div className="relative">
+          <ShadTextarea
             id={textareaId}
             ref={ref}
-            className={[
-              'block w-full rounded-lg transition-all duration-200 outline-none resize-y',
+            className={cn(
               sizeClasses[textareaSize],
               ...variantClasses[variant],
-              error ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]' : '',
-              icon ? 'pr-10' : '',
-              className,
-            ].join(' ')}
+              icon && 'pr-10',
+              error && [
+                '!border-[hsl(var(--destructive))]',
+                '!ring-2',
+                '!ring-[hsl(var(--destructive))]',
+                'focus:!border-[hsl(var(--destructive))]',
+                'focus:!ring-[hsl(var(--destructive))]',
+                'hover:!border-[hsl(var(--destructive))]'
+              ],
+              className
+            )}
             aria-invalid={!!error}
             aria-describedby={describedBy}
             disabled={disabled}
@@ -126,7 +134,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {error ? (
           <span
             id={textareaId ? `${textareaId}-error` : undefined}
-            className="text-xs text-[var(--color-primary)] mt-1"
+            className="text-xs text-[hsl(var(--destructive))] mt-1"
             role="alert"
           >
             {error}
@@ -134,7 +142,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         ) : helperText ? (
           <span
             id={textareaId ? `${textareaId}-helper` : undefined}
-            className="text-xs text-[var(--color-foreground-secondary)] mt-1"
+            className="text-xs text-[hsl(var(--muted-foreground))] mt-1"
           >
             {helperText}
           </span>
