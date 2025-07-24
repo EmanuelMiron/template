@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion as ShadAccordion, AccordionContent as ShadAccordionContent, AccordionItem as ShadAccordionItem, AccordionTrigger as ShadAccordionTrigger } from '@/components/ui/accordion';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Alert as CustomAlert, AlertTitle as CustomAlertTitle, AlertDescription as CustomAlertDescription } from '@/components/Alert';
+import { Alert as CustomAlert, AlertDescription as CustomAlertDescription } from '@/components/Alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { AlertDialog as CustomAlertDialog, AlertDialogAction as CustomAlertDialogAction, AlertDialogCancel as CustomAlertDialogCancel, AlertDialogContent as CustomAlertDialogContent, AlertDialogDescription as CustomAlertDialogDescription, AlertDialogFooter as CustomAlertDialogFooter, AlertDialogHeader as CustomAlertDialogHeader, AlertDialogTitle as CustomAlertDialogTitle, AlertDialogTrigger as CustomAlertDialogTrigger } from '@/components/AlertDialog';
 import CustomInput from '@/components/Input';
