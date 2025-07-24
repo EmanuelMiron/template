@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight, Calculator, Smile, User, CreditCard } from 'lucide-react';
+import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight, Calculator, Smile, User, CreditCard, Copy, Clipboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -78,6 +78,21 @@ import {
   CommandSeparator as CustomCommandSeparator,
   CommandShortcut as CustomCommandShortcut,
 } from '@/components/Command';
+import {
+  ContextMenu as CustomContextMenu,
+  ContextMenuTrigger as CustomContextMenuTrigger,
+  ContextMenuContent as CustomContextMenuContent,
+  ContextMenuItem as CustomContextMenuItem,
+  ContextMenuCheckboxItem as CustomContextMenuCheckboxItem,
+  ContextMenuRadioItem as CustomContextMenuRadioItem,
+  ContextMenuLabel as CustomContextMenuLabel,
+  ContextMenuSeparator as CustomContextMenuSeparator,
+  ContextMenuShortcut as CustomContextMenuShortcut,
+  ContextMenuSub as CustomContextMenuSub,
+  ContextMenuSubContent as CustomContextMenuSubContent,
+  ContextMenuSubTrigger as CustomContextMenuSubTrigger,
+  ContextMenuRadioGroup as CustomContextMenuRadioGroup,
+} from '@/components/ContextMenu';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -125,6 +140,227 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom ContextMenu Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom ContextMenu Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic ContextMenu Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic ContextMenu Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Basic Context Menu</h5>
+                      <ContextMenuDemo />
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Context Menu with Different Sizes</h5>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Small Size:</p>
+                          <CustomContextMenu>
+                            <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                              Right click here (Small)
+                            </CustomContextMenuTrigger>
+                            <CustomContextMenuContent menuSize="sm" variant="primary">
+                              <CustomContextMenuItem>
+                                <span>Small Option 1</span>
+                              </CustomContextMenuItem>
+                              <CustomContextMenuItem>
+                                <span>Small Option 2</span>
+                              </CustomContextMenuItem>
+                              <CustomContextMenuSeparator />
+                              <CustomContextMenuItem variant="destructive">
+                                <span>Delete</span>
+                              </CustomContextMenuItem>
+                            </CustomContextMenuContent>
+                          </CustomContextMenu>
+                        </div>
+
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Large Size:</p>
+                          <CustomContextMenu>
+                            <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                              Right click here (Large)
+                            </CustomContextMenuTrigger>
+                            <CustomContextMenuContent menuSize="lg" variant="primary">
+                              <CustomContextMenuItem>
+                                <span>Large Option 1</span>
+                              </CustomContextMenuItem>
+                              <CustomContextMenuItem>
+                                <span>Large Option 2</span>
+                              </CustomContextMenuItem>
+                              <CustomContextMenuItem>
+                                <span>Large Option 3</span>
+                              </CustomContextMenuItem>
+                              <CustomContextMenuSeparator />
+                              <CustomContextMenuItem variant="destructive">
+                                <span>Delete</span>
+                              </CustomContextMenuItem>
+                            </CustomContextMenuContent>
+                          </CustomContextMenu>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Variant Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Variant Examples</h4>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Primary Variant:</p>
+                      <CustomContextMenu>
+                        <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                          Right click here (Primary)
+                        </CustomContextMenuTrigger>
+                        <CustomContextMenuContent variant="primary">
+                          <CustomContextMenuItem>
+                            <span>Primary Option 1</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem>
+                            <span>Primary Option 2</span>
+                          </CustomContextMenuItem>
+                        </CustomContextMenuContent>
+                      </CustomContextMenu>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Secondary Variant:</p>
+                      <CustomContextMenu>
+                        <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                          Right click here (Secondary)
+                        </CustomContextMenuTrigger>
+                        <CustomContextMenuContent variant="secondary">
+                          <CustomContextMenuItem>
+                            <span>Secondary Option 1</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem>
+                            <span>Secondary Option 2</span>
+                          </CustomContextMenuItem>
+                        </CustomContextMenuContent>
+                      </CustomContextMenu>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Outline Variant:</p>
+                      <CustomContextMenu>
+                        <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                          Right click here (Outline)
+                        </CustomContextMenuTrigger>
+                        <CustomContextMenuContent variant="outline">
+                          <CustomContextMenuItem>
+                            <span>Outline Option 1</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem>
+                            <span>Outline Option 2</span>
+                          </CustomContextMenuItem>
+                        </CustomContextMenuContent>
+                      </CustomContextMenu>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advanced Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Advanced Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Context Menu with All Features</h5>
+                      <CustomContextMenu>
+                        <CustomContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+                          Right click here for full menu
+                        </CustomContextMenuTrigger>
+                        <CustomContextMenuContent className="w-52">
+                          <CustomContextMenuItem inset>
+                            Back
+                            <CustomContextMenuShortcut>⌘[</CustomContextMenuShortcut>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem inset disabled>
+                            Forward
+                            <CustomContextMenuShortcut>⌘]</CustomContextMenuShortcut>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem inset>
+                            Reload
+                            <CustomContextMenuShortcut>⌘R</CustomContextMenuShortcut>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuSub>
+                            <CustomContextMenuSubTrigger inset>More Tools</CustomContextMenuSubTrigger>
+                            <CustomContextMenuSubContent className="w-44">
+                              <CustomContextMenuItem>Save Page...</CustomContextMenuItem>
+                              <CustomContextMenuItem>Create Shortcut...</CustomContextMenuItem>
+                              <CustomContextMenuItem>Name Window...</CustomContextMenuItem>
+                              <CustomContextMenuSeparator />
+                              <CustomContextMenuItem>Developer Tools</CustomContextMenuItem>
+                              <CustomContextMenuSeparator />
+                              <CustomContextMenuItem variant="destructive">Delete</CustomContextMenuItem>
+                            </CustomContextMenuSubContent>
+                          </CustomContextMenuSub>
+                          <CustomContextMenuSeparator />
+                          <CustomContextMenuCheckboxItem checked>
+                            Show Bookmarks
+                          </CustomContextMenuCheckboxItem>
+                          <CustomContextMenuCheckboxItem>Show Full URLs</CustomContextMenuCheckboxItem>
+                          <CustomContextMenuSeparator />
+                          <CustomContextMenuRadioGroup value="pedro">
+                            <CustomContextMenuLabel inset>People</CustomContextMenuLabel>
+                            <CustomContextMenuRadioItem value="pedro">
+                              Pedro Duarte
+                            </CustomContextMenuRadioItem>
+                            <CustomContextMenuRadioItem value="colm">Colm Tuite</CustomContextMenuRadioItem>
+                          </CustomContextMenuRadioGroup>
+                        </CustomContextMenuContent>
+                      </CustomContextMenu>
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Context Menu with Icons</h5>
+                      <CustomContextMenu>
+                        <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+                          Right click here (with icons)
+                        </CustomContextMenuTrigger>
+                        <CustomContextMenuContent>
+                          <CustomContextMenuItem>
+                            <Edit className="h-4 w-4" />
+                            <span>Edit</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem>
+                            <Copy className="h-4 w-4" />
+                            <span>Copy</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuItem>
+                            <Clipboard className="h-4 w-4" />
+                            <span>Paste</span>
+                          </CustomContextMenuItem>
+                          <CustomContextMenuSeparator />
+                          <CustomContextMenuItem variant="destructive">
+                            <Trash2 className="h-4 w-4" />
+                            <span>Delete</span>
+                          </CustomContextMenuItem>
+                        </CustomContextMenuContent>
+                      </CustomContextMenu>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Context Menu with State</h5>
+                      <ContextMenuWithStateDemo />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Command Examples */}
          <Collapsible>
@@ -4544,6 +4780,110 @@ const CommandMenuDemo = () => {
         </CustomCommandList>
       </CustomCommandDialog>
     </>
+  );
+};
+
+// ContextMenu Demo Component
+const ContextMenuDemo = () => {
+  return (
+    <CustomContextMenu>
+      <CustomContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+        Right click here
+      </CustomContextMenuTrigger>
+      <CustomContextMenuContent className="w-52">
+        <CustomContextMenuItem inset>
+          Back
+          <CustomContextMenuShortcut>⌘[</CustomContextMenuShortcut>
+        </CustomContextMenuItem>
+        <CustomContextMenuItem inset disabled>
+          Forward
+          <CustomContextMenuShortcut>⌘]</CustomContextMenuShortcut>
+        </CustomContextMenuItem>
+        <CustomContextMenuItem inset>
+          Reload
+          <CustomContextMenuShortcut>⌘R</CustomContextMenuShortcut>
+        </CustomContextMenuItem>
+        <CustomContextMenuSub>
+          <CustomContextMenuSubTrigger inset>More Tools</CustomContextMenuSubTrigger>
+          <CustomContextMenuSubContent className="w-44">
+            <CustomContextMenuItem>Save Page...</CustomContextMenuItem>
+            <CustomContextMenuItem>Create Shortcut...</CustomContextMenuItem>
+            <CustomContextMenuItem>Name Window...</CustomContextMenuItem>
+            <CustomContextMenuSeparator />
+            <CustomContextMenuItem>Developer Tools</CustomContextMenuItem>
+            <CustomContextMenuSeparator />
+            <CustomContextMenuItem variant="destructive">Delete</CustomContextMenuItem>
+          </CustomContextMenuSubContent>
+        </CustomContextMenuSub>
+        <CustomContextMenuSeparator />
+        <CustomContextMenuCheckboxItem checked>
+          Show Bookmarks
+        </CustomContextMenuCheckboxItem>
+        <CustomContextMenuCheckboxItem>Show Full URLs</CustomContextMenuCheckboxItem>
+        <CustomContextMenuSeparator />
+        <CustomContextMenuRadioGroup value="pedro">
+          <CustomContextMenuLabel inset>People</CustomContextMenuLabel>
+          <CustomContextMenuRadioItem value="pedro">
+            Pedro Duarte
+          </CustomContextMenuRadioItem>
+          <CustomContextMenuRadioItem value="colm">Colm Tuite</CustomContextMenuRadioItem>
+        </CustomContextMenuRadioGroup>
+      </CustomContextMenuContent>
+    </CustomContextMenu>
+  );
+};
+
+// ContextMenu with State Demo Component
+const ContextMenuWithStateDemo = () => {
+  const [showBookmarks, setShowBookmarks] = useState(true);
+  const [showFullUrls, setShowFullUrls] = useState(false);
+  const [selectedPerson, setSelectedPerson] = useState('pedro');
+
+  return (
+    <div className="space-y-4">
+      <CustomContextMenu>
+        <CustomContextMenuTrigger className="flex h-[100px] w-[200px] items-center justify-center rounded-md border border-dashed text-sm">
+          Right click here (with state)
+        </CustomContextMenuTrigger>
+        <CustomContextMenuContent className="w-52">
+          <CustomContextMenuItem>
+            <Edit className="h-4 w-4" />
+            <span>Edit</span>
+          </CustomContextMenuItem>
+          <CustomContextMenuItem>
+            <Copy className="h-4 w-4" />
+            <span>Copy</span>
+          </CustomContextMenuItem>
+          <CustomContextMenuSeparator />
+          <CustomContextMenuCheckboxItem 
+            checked={showBookmarks}
+            onCheckedChange={setShowBookmarks}
+          >
+            Show Bookmarks
+          </CustomContextMenuCheckboxItem>
+          <CustomContextMenuCheckboxItem 
+            checked={showFullUrls}
+            onCheckedChange={setShowFullUrls}
+          >
+            Show Full URLs
+          </CustomContextMenuCheckboxItem>
+          <CustomContextMenuSeparator />
+          <CustomContextMenuRadioGroup value={selectedPerson} onValueChange={setSelectedPerson}>
+            <CustomContextMenuLabel inset>People</CustomContextMenuLabel>
+            <CustomContextMenuRadioItem value="pedro">
+              Pedro Duarte
+            </CustomContextMenuRadioItem>
+            <CustomContextMenuRadioItem value="colm">Colm Tuite</CustomContextMenuRadioItem>
+          </CustomContextMenuRadioGroup>
+        </CustomContextMenuContent>
+      </CustomContextMenu>
+      
+      <div className="text-sm text-muted-foreground">
+        <p>Show Bookmarks: {showBookmarks ? 'Yes' : 'No'}</p>
+        <p>Show Full URLs: {showFullUrls ? 'Yes' : 'No'}</p>
+        <p>Selected Person: {selectedPerson}</p>
+      </div>
+    </div>
   );
 };
 
