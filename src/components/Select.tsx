@@ -150,7 +150,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           </label>
         )}
         
-        <ShadSelect value={value} onValueChange={onValueChange} disabled={disabled}>
+        <ShadSelect value={value} onValueChange={onValueChange} disabled={disabled} {...props}>
           <SelectTrigger
             id={selectId}
             className={cn(

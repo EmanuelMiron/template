@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Search, MessageSquare, Info, AlertCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -49,14 +49,6 @@ const ShadcnHome = () => {
   const [customSelectValue, setCustomSelectValue] = useState('');
   const [customSelectValue2, setCustomSelectValue2] = useState('');
   const [customSelectValue3, setCustomSelectValue3] = useState('');
-
-  // Debug function to get CSS variable values
-  const getCSSVariable = (variable: string) => {
-    if (typeof window !== 'undefined') {
-      return getComputedStyle(document.documentElement).getPropertyValue(variable);
-    }
-    return '';
-  };
 
   return (
     <div className="min-h-screen p-8 bg-background text-foreground">
