@@ -19,7 +19,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Dropdown Menu** — Menu triggered by button or icon.
 - [ ] **Modal (Dialog)** — Centered overlay for forms, alerts, or content.
 - [ ] **Drawer (Sidebar)** — Slide-in panel from edge of screen.
-- [ ] **Alert** — Banner for success, error, warning, or info.
+- [x] **Alert** — Banner for success, error, warning, or info with variants and theming.
 - [ ] **Toast / Snackbar** — Temporary notification at screen edge.
 - [ ] **Progress Bar** — Linear or circular progress indicator.
 - [ ] **Spinner / Loader** — Animated loading indicator.
