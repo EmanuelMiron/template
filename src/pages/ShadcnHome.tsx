@@ -7,13 +7,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Accordion as ShadAccordion, AccordionContent as ShadAccordionContent, AccordionItem as ShadAccordionItem, AccordionTrigger as ShadAccordionTrigger } from '@/components/ui/accordion';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
 import CustomTextarea from '@/components/Textarea';
 import CustomCheckbox from '@/components/Checkbox';
+import { Accordion as CustomAccordion, AccordionItem as CustomAccordionItem, AccordionTrigger as CustomAccordionTrigger, AccordionContent as CustomAccordionContent } from '@/components/Accordion';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
 
 const themeIcons: Record<string, string> = {
@@ -62,6 +63,103 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Accordion Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Accordion Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Product Information */}
+                <CustomAccordion type="single" collapsible defaultValue="item-1">
+                  <CustomAccordionItem value="item-1">
+                    <CustomAccordionTrigger>Product Information</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        Our flagship product combines cutting-edge technology with sleek
+                        design. Built with premium materials, it offers unparalleled
+                        performance and reliability.
+                      </p>
+                      <p>
+                        Key features include advanced processing capabilities, and an
+                        intuitive user interface designed for both beginners and experts.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                  <CustomAccordionItem value="item-2">
+                    <CustomAccordionTrigger>Shipping Details</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        We offer worldwide shipping through trusted courier partners.
+                        Standard delivery takes 3-5 business days, while express shipping
+                        ensures delivery within 1-2 business days.
+                      </p>
+                      <p>
+                        All orders are carefully packaged and fully insured. Track your
+                        shipment in real-time through our dedicated tracking portal.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                  <CustomAccordionItem value="item-3">
+                    <CustomAccordionTrigger>Return Policy</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        We stand behind our products with a comprehensive 30-day return
+                        policy. If you're not completely satisfied, simply return the
+                        item in its original condition.
+                      </p>
+                      <p>
+                        Our hassle-free return process includes free return shipping and
+                        full refunds processed within 48 hours of receiving the returned
+                        item.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                </CustomAccordion>
+
+                {/* FAQ Section */}
+                <CustomAccordion type="multiple">
+                  <CustomAccordionItem value="faq-1">
+                    <CustomAccordionTrigger>What is Shadcn UI?</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        Shadcn/ui is a collection of reusable components built using Radix UI and Tailwind CSS. 
+                        It provides a set of accessible, customizable components that you can copy and paste into your apps.
+                      </p>
+                      <p>
+                        The components are designed to be highly customizable and follow modern design principles.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                  <CustomAccordionItem value="faq-2">
+                    <CustomAccordionTrigger>How does theming work?</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        Theming is handled through CSS variables defined in the shadcn.css file. 
+                        Each theme has its own set of color variables that control the appearance of all components.
+                      </p>
+                      <p>
+                        This allows for easy theme switching and customization without modifying component code.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                  <CustomAccordionItem value="faq-3">
+                    <CustomAccordionTrigger>Can I customize components?</CustomAccordionTrigger>
+                    <CustomAccordionContent className="flex flex-col gap-4 text-balance">
+                      <p>
+                        Yes! Since Shadcn UI components are just React components with Tailwind classes, 
+                        you can easily modify them to match your design requirements.
+                      </p>
+                      <p>
+                        The theming system makes it easy to maintain consistency across your application.
+                      </p>
+                    </CustomAccordionContent>
+                  </CustomAccordionItem>
+                </CustomAccordion>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Checkbox Examples */}
          <Collapsible>
@@ -963,32 +1061,32 @@ const ShadcnHome = () => {
             </CollapsibleContent>
           </Collapsible>
 
-          {/* Accordion */}
+          {/* Shadcn Accordion */}
           <Collapsible>
             <CollapsibleTrigger variant="primary" size="lg">
-              <h2 className="text-2xl font-semibold">Accordion</h2>
+              <h2 className="text-2xl font-semibold">Shadcn Accordion</h2>
             </CollapsibleTrigger>
             <CollapsibleContent variant="outline" padding="lg">
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>What is Shadcn UI?</AccordionTrigger>
-                  <AccordionContent>
+              <ShadAccordion type="single" collapsible className="w-full">
+                <ShadAccordionItem value="item-1">
+                  <ShadAccordionTrigger>What is Shadcn UI?</ShadAccordionTrigger>
+                  <ShadAccordionContent>
                     Shadcn/ui is a collection of reusable components built using Radix UI and Tailwind CSS. It provides a set of accessible, customizable components that you can copy and paste into your apps.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>How does theming work?</AccordionTrigger>
-                  <AccordionContent>
+                  </ShadAccordionContent>
+                </ShadAccordionItem>
+                <ShadAccordionItem value="item-2">
+                  <ShadAccordionTrigger>How does theming work?</ShadAccordionTrigger>
+                  <ShadAccordionContent>
                     Theming is handled through CSS variables defined in the shadcn.css file. Each theme has its own set of color variables that control the appearance of all components.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>Can I customize components?</AccordionTrigger>
-                  <AccordionContent>
+                  </ShadAccordionContent>
+                </ShadAccordionItem>
+                <ShadAccordionItem value="item-3">
+                  <ShadAccordionTrigger>Can I customize components?</ShadAccordionTrigger>
+                  <ShadAccordionContent>
                     Yes! Since Shadcn UI components are just React components with Tailwind classes, you can easily modify them to match your design requirements.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                  </ShadAccordionContent>
+                </ShadAccordionItem>
+              </ShadAccordion>
             </CollapsibleContent>
           </Collapsible>
 

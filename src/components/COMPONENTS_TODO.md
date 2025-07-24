@@ -24,7 +24,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Progress Bar** — Linear or circular progress indicator.
 - [ ] **Spinner / Loader** — Animated loading indicator.
 - [ ] **Tabs** — Switch between content panels.
-- [ ] **Accordion** — Expandable/collapsible content sections.
+- [x] **Accordion** — Expandable/collapsible content sections.
 - [x] **Collapsible** — Customizable collapsible content with trigger and variants.
 - [ ] **Card** — Container for content, with optional header, footer, and actions.
 - [ ] **Table** — Data table with sorting, filtering, and pagination.
