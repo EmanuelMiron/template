@@ -46,9 +46,12 @@ const triggerSizeClasses = {
 
 const triggerVariantClasses = {
   primary: [
-    'bg-[var(--color-primary)]',
-    'text-white',
-    'hover:bg-[var(--color-primary-hover)]',
+    'bg-[var(--color-background)]',
+    'text-[var(--color-primary)]',
+    'border',
+    'border-[var(--color-primary)]',
+    'hover:bg-[var(--color-primary)]',
+    'hover:text-[var(--color-background)]',
     'focus:ring-2',
     'focus:ring-[var(--color-primary)]',
     'focus:ring-offset-2',
@@ -59,9 +62,12 @@ const triggerVariantClasses = {
     'hover:shadow-md',
   ],
   secondary: [
-    'bg-[var(--color-secondary)]',
-    'text-white',
-    'hover:bg-[var(--color-secondary-hover)]',
+    'bg-[var(--color-background)]',
+    'text-[var(--color-secondary)]',
+    'border',
+    'border-[var(--color-secondary)]',
+    'hover:bg-[var(--color-secondary)]',
+    'hover:text-[var(--color-background)]',
     'focus:ring-2',
     'focus:ring-[var(--color-secondary)]',
     'focus:ring-offset-2',

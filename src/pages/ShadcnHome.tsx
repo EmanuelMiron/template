@@ -61,10 +61,14 @@ const ShadcnHome = () => {
           </Button>
         </div>
 
+        <div className="space-y-8">
         {/* Custom Collapsible Examples */}
-        <section>
-            <h2 className="text-2xl font-semibold mb-4">Custom Collapsible Component Examples</h2>
-            <div className="space-y-4">
+        <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+                <h2 className="text-2xl font-semibold">Custom Collapsible Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+                <div className="space-y-4">
               {/* Primary Variant */}
               <Collapsible>
                 <CollapsibleTrigger variant="primary" size="md">
@@ -197,12 +201,16 @@ const ShadcnHome = () => {
                 </Collapsible>
               </div>
             </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
         {/* Custom Select Examples */}
-        <section>
-            <h2 className="text-2xl font-semibold mb-4">Custom Select Component Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+                <h2 className="text-2xl font-semibold">Custom Select Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <CustomSelect 
                   label="Primary Variant"
@@ -422,528 +430,583 @@ const ShadcnHome = () => {
                 />
               </div>
             </div>
-          </section>
-
-        <div className="space-y-8">
+            </CollapsibleContent>
+          </Collapsible>
           {/* Button Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Button Examples</h2>
-            <div className="flex flex-wrap gap-4 items-center">
-              <Button>Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button disabled>Disabled</Button>
-              <Button>
-                <Search className="w-5 h-5 mr-2" /> Search
-              </Button>
-            </div>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Button Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="flex flex-wrap gap-4 items-center">
+                <Button>Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline</Button>
+                <Button disabled>Disabled</Button>
+                <Button>
+                  <Search className="w-5 h-5 mr-2" /> Search
+                </Button>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Input Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Shadcn Input Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="input1">Primary</label>
-                <Input id="input1" placeholder="Primary input" />
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="input2">Disabled</label>
-                <Input id="input2" placeholder="Disabled input" disabled />
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="input3">With Helper</label>
-                <Input id="input3" placeholder="With Helper" />
-                <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="input4">With Error</label>
-                <Input id="input4" placeholder="With Error" className="border-destructive" />
-                <span className="text-xs text-destructive mt-1 block" role="alert">This field is required.</span>
-              </div>
-              <div className="relative">
-                <label className="block mb-1 text-sm font-medium" htmlFor="input5">With Icon</label>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Shadcn Input Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="input1">Primary</label>
+                  <Input id="input1" placeholder="Primary input" />
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="input2">Disabled</label>
+                  <Input id="input2" placeholder="Disabled input" disabled />
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="input3">With Helper</label>
+                  <Input id="input3" placeholder="With Helper" />
+                  <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="input4">With Error</label>
+                  <Input id="input4" placeholder="With Error" className="border-destructive" />
+                  <span className="text-xs text-destructive mt-1 block" role="alert">This field is required.</span>
+                </div>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input id="input5" placeholder="Search..." className="pl-10" />
+                  <label className="block mb-1 text-sm font-medium" htmlFor="input5">With Icon</label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input id="input5" placeholder="Search..." className="pl-10" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Custom Input Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Custom Input Component Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <CustomInput 
-                  label="Primary Variant"
-                  placeholder="Primary input with label"
-                  variant="primary"
-                  inputSize="md"
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Secondary Variant"
-                  placeholder="Secondary input with label"
-                  variant="secondary"
-                  inputSize="md"
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Outline Variant"
-                  placeholder="Outline input with label"
-                  variant="outline"
-                  inputSize="md"
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Disabled Input"
-                  placeholder="Disabled input"
-                  variant="primary"
-                  inputSize="md"
-                  disabled
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="With Helper Text"
-                  placeholder="Input with helper text"
-                  variant="primary"
-                  inputSize="md"
-                  helperText="This is some helpful information about this field."
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="With Error"
-                  placeholder="Input with error"
-                  variant="primary"
-                  inputSize="md"
-                  error="This field is required and cannot be empty."
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="With Icon"
-                  placeholder="Search with icon"
-                  variant="primary"
-                  inputSize="md"
-                  icon={<Search className="w-4 h-4 text-muted-foreground" />}
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Small Size"
-                  placeholder="Small input"
-                  variant="outline"
-                  inputSize="sm"
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Large Size"
-                  placeholder="Large input"
-                  variant="secondary"
-                  inputSize="lg"
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Email Input"
-                  type="email"
-                  placeholder="Enter your email"
-                  variant="primary"
-                  inputSize="md"
-                  helperText="We'll never share your email with anyone else."
-                />
-              </div>
-              <div>
-                <CustomInput 
-                  label="Password Input"
-                  type="password"
-                  placeholder="Enter your password"
-                  variant="outline"
-                  inputSize="md"
-                  error="Password must be at least 8 characters long."
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* Date Picker */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Date Picker</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="date1">Date Input</label>
-                <Input 
-                  id="date1" 
-                  type="date" 
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="datetime1">Date & Time</label>
-                <Input 
-                  id="datetime1" 
-                  type="datetime-local" 
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* Textarea Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Shadcn Textarea Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="textarea1">Primary</label>
-                <Textarea id="textarea1" placeholder="Primary textarea" />
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="textarea2">With Helper</label>
-                <Textarea id="textarea2" placeholder="With Helper" />
-                <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
-              </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium" htmlFor="textarea3">With Error</label>
-                <Textarea id="textarea3" placeholder="With Error" className="border-destructive" />
-                <span className="text-xs text-destructive mt-1 block" role="alert">This field is required.</span>
-              </div>
-              <div className="relative">
-                <label className="block mb-1 text-sm font-medium" htmlFor="textarea4">With Icon</label>
-                <div className="relative">
-                  <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Textarea id="textarea4" placeholder="Comment..." className="pl-10" />
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Input Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <CustomInput 
+                    label="Primary Variant"
+                    placeholder="Primary input with label"
+                    variant="primary"
+                    inputSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Secondary Variant"
+                    placeholder="Secondary input with label"
+                    variant="secondary"
+                    inputSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Outline Variant"
+                    placeholder="Outline input with label"
+                    variant="outline"
+                    inputSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Disabled Input"
+                    placeholder="Disabled input"
+                    variant="primary"
+                    inputSize="md"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="With Helper Text"
+                    placeholder="Input with helper text"
+                    variant="primary"
+                    inputSize="md"
+                    helperText="This is some helpful information about this field."
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="With Error"
+                    placeholder="Input with error"
+                    variant="primary"
+                    inputSize="md"
+                    error="This field is required and cannot be empty."
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="With Icon"
+                    placeholder="Search with icon"
+                    variant="primary"
+                    inputSize="md"
+                    icon={<Search className="w-4 h-4 text-muted-foreground" />}
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Small Size"
+                    placeholder="Small input"
+                    variant="outline"
+                    inputSize="sm"
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Large Size"
+                    placeholder="Large input"
+                    variant="secondary"
+                    inputSize="lg"
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Email Input"
+                    type="email"
+                    placeholder="Enter your email"
+                    variant="primary"
+                    inputSize="md"
+                    helperText="We'll never share your email with anyone else."
+                  />
+                </div>
+                <div>
+                  <CustomInput 
+                    label="Password Input"
+                    type="password"
+                    placeholder="Enter your password"
+                    variant="outline"
+                    inputSize="md"
+                    error="Password must be at least 8 characters long."
+                  />
                 </div>
               </div>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* Date Picker */}
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Date Picker</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="date1">Date Input</label>
+                  <Input 
+                    id="date1" 
+                    type="date" 
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="datetime1">Date & Time</label>
+                  <Input 
+                    id="datetime1" 
+                    type="datetime-local" 
+                  />
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* Textarea Examples */}
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Shadcn Textarea Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="textarea1">Primary</label>
+                  <Textarea id="textarea1" placeholder="Primary textarea" />
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="textarea2">With Helper</label>
+                  <Textarea id="textarea2" placeholder="With Helper" />
+                  <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium" htmlFor="textarea3">With Error</label>
+                  <Textarea id="textarea3" placeholder="With Error" className="border-destructive" />
+                  <span className="text-xs text-destructive mt-1 block" role="alert">This field is required.</span>
+                </div>
+                <div className="relative">
+                  <label className="block mb-1 text-sm font-medium" htmlFor="textarea4">With Icon</label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Textarea id="textarea4" placeholder="Comment..." className="pl-10" />
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Custom Textarea Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Custom Textarea Component Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <CustomTextarea 
-                  label="Primary Variant"
-                  placeholder="Primary textarea with label"
-                  variant="primary"
-                  textareaSize="md"
-                />
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Textarea Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <CustomTextarea 
+                    label="Primary Variant"
+                    placeholder="Primary textarea with label"
+                    variant="primary"
+                    textareaSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Secondary Variant"
+                    placeholder="Secondary textarea with label"
+                    variant="secondary"
+                    textareaSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Outline Variant"
+                    placeholder="Outline textarea with label"
+                    variant="outline"
+                    textareaSize="md"
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Disabled Textarea"
+                    placeholder="Disabled textarea"
+                    variant="primary"
+                    textareaSize="md"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="With Helper Text"
+                    placeholder="Textarea with helper text"
+                    variant="primary"
+                    textareaSize="md"
+                    helperText="This is some helpful information about this field."
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="With Error"
+                    placeholder="Textarea with error"
+                    variant="primary"
+                    textareaSize="md"
+                    error="This field is required and cannot be empty."
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="With Icon"
+                    placeholder="Comment with icon"
+                    variant="primary"
+                    textareaSize="md"
+                    icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Small Size"
+                    placeholder="Small textarea"
+                    variant="outline"
+                    textareaSize="sm"
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Large Size"
+                    placeholder="Large textarea"
+                    variant="secondary"
+                    textareaSize="lg"
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Bio Textarea"
+                    placeholder="Tell us about yourself..."
+                    variant="primary"
+                    textareaSize="md"
+                    helperText="Share a brief description about yourself."
+                    rows={4}
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Feedback Textarea"
+                    placeholder="Your feedback..."
+                    variant="outline"
+                    textareaSize="md"
+                    error="Please provide more detailed feedback."
+                    rows={5}
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Code Snippet"
+                    placeholder="Paste your code here..."
+                    variant="secondary"
+                    textareaSize="md"
+                    helperText="Use this area to share code snippets."
+                    rows={6}
+                  />
+                </div>
+                <div>
+                  <CustomTextarea 
+                    label="Notes"
+                    placeholder="Write your notes here..."
+                    variant="outline"
+                    textareaSize="md"
+                    icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
+                    rows={3}
+                  />
+                </div>
               </div>
-              <div>
-                <CustomTextarea 
-                  label="Secondary Variant"
-                  placeholder="Secondary textarea with label"
-                  variant="secondary"
-                  textareaSize="md"
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Outline Variant"
-                  placeholder="Outline textarea with label"
-                  variant="outline"
-                  textareaSize="md"
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Disabled Textarea"
-                  placeholder="Disabled textarea"
-                  variant="primary"
-                  textareaSize="md"
-                  disabled
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="With Helper Text"
-                  placeholder="Textarea with helper text"
-                  variant="primary"
-                  textareaSize="md"
-                  helperText="This is some helpful information about this field."
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="With Error"
-                  placeholder="Textarea with error"
-                  variant="primary"
-                  textareaSize="md"
-                  error="This field is required and cannot be empty."
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="With Icon"
-                  placeholder="Comment with icon"
-                  variant="primary"
-                  textareaSize="md"
-                  icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Small Size"
-                  placeholder="Small textarea"
-                  variant="outline"
-                  textareaSize="sm"
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Large Size"
-                  placeholder="Large textarea"
-                  variant="secondary"
-                  textareaSize="lg"
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Bio Textarea"
-                  placeholder="Tell us about yourself..."
-                  variant="primary"
-                  textareaSize="md"
-                  helperText="Share a brief description about yourself."
-                  rows={4}
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Feedback Textarea"
-                  placeholder="Your feedback..."
-                  variant="outline"
-                  textareaSize="md"
-                  error="Please provide more detailed feedback."
-                  rows={5}
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Code Snippet"
-                  placeholder="Paste your code here..."
-                  variant="secondary"
-                  textareaSize="md"
-                  helperText="Use this area to share code snippets."
-                  rows={6}
-                />
-              </div>
-              <div>
-                <CustomTextarea 
-                  label="Notes"
-                  placeholder="Write your notes here..."
-                  variant="outline"
-                  textareaSize="md"
-                  icon={<MessageSquare className="w-4 h-4 text-muted-foreground" />}
-                  rows={3}
-                />
-              </div>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Select Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Shadcn Select Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block mb-1 text-sm font-medium">Primary</label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select an option" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option1">Option 1</SelectItem>
-                    <SelectItem value="option2">Option 2</SelectItem>
-                    <SelectItem value="option3">Option 3</SelectItem>
-                    <SelectItem value="option4">Option 4</SelectItem>
-                  </SelectContent>
-                </Select>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Shadcn Select Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block mb-1 text-sm font-medium">Primary</label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select an option" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="option1">Option 1</SelectItem>
+                      <SelectItem value="option2">Option 2</SelectItem>
+                      <SelectItem value="option3">Option 3</SelectItem>
+                      <SelectItem value="option4">Option 4</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <label className="block mb-1 text-sm font-medium">With Helper</label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select an option" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="option1">Option 1</SelectItem>
+                      <SelectItem value="option2">Option 2</SelectItem>
+                      <SelectItem value="option3">Option 3</SelectItem>
+                      <SelectItem value="option4">Option 4</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
+                </div>
               </div>
-              <div>
-                <label className="block mb-1 text-sm font-medium">With Helper</label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select an option" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option1">Option 1</SelectItem>
-                    <SelectItem value="option2">Option 2</SelectItem>
-                    <SelectItem value="option3">Option 3</SelectItem>
-                    <SelectItem value="option4">Option 4</SelectItem>
-                  </SelectContent>
-                </Select>
-                <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
-              </div>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Checkbox Examples */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Checkbox Examples</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="checkbox1" />
-                <label htmlFor="checkbox1" className="font-medium">Primary</label>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Checkbox Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="checkbox1" />
+                  <label htmlFor="checkbox1" className="font-medium">Primary</label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="checkbox2" />
+                  <label htmlFor="checkbox2" className="font-medium">Secondary</label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="checkbox3" disabled />
+                  <label htmlFor="checkbox3" className="font-medium">Disabled</label>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="checkbox2" />
-                <label htmlFor="checkbox2" className="font-medium">Secondary</label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="checkbox3" disabled />
-                <label htmlFor="checkbox3" className="font-medium">Disabled</label>
-              </div>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Tabs */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Tabs</h2>
-            <Tabs defaultValue="overview" className="w-full">
-              <TabsList>
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="analytics">Analytics</TabsTrigger>
-                <TabsTrigger value="reports">Reports</TabsTrigger>
-              </TabsList>
-              <TabsContent value="overview" className="mt-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Overview</CardTitle>
-                    <CardDescription>This is the overview tab content. It shows general information about the current theme and component system.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </TabsContent>
-              <TabsContent value="analytics" className="mt-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Analytics</CardTitle>
-                    <CardDescription>Analytics data would be displayed here. This demonstrates how tabs can organize different types of content.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </TabsContent>
-              <TabsContent value="reports" className="mt-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Reports</CardTitle>
-                    <CardDescription>Reports and detailed information would be shown in this tab. Each tab maintains its own state and content.</CardDescription>
-                  </CardHeader>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Tabs</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <Tabs defaultValue="overview" className="w-full">
+                <TabsList>
+                  <TabsTrigger value="overview">Overview</TabsTrigger>
+                  <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                  <TabsTrigger value="reports">Reports</TabsTrigger>
+                </TabsList>
+                <TabsContent value="overview" className="mt-4">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Overview</CardTitle>
+                      <CardDescription>This is the overview tab content. It shows general information about the current theme and component system.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </TabsContent>
+                <TabsContent value="analytics" className="mt-4">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Analytics</CardTitle>
+                      <CardDescription>Analytics data would be displayed here. This demonstrates how tabs can organize different types of content.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </TabsContent>
+                <TabsContent value="reports" className="mt-4">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Reports</CardTitle>
+                      <CardDescription>Reports and detailed information would be shown in this tab. Each tab maintains its own state and content.</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </TabsContent>
+              </Tabs>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Accordion */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Accordion</h2>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>What is Shadcn UI?</AccordionTrigger>
-                <AccordionContent>
-                  Shadcn/ui is a collection of reusable components built using Radix UI and Tailwind CSS. It provides a set of accessible, customizable components that you can copy and paste into your apps.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>How does theming work?</AccordionTrigger>
-                <AccordionContent>
-                  Theming is handled through CSS variables defined in the shadcn.css file. Each theme has its own set of color variables that control the appearance of all components.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>Can I customize components?</AccordionTrigger>
-                <AccordionContent>
-                  Yes! Since Shadcn UI components are just React components with Tailwind classes, you can easily modify them to match your design requirements.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Accordion</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>What is Shadcn UI?</AccordionTrigger>
+                  <AccordionContent>
+                    Shadcn/ui is a collection of reusable components built using Radix UI and Tailwind CSS. It provides a set of accessible, customizable components that you can copy and paste into your apps.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>How does theming work?</AccordionTrigger>
+                  <AccordionContent>
+                    Theming is handled through CSS variables defined in the shadcn.css file. Each theme has its own set of color variables that control the appearance of all components.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>Can I customize components?</AccordionTrigger>
+                  <AccordionContent>
+                    Yes! Since Shadcn UI components are just React components with Tailwind classes, you can easily modify them to match your design requirements.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Rating Component */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Rating Component</h2>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    onClick={() => setRating(star)}
-                    className={`p-1 transition ${
-                      star <= rating ? 'text-yellow-500' : 'text-muted-foreground'
-                    }`}
-                  >
-                    <Star className="w-6 h-6 fill-current" />
-                  </button>
-                ))}
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Rating Component</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      onClick={() => setRating(star)}
+                      className={`p-1 transition ${
+                        star <= rating ? 'text-yellow-500' : 'text-muted-foreground'
+                      }`}
+                    >
+                      <Star className="w-6 h-6 fill-current" />
+                    </button>
+                  ))}
+                </div>
+                <span className="text-sm text-muted-foreground">
+                  {rating > 0 ? `${rating} out of 5 stars` : 'No rating selected'}
+                </span>
               </div>
-              <span className="text-sm text-muted-foreground">
-                {rating > 0 ? `${rating} out of 5 stars` : 'No rating selected'}
-              </span>
-            </div>
-          </section>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Alert Components */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Alert Components</h2>
-            <div className="space-y-4">
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
-                  This is an informational alert. It provides useful information to the user.
-                </AlertDescription>
-              </Alert>
-              
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>
-                  This is an error alert. It indicates that something went wrong.
-                </AlertDescription>
-              </Alert>
-            </div>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Alert Components</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-4">
+                <Alert>
+                  <Info className="h-4 w-4" />
+                  <AlertDescription>
+                    This is an informational alert. It provides useful information to the user.
+                  </AlertDescription>
+                </Alert>
+                
+                <Alert variant="destructive">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    This is an error alert. It indicates that something went wrong.
+                  </AlertDescription>
+                </Alert>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Modal */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Modal</h2>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Open Modal</Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Modal Title</DialogTitle>
-                  <DialogDescription>
-                    This is a modal dialog. It demonstrates how complex components can be built using Shadcn UI theme variables.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter>
-                  <Button variant="outline">Cancel</Button>
-                  <Button>Confirm</Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Modal</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button>Open Modal</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Modal Title</DialogTitle>
+                    <DialogDescription>
+                      This is a modal dialog. It demonstrates how complex components can be built using Shadcn UI theme variables.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter>
+                    <Button variant="outline">Cancel</Button>
+                    <Button>Confirm</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </CollapsibleContent>
+          </Collapsible>
 
           {/* Card Example */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Card Example</h2>
-            <Card>
-              <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>
-                  This is a card using Shadcn UI theme variables. The background, border, and text all use CSS variables from shadcn.css.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button>Action</Button>
-              </CardContent>
-            </Card>
-          </section>
+          <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Card Example</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Card Title</CardTitle>
+                  <CardDescription>
+                    This is a card using Shadcn UI theme variables. The background, border, and text all use CSS variables from shadcn.css.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button>Action</Button>
+                </CardContent>
+              </Card>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
 
         <div className="mt-12 p-6 bg-popover text-popover-foreground rounded-[var(--radius)] border border-border">
