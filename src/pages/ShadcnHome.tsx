@@ -19,6 +19,7 @@ import CustomCheckbox from '@/components/Checkbox';
 import { Accordion as CustomAccordion, AccordionItem as CustomAccordionItem, AccordionTrigger as CustomAccordionTrigger, AccordionContent as CustomAccordionContent } from '@/components/Accordion';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
 import { Avatar as CustomAvatar, AvatarImage as CustomAvatarImage, AvatarFallback as CustomAvatarFallback } from '@/components/Avatar';
+import CustomBadge from '@/components/Badge';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -66,6 +67,213 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Badge Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Badge Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic Badge Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic Badge Examples</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge>Badge</CustomBadge>
+                    <CustomBadge variant="secondary">Secondary</CustomBadge>
+                    <CustomBadge variant="destructive">Destructive</CustomBadge>
+                    <CustomBadge variant="outline">Outline</CustomBadge>
+                  </div>
+                </div>
+
+                {/* Variant Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">All Variants</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge variant="primary">Primary</CustomBadge>
+                    <CustomBadge variant="secondary">Secondary</CustomBadge>
+                    <CustomBadge variant="outline">Outline</CustomBadge>
+                    <CustomBadge variant="destructive">Destructive</CustomBadge>
+                    <CustomBadge variant="success">Success</CustomBadge>
+                    <CustomBadge variant="warning">Warning</CustomBadge>
+                    <CustomBadge variant="info">Info</CustomBadge>
+                  </div>
+                </div>
+
+                {/* Size Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Size Examples</h4>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <CustomBadge badgeSize="sm">Small</CustomBadge>
+                    <CustomBadge badgeSize="md">Medium</CustomBadge>
+                    <CustomBadge badgeSize="lg">Large</CustomBadge>
+                  </div>
+                </div>
+
+                {/* Badge with Icons */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Badge with Icons</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge
+                      variant="secondary"
+                      icon={<Info className="h-3 w-3" />}
+                    >
+                      Verified
+                    </CustomBadge>
+                    <CustomBadge
+                      variant="success"
+                      icon={<Star className="h-3 w-3" />}
+                    >
+                      Featured
+                    </CustomBadge>
+                    <CustomBadge
+                      variant="warning"
+                      icon={<AlertCircle className="h-3 w-3" />}
+                    >
+                      Pending
+                    </CustomBadge>
+                    <CustomBadge
+                      variant="destructive"
+                      icon={<X className="h-3 w-3" />}
+                    >
+                      Rejected
+                    </CustomBadge>
+                    <CustomBadge
+                      variant="info"
+                      icon={<Settings className="h-3 w-3" />}
+                      iconPosition="right"
+                    >
+                      Settings
+                    </CustomBadge>
+                  </div>
+                </div>
+
+                {/* Number Badges */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Number Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
+                      8
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                      variant="destructive"
+                    >
+                      99
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                      variant="outline"
+                    >
+                      20+
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                      variant="success"
+                    >
+                      5
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"
+                      variant="warning"
+                    >
+                      12
+                    </CustomBadge>
+                  </div>
+                </div>
+
+                {/* Status Badges */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Status Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge variant="success" icon={<Star className="h-3 w-3" />}>
+                      Active
+                    </CustomBadge>
+                    <CustomBadge variant="warning" icon={<AlertCircle className="h-3 w-3" />}>
+                      Pending Review
+                    </CustomBadge>
+                    <CustomBadge variant="destructive" icon={<X className="h-3 w-3" />}>
+                      Suspended
+                    </CustomBadge>
+                    <CustomBadge variant="info" icon={<Info className="h-3 w-3" />}>
+                      In Progress
+                    </CustomBadge>
+                    <CustomBadge variant="outline" icon={<Settings className="h-3 w-3" />}>
+                      Draft
+                    </CustomBadge>
+                  </div>
+                </div>
+
+                {/* Category Badges */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Category Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge variant="primary">Technology</CustomBadge>
+                    <CustomBadge variant="secondary">Design</CustomBadge>
+                    <CustomBadge variant="success">Marketing</CustomBadge>
+                    <CustomBadge variant="warning">Finance</CustomBadge>
+                    <CustomBadge variant="info">Education</CustomBadge>
+                    <CustomBadge variant="outline">Other</CustomBadge>
+                  </div>
+                </div>
+
+                {/* Interactive Badges */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge 
+                      className="cursor-pointer hover:scale-105 transition-transform"
+                      variant="primary"
+                    >
+                      Clickable
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="cursor-pointer hover:scale-105 transition-transform"
+                      variant="secondary"
+                    >
+                      Hover Me
+                    </CustomBadge>
+                    <CustomBadge 
+                      className="cursor-pointer hover:scale-105 transition-transform"
+                      variant="outline"
+                    >
+                      Interactive
+                    </CustomBadge>
+                  </div>
+                </div>
+
+                {/* Custom Styled Badges */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Custom Styled Badges</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <CustomBadge
+                      className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0"
+                    >
+                      Gradient
+                    </CustomBadge>
+                    <CustomBadge
+                      className="bg-blue-500 text-white dark:bg-blue-600"
+                      icon={<Info className="h-3 w-3" />}
+                    >
+                      Custom Blue
+                    </CustomBadge>
+                    <CustomBadge
+                      className="rounded-full border-2 border-dashed"
+                      variant="outline"
+                    >
+                      Dashed Border
+                    </CustomBadge>
+                    <CustomBadge
+                      className="shadow-lg"
+                      variant="primary"
+                    >
+                      With Shadow
+                    </CustomBadge>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Avatar Examples */}
          <Collapsible>
