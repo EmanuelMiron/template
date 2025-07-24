@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, MessageSquare, Info, AlertCircle, Star } from 'lucide-react';
+import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
 import CustomTextarea from '@/components/Textarea';
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -59,6 +60,144 @@ const ShadcnHome = () => {
             {themeIcons[theme] || '🎨'} {themeLabels[theme] || theme} Mode
           </Button>
         </div>
+
+        {/* Custom Collapsible Examples */}
+        <section>
+            <h2 className="text-2xl font-semibold mb-4">Custom Collapsible Component Examples</h2>
+            <div className="space-y-4">
+              {/* Primary Variant */}
+              <Collapsible>
+                <CollapsibleTrigger variant="primary" size="md">
+                  Primary Collapsible
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="primary" padding="md">
+                  <p>This is a primary collapsible with primary styling. The content area uses the primary variant with medium padding.</p>
+                  <p className="mt-2">You can put any content here - forms, lists, or other components.</p>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Secondary Variant with Icon */}
+              <Collapsible>
+                <CollapsibleTrigger variant="secondary" size="md" icon={<Settings className="w-4 h-4" />}>
+                  Settings Panel
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="secondary" padding="lg">
+                  <div className="space-y-3">
+                    <h4 className="font-semibold">Application Settings</h4>
+                    <p>Configure your application preferences here.</p>
+                    <div className="flex gap-2">
+                      <Button size="sm">Save Settings</Button>
+                      <Button variant="outline" size="sm">Reset</Button>
+                    </div>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Outline Variant with Left Chevron */}
+              <Collapsible>
+                <CollapsibleTrigger 
+                  variant="outline" 
+                  size="md" 
+                  icon={<FileText className="w-4 h-4" />}
+                  chevronPosition="left"
+                >
+                  Documentation
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="outline" padding="md">
+                  <div className="prose prose-sm max-w-none">
+                    <h4>Component Documentation</h4>
+                    <p>This collapsible demonstrates the outline variant with a left-positioned chevron icon.</p>
+                    <ul>
+                      <li>Supports multiple variants (primary, secondary, outline)</li>
+                      <li>Customizable sizes (sm, md, lg)</li>
+                      <li>Icon support with flexible positioning</li>
+                      <li>Different padding options for content</li>
+                    </ul>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Small Size with No Chevron */}
+              <Collapsible>
+                <CollapsibleTrigger variant="primary" size="sm" showChevron={false}>
+                  Compact View
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="outline" padding="sm">
+                  <p className="text-sm">This is a compact collapsible without a chevron icon.</p>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Large Size with Custom Content */}
+              <Collapsible>
+                <CollapsibleTrigger 
+                  variant="secondary" 
+                  size="lg" 
+                  icon={<Users className="w-5 h-5" />}
+                >
+                  User Management
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="primary" padding="lg">
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold">User Management Panel</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <h5 className="font-medium mb-2">Active Users</h5>
+                        <p className="text-sm text-muted-foreground">Manage currently active users</p>
+                      </div>
+                      <div>
+                        <h5 className="font-medium mb-2">User Permissions</h5>
+                        <p className="text-sm text-muted-foreground">Configure user access levels</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button>Add User</Button>
+                      <Button variant="outline">Export Users</Button>
+                    </div>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Disabled State */}
+              <Collapsible>
+                <CollapsibleTrigger variant="outline" size="md" disabled>
+                  Disabled Collapsible
+                </CollapsibleTrigger>
+                <CollapsibleContent variant="outline" padding="md">
+                  <p>This content won't be visible because the trigger is disabled.</p>
+                </CollapsibleContent>
+              </Collapsible>
+
+              {/* Multiple Collapsibles */}
+              <div className="space-y-2">
+                <h4 className="font-semibold">Multiple Collapsibles</h4>
+                <Collapsible>
+                  <CollapsibleTrigger variant="outline" size="sm" icon={<Calendar className="w-4 h-4" />}>
+                    Today's Events
+                  </CollapsibleTrigger>
+                  <CollapsibleContent variant="outline" padding="sm">
+                    <ul className="text-sm space-y-1">
+                      <li>• Team meeting at 10:00 AM</li>
+                      <li>• Client call at 2:00 PM</li>
+                      <li>• Code review at 4:00 PM</li>
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+                
+                <Collapsible>
+                  <CollapsibleTrigger variant="outline" size="sm" icon={<FileText className="w-4 h-4" />}>
+                    Recent Documents
+                  </CollapsibleTrigger>
+                  <CollapsibleContent variant="outline" padding="sm">
+                    <ul className="text-sm space-y-1">
+                      <li>• Project proposal.docx</li>
+                      <li>• Meeting notes.pdf</li>
+                      <li>• Budget spreadsheet.xlsx</li>
+                    </ul>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+            </div>
+          </section>
 
         {/* Custom Select Examples */}
         <section>

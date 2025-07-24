@@ -3,7 +3,7 @@
 Below is a list of 39 reusable UI components to build for your template. Check them off as you complete them!
 
 - [x] **Input (TextField)** — Single-line text input with label, error, and helper text.
-- [ ] **Textarea** — Multi-line input for longer text.
+- [x] **Textarea** — Multi-line input for longer text.
 - [x] **Select (Dropdown)** — Customizable dropdown with search and option groups.
 - [ ] **Checkbox** — Styled checkbox with label and indeterminate state.
 - [ ] **Radio Group** — Radio buttons with group label and description.
@@ -25,6 +25,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Spinner / Loader** — Animated loading indicator.
 - [ ] **Tabs** — Switch between content panels.
 - [ ] **Accordion** — Expandable/collapsible content sections.
+- [x] **Collapsible** — Customizable collapsible content with trigger and variants.
 - [ ] **Card** — Container for content, with optional header, footer, and actions.
 - [ ] **Table** — Data table with sorting, filtering, and pagination.
 - [ ] **List** — Vertical or horizontal list of items.
