@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -58,6 +58,14 @@ import {
   CardFooter as CustomCardFooter,
   CardAction as CustomCardAction
 } from '@/components/Card';
+import {
+  Carousel as CustomCarousel,
+  CarouselContent as CustomCarouselContent,
+  CarouselItem as CustomCarouselItem,
+  CarouselNext as CustomCarouselNext,
+  CarouselPrevious as CustomCarouselPrevious,
+  type CarouselApi
+} from '@/components/Carousel';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -105,6 +113,249 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Carousel Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Carousel Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic Carousel Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic Carousel Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Normal Carousel</h5>
+                      <CustomCarousel className="w-full max-w-xs">
+                        <CustomCarouselContent>
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <CustomCarouselItem key={index}>
+                              <div className="p-1">
+                                <CustomCard>
+                                  <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                    <span className="text-4xl font-semibold">{index + 1}</span>
+                                  </CustomCardContent>
+                                </CustomCard>
+                              </div>
+                            </CustomCarouselItem>
+                          ))}
+                        </CustomCarouselContent>
+                        <CustomCarouselPrevious />
+                        <CustomCarouselNext />
+                      </CustomCarousel>
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Carousel with Different Sizes</h5>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Small Size:</p>
+                          <CustomCarousel carouselSize="sm" className="w-full max-w-xs">
+                            <CustomCarouselContent>
+                              {Array.from({ length: 5 }).map((_, index) => (
+                                <CustomCarouselItem key={index}>
+                                  <div className="p-1">
+                                    <CustomCard>
+                                      <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                        <span className="text-2xl font-semibold">{index + 1}</span>
+                                      </CustomCardContent>
+                                    </CustomCard>
+                                  </div>
+                                </CustomCarouselItem>
+                              ))}
+                            </CustomCarouselContent>
+                            <CustomCarouselPrevious buttonSize="sm" />
+                            <CustomCarouselNext buttonSize="sm" />
+                          </CustomCarousel>
+                        </div>
+
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Large Size:</p>
+                          <CustomCarousel carouselSize="lg" className="w-full max-w-lg">
+                            <CustomCarouselContent>
+                              {Array.from({ length: 5 }).map((_, index) => (
+                                <CustomCarouselItem key={index}>
+                                  <div className="p-1">
+                                    <CustomCard>
+                                      <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                        <span className="text-5xl font-semibold">{index + 1}</span>
+                                      </CustomCardContent>
+                                    </CustomCard>
+                                  </div>
+                                </CustomCarouselItem>
+                              ))}
+                            </CustomCarouselContent>
+                            <CustomCarouselPrevious buttonSize="lg" />
+                            <CustomCarouselNext buttonSize="lg" />
+                          </CustomCarousel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advanced Carousel Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Advanced Carousel Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Carousel with Multiple Items Visible</h5>
+                      <CustomCarousel
+                        opts={{
+                          align: "start",
+                        }}
+                        className="w-full max-w-sm"
+                      >
+                        <CustomCarouselContent>
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <CustomCarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                              <div className="p-1">
+                                <CustomCard>
+                                  <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                    <span className="text-3xl font-semibold">{index + 1}</span>
+                                  </CustomCardContent>
+                                </CustomCard>
+                              </div>
+                            </CustomCarouselItem>
+                          ))}
+                        </CustomCarouselContent>
+                        <CustomCarouselPrevious />
+                        <CustomCarouselNext />
+                      </CustomCarousel>
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Carousel with Custom Spacing</h5>
+                      <CustomCarousel className="w-full max-w-sm">
+                        <CustomCarouselContent className="-ml-1">
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <CustomCarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                              <div className="p-1">
+                                <CustomCard>
+                                  <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                    <span className="text-2xl font-semibold">{index + 1}</span>
+                                  </CustomCardContent>
+                                </CustomCard>
+                              </div>
+                            </CustomCarouselItem>
+                          ))}
+                        </CustomCarouselContent>
+                        <CustomCarouselPrevious />
+                        <CustomCarouselNext />
+                      </CustomCarousel>
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Vertical Carousel</h5>
+                      <CustomCarousel
+                        opts={{
+                          align: "start",
+                        }}
+                        orientation="vertical"
+                        className="w-full max-w-xs"
+                      >
+                        <CustomCarouselContent className="-mt-1 h-[200px]">
+                          {Array.from({ length: 5 }).map((_, index) => (
+                            <CustomCarouselItem key={index} className="pt-1 md:basis-1/2">
+                              <div className="p-1">
+                                <CustomCard>
+                                  <CustomCardContent className="flex items-center justify-center p-6">
+                                    <span className="text-3xl font-semibold">{index + 1}</span>
+                                  </CustomCardContent>
+                                </CustomCard>
+                              </div>
+                            </CustomCarouselItem>
+                          ))}
+                        </CustomCarouselContent>
+                        <CustomCarouselPrevious />
+                        <CustomCarouselNext />
+                      </CustomCarousel>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Carousel Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Carousel Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Carousel with API Control</h5>
+                      <CarouselApiDemo />
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Carousel with Different Variants</h5>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Primary Variant:</p>
+                          <CustomCarousel variant="primary" className="w-full max-w-xs">
+                            <CustomCarouselContent>
+                              {Array.from({ length: 3 }).map((_, index) => (
+                                <CustomCarouselItem key={index}>
+                                  <div className="p-1">
+                                    <CustomCard variant="primary">
+                                      <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                        <span className="text-3xl font-semibold">P{index + 1}</span>
+                                      </CustomCardContent>
+                                    </CustomCard>
+                                  </div>
+                                </CustomCarouselItem>
+                              ))}
+                            </CustomCarouselContent>
+                            <CustomCarouselPrevious variant="primary" />
+                            <CustomCarouselNext variant="primary" />
+                          </CustomCarousel>
+                        </div>
+
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Secondary Variant:</p>
+                          <CustomCarousel variant="secondary" className="w-full max-w-xs">
+                            <CustomCarouselContent>
+                              {Array.from({ length: 3 }).map((_, index) => (
+                                <CustomCarouselItem key={index}>
+                                  <div className="p-1">
+                                    <CustomCard variant="secondary">
+                                      <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                        <span className="text-3xl font-semibold">S{index + 1}</span>
+                                      </CustomCardContent>
+                                    </CustomCard>
+                                  </div>
+                                </CustomCarouselItem>
+                              ))}
+                            </CustomCarouselContent>
+                            <CustomCarouselPrevious variant="secondary" />
+                            <CustomCarouselNext variant="secondary" />
+                          </CustomCarousel>
+                        </div>
+
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Outline Variant:</p>
+                          <CustomCarousel variant="outline" className="w-full max-w-xs">
+                            <CustomCarouselContent>
+                              {Array.from({ length: 3 }).map((_, index) => (
+                                <CustomCarouselItem key={index}>
+                                  <div className="p-1">
+                                    <CustomCard variant="outline">
+                                      <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                                        <span className="text-3xl font-semibold">O{index + 1}</span>
+                                      </CustomCardContent>
+                                    </CustomCard>
+                                  </div>
+                                </CustomCarouselItem>
+                              ))}
+                            </CustomCarouselContent>
+                            <CustomCarouselPrevious variant="outline" />
+                            <CustomCarouselNext variant="outline" />
+                          </CustomCarousel>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Card Examples */}
          <Collapsible>
@@ -3626,6 +3877,49 @@ const ShadcnHome = () => {
             simply modify the variables in <code className="bg-background px-2 py-1 rounded">src/shadcn.css</code>.
           </p>
         </div>
+      </div>
+    </div>
+  );
+};
+
+// Carousel API Demo Component
+const CarouselApiDemo = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  return (
+    <div className="mx-auto max-w-xs">
+      <CustomCarousel setApi={setApi} className="w-full max-w-xs">
+        <CustomCarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CustomCarouselItem key={index}>
+              <CustomCard>
+                <CustomCardContent className="flex aspect-square items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CustomCardContent>
+              </CustomCard>
+            </CustomCarouselItem>
+          ))}
+        </CustomCarouselContent>
+        <CustomCarouselPrevious />
+        <CustomCarouselNext />
+      </CustomCarousel>
+      <div className="text-muted-foreground py-2 text-center text-sm">
+        Slide {current} of {count}
       </div>
     </div>
   );
