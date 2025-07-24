@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle } from 'lucide-react';
+import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,6 +11,7 @@ import { Accordion as ShadAccordion, AccordionContent as ShadAccordionContent, A
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Alert as CustomAlert, AlertDescription as CustomAlertDescription } from '@/components/Alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { AlertDialog as CustomAlertDialog, AlertDialogAction as CustomAlertDialogAction, AlertDialogCancel as CustomAlertDialogCancel, AlertDialogContent as CustomAlertDialogContent, AlertDialogDescription as CustomAlertDialogDescription, AlertDialogFooter as CustomAlertDialogFooter, AlertDialogHeader as CustomAlertDialogHeader, AlertDialogTitle as CustomAlertDialogTitle, AlertDialogTrigger as CustomAlertDialogTrigger } from '@/components/AlertDialog';
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
@@ -20,6 +21,15 @@ import { Accordion as CustomAccordion, AccordionItem as CustomAccordionItem, Acc
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
 import { Avatar as CustomAvatar, AvatarImage as CustomAvatarImage, AvatarFallback as CustomAvatarFallback } from '@/components/Avatar';
 import CustomBadge from '@/components/Badge';
+import { 
+  Breadcrumb as CustomBreadcrumb,
+  BreadcrumbList as CustomBreadcrumbList,
+  BreadcrumbItem as CustomBreadcrumbItem,
+  BreadcrumbLink as CustomBreadcrumbLink,
+  BreadcrumbPage as CustomBreadcrumbPage,
+  BreadcrumbSeparator as CustomBreadcrumbSeparator,
+  BreadcrumbEllipsis as CustomBreadcrumbEllipsis
+} from '@/components/Breadcrumb';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -67,6 +77,347 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Breadcrumb Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Breadcrumb Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic Breadcrumb Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic Breadcrumb Examples</h4>
+                  <div className="space-y-4">
+                    <div>
+                      <h5 className="text-sm font-medium mb-2">Primary Variant</h5>
+                      <CustomBreadcrumb variant="primary">
+                        <CustomBreadcrumbList>
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/components">Components</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                          </CustomBreadcrumbItem>
+                        </CustomBreadcrumbList>
+                      </CustomBreadcrumb>
+                    </div>
+                    
+                    <div>
+                      <h5 className="text-sm font-medium mb-2">Secondary Variant</h5>
+                      <CustomBreadcrumb variant="secondary">
+                        <CustomBreadcrumbList>
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/docs">Documentation</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbPage>Getting Started</CustomBreadcrumbPage>
+                          </CustomBreadcrumbItem>
+                        </CustomBreadcrumbList>
+                      </CustomBreadcrumb>
+                    </div>
+
+                    <div>
+                      <h5 className="text-sm font-medium mb-2">Outline Variant</h5>
+                      <CustomBreadcrumb variant="outline">
+                        <CustomBreadcrumbList>
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbLink href="/projects">Projects</CustomBreadcrumbLink>
+                          </CustomBreadcrumbItem>
+                          <CustomBreadcrumbSeparator />
+                          <CustomBreadcrumbItem>
+                            <CustomBreadcrumbPage>Project Details</CustomBreadcrumbPage>
+                          </CustomBreadcrumbItem>
+                        </CustomBreadcrumbList>
+                      </CustomBreadcrumb>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Breadcrumb with Custom Separator */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Breadcrumb with Custom Separator</h4>
+                  <CustomBreadcrumb variant="primary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/components">Components</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Breadcrumb with Ellipsis */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Breadcrumb with Ellipsis</h4>
+                  <CustomBreadcrumb variant="primary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbEllipsis />
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/docs/components">Components</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Deep Navigation Breadcrumb */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Deep Navigation Breadcrumb</h4>
+                  <CustomBreadcrumb variant="secondary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/admin">Admin</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/admin/users">Users</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/admin/users/123">User Details</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Edit Profile</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* E-commerce Breadcrumb */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">E-commerce Breadcrumb</h4>
+                  <CustomBreadcrumb variant="outline">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/shop">Shop</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/shop/electronics">Electronics</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/shop/electronics/phones">Phones</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>iPhone 15 Pro</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Documentation Breadcrumb */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Documentation Breadcrumb</h4>
+                  <CustomBreadcrumb variant="primary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/docs">Docs</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/docs/components">Components</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/docs/components/ui">UI Components</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Interactive Breadcrumb */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Breadcrumb</h4>
+                  <CustomBreadcrumb variant="primary" className="cursor-pointer">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink 
+                          href="/" 
+                          className="hover:underline transition-all duration-200"
+                        >
+                          Home
+                        </CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink 
+                          href="/dashboard" 
+                          className="hover:underline transition-all duration-200"
+                        >
+                          Dashboard
+                        </CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage className="font-semibold">
+                          Analytics
+                        </CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Breadcrumb with Dropdown */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Breadcrumb with Dropdown</h4>
+                  <CustomBreadcrumb variant="primary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger className="flex items-center gap-1">
+                            <CustomBreadcrumbEllipsis className="size-4" />
+                            <span className="sr-only">Toggle menu</span>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="start">
+                            <DropdownMenuItem>Documentation</DropdownMenuItem>
+                            <DropdownMenuItem>Themes</DropdownMenuItem>
+                            <DropdownMenuItem>GitHub</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/docs/components">Components</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator />
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Breadcrumb with Dropdown Menu */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Breadcrumb with Dropdown Menu</h4>
+                  <CustomBreadcrumb variant="secondary">
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink href="/">Home</CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
+                            Components
+                            <ChevronRight className="rotate-90" />
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="start">
+                            <DropdownMenuItem>Documentation</DropdownMenuItem>
+                            <DropdownMenuItem>Themes</DropdownMenuItem>
+                            <DropdownMenuItem>GitHub</DropdownMenuItem>
+                            <DropdownMenuItem>Examples</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage>Breadcrumb</CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+
+                {/* Custom Styled Breadcrumb */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Custom Styled Breadcrumb</h4>
+                  <CustomBreadcrumb 
+                    variant="outline" 
+                    className="bg-muted p-3 rounded-lg border"
+                  >
+                    <CustomBreadcrumbList>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink 
+                          href="/" 
+                          className="font-medium hover:text-primary transition-colors"
+                        >
+                          Home
+                        </CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbLink 
+                          href="/settings" 
+                          className="font-medium hover:text-primary transition-colors"
+                        >
+                          Settings
+                        </CustomBreadcrumbLink>
+                      </CustomBreadcrumbItem>
+                      <CustomBreadcrumbSeparator>
+                        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                      </CustomBreadcrumbSeparator>
+                      <CustomBreadcrumbItem>
+                        <CustomBreadcrumbPage className="font-semibold text-primary">
+                          Account
+                        </CustomBreadcrumbPage>
+                      </CustomBreadcrumbItem>
+                    </CustomBreadcrumbList>
+                  </CustomBreadcrumb>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Badge Examples */}
          <Collapsible>
