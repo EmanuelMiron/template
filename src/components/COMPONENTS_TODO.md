@@ -13,10 +13,10 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Date Picker** — Calendar-based date selection.
 - [ ] **Time Picker** — Time selection with AM/PM or 24h support.
 - [x] **Avatar** — User profile image with fallback and status indicator.
-- [ ] **Badge** — Small label for status, notification, or category.
+- [x] **Badge** — Small label for status, notification, or category.
 - [ ] **Tooltip** — Hover/focus popup for extra info.
 - [ ] **Popover** — Floating panel for menus, actions, or info.
-- [ ] **Dropdown Menu** — Menu triggered by button or icon.
+- [x] **Dropdown Menu** — Menu triggered by button or icon.
 - [x] **AlertDialog** — Confirmation dialog with action and cancel buttons.
 - [ ] **Modal (Dialog)** — Centered overlay for forms, alerts, or content.
 - [ ] **Drawer (Sidebar)** — Slide-in panel from edge of screen.
@@ -31,7 +31,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Table** — Data table with sorting, filtering, and pagination.
 - [ ] **List** — Vertical or horizontal list of items.
 - [ ] **Pagination** — Controls for navigating paged content.
-- [ ] **Breadcrumbs** — Navigation trail for hierarchical pages.
+- [x] **Breadcrumbs** — Navigation trail for hierarchical pages.
 - [ ] **Navbar (Top Navigation)** — Main site navigation bar.
 - [ ] **Sidebar Navigation** — Vertical navigation for dashboards or apps.
 - [ ] **Footer** — Site/app footer with links and info.

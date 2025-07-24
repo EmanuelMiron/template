@@ -30,6 +30,22 @@ import {
   BreadcrumbSeparator as CustomBreadcrumbSeparator,
   BreadcrumbEllipsis as CustomBreadcrumbEllipsis
 } from '@/components/Breadcrumb';
+import {
+  DropdownMenu as CustomDropdownMenu,
+  DropdownMenuTrigger as CustomDropdownMenuTrigger,
+  DropdownMenuContent as CustomDropdownMenuContent,
+  DropdownMenuItem as CustomDropdownMenuItem,
+  DropdownMenuCheckboxItem as CustomDropdownMenuCheckboxItem,
+  DropdownMenuRadioItem as CustomDropdownMenuRadioItem,
+  DropdownMenuLabel as CustomDropdownMenuLabel,
+  DropdownMenuSeparator as CustomDropdownMenuSeparator,
+  DropdownMenuShortcut as CustomDropdownMenuShortcut,
+  DropdownMenuGroup as CustomDropdownMenuGroup,
+  DropdownMenuPortal as CustomDropdownMenuPortal,
+  DropdownMenuSub as CustomDropdownMenuSub,
+  DropdownMenuSubContent as CustomDropdownMenuSubContent,
+  DropdownMenuSubTrigger as CustomDropdownMenuSubTrigger
+} from '@/components/DropdownMenu';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -77,6 +93,294 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom DropdownMenu Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom DropdownMenu Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic DropdownMenu Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic DropdownMenu Examples</h4>
+                  <div className="flex flex-wrap gap-4">
+                    <CustomDropdownMenu>
+                      <CustomDropdownMenuTrigger asChild>
+                        <Button variant="outline">Primary Variant</Button>
+                      </CustomDropdownMenuTrigger>
+                      <CustomDropdownMenuContent variant="primary" className="w-56" align="start">
+                        <CustomDropdownMenuLabel>My Account</CustomDropdownMenuLabel>
+                        <CustomDropdownMenuGroup>
+                          <CustomDropdownMenuItem>
+                            Profile
+                            <CustomDropdownMenuShortcut>⇧⌘P</CustomDropdownMenuShortcut>
+                          </CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem>
+                            Billing
+                            <CustomDropdownMenuShortcut>⌘B</CustomDropdownMenuShortcut>
+                          </CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem>
+                            Settings
+                            <CustomDropdownMenuShortcut>⌘S</CustomDropdownMenuShortcut>
+                          </CustomDropdownMenuItem>
+                        </CustomDropdownMenuGroup>
+                        <CustomDropdownMenuSeparator />
+                        <CustomDropdownMenuItem variant="destructive">
+                          Log out
+                          <CustomDropdownMenuShortcut>⇧⌘Q</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuContent>
+                    </CustomDropdownMenu>
+
+                    <CustomDropdownMenu>
+                      <CustomDropdownMenuTrigger asChild>
+                        <Button variant="outline">Secondary Variant</Button>
+                      </CustomDropdownMenuTrigger>
+                      <CustomDropdownMenuContent variant="secondary" className="w-56" align="start">
+                        <CustomDropdownMenuLabel>Actions</CustomDropdownMenuLabel>
+                        <CustomDropdownMenuGroup>
+                          <CustomDropdownMenuItem variant="success">
+                            <Star className="mr-2 h-4 w-4" />
+                            Favorite
+                          </CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem variant="info">
+                            <Info className="mr-2 h-4 w-4" />
+                            Info
+                          </CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem variant="warning">
+                            <AlertCircle className="mr-2 h-4 w-4" />
+                            Warning
+                          </CustomDropdownMenuItem>
+                        </CustomDropdownMenuGroup>
+                      </CustomDropdownMenuContent>
+                    </CustomDropdownMenu>
+
+                    <CustomDropdownMenu>
+                      <CustomDropdownMenuTrigger asChild>
+                        <Button variant="outline">Outline Variant</Button>
+                      </CustomDropdownMenuTrigger>
+                      <CustomDropdownMenuContent variant="outline" className="w-56" align="start">
+                        <CustomDropdownMenuLabel>Theme Options</CustomDropdownMenuLabel>
+                        <CustomDropdownMenuGroup>
+                          <CustomDropdownMenuItem>Light Mode</CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem>Dark Mode</CustomDropdownMenuItem>
+                          <CustomDropdownMenuItem>System</CustomDropdownMenuItem>
+                        </CustomDropdownMenuGroup>
+                      </CustomDropdownMenuContent>
+                    </CustomDropdownMenu>
+                  </div>
+                </div>
+
+                {/* DropdownMenu with Submenu */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">DropdownMenu with Submenu</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline">Open with Submenu</Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent className="w-56" align="start">
+                      <CustomDropdownMenuLabel>My Account</CustomDropdownMenuLabel>
+                      <CustomDropdownMenuGroup>
+                        <CustomDropdownMenuItem>
+                          Profile
+                          <CustomDropdownMenuShortcut>⇧⌘P</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          Billing
+                          <CustomDropdownMenuShortcut>⌘B</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          Settings
+                          <CustomDropdownMenuShortcut>⌘S</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          Keyboard shortcuts
+                          <CustomDropdownMenuShortcut>⌘K</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuGroup>
+                      <CustomDropdownMenuSeparator />
+                      <CustomDropdownMenuGroup>
+                        <CustomDropdownMenuItem>Team</CustomDropdownMenuItem>
+                        <CustomDropdownMenuSub>
+                          <CustomDropdownMenuSubTrigger>Invite users</CustomDropdownMenuSubTrigger>
+                          <CustomDropdownMenuPortal>
+                            <CustomDropdownMenuSubContent>
+                              <CustomDropdownMenuItem>Email</CustomDropdownMenuItem>
+                              <CustomDropdownMenuItem>Message</CustomDropdownMenuItem>
+                              <CustomDropdownMenuSeparator />
+                              <CustomDropdownMenuItem>More...</CustomDropdownMenuItem>
+                            </CustomDropdownMenuSubContent>
+                          </CustomDropdownMenuPortal>
+                        </CustomDropdownMenuSub>
+                        <CustomDropdownMenuItem>
+                          New Team
+                          <CustomDropdownMenuShortcut>⌘+T</CustomDropdownMenuShortcut>
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuGroup>
+                      <CustomDropdownMenuSeparator />
+                      <CustomDropdownMenuItem>GitHub</CustomDropdownMenuItem>
+                      <CustomDropdownMenuItem>Support</CustomDropdownMenuItem>
+                      <CustomDropdownMenuItem disabled>API</CustomDropdownMenuItem>
+                      <CustomDropdownMenuSeparator />
+                      <CustomDropdownMenuItem variant="destructive">
+                        Log out
+                        <CustomDropdownMenuShortcut>⇧⌘Q</CustomDropdownMenuShortcut>
+                      </CustomDropdownMenuItem>
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+
+                {/* DropdownMenu with Checkboxes */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">DropdownMenu with Checkboxes</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline">Appearance Settings</Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent className="w-56">
+                      <CustomDropdownMenuLabel>Appearance</CustomDropdownMenuLabel>
+                      <CustomDropdownMenuSeparator />
+                      <CustomDropdownMenuCheckboxItem checked>
+                        Status Bar
+                      </CustomDropdownMenuCheckboxItem>
+                      <CustomDropdownMenuCheckboxItem disabled>
+                        Activity Bar
+                      </CustomDropdownMenuCheckboxItem>
+                      <CustomDropdownMenuCheckboxItem>
+                        Panel
+                      </CustomDropdownMenuCheckboxItem>
+                      <CustomDropdownMenuCheckboxItem>
+                        Sidebar
+                      </CustomDropdownMenuCheckboxItem>
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+
+                {/* DropdownMenu with Radio Group */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">DropdownMenu with Radio Group</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline">Panel Position</Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent className="w-56">
+                      <CustomDropdownMenuLabel>Panel Position</CustomDropdownMenuLabel>
+                      <CustomDropdownMenuSeparator />
+                      {/* <CustomDropdownMenuRadioGroup value="bottom"> */}
+                        <CustomDropdownMenuRadioItem value="top">Top</CustomDropdownMenuRadioItem>
+                        <CustomDropdownMenuRadioItem value="bottom">Bottom</CustomDropdownMenuRadioItem>
+                        <CustomDropdownMenuRadioItem value="right">Right</CustomDropdownMenuRadioItem>
+                        <CustomDropdownMenuRadioItem value="left">Left</CustomDropdownMenuRadioItem>
+                      {/* </CustomDropdownMenuRadioGroup> */}
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+
+                {/* DropdownMenu with Icons */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">DropdownMenu with Icons</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline">
+                        <Settings className="mr-2 h-4 w-4" />
+                        Settings
+                      </Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent className="w-56" align="start">
+                      <CustomDropdownMenuLabel>Application Settings</CustomDropdownMenuLabel>
+                      <CustomDropdownMenuGroup>
+                        <CustomDropdownMenuItem>
+                          <Users className="mr-2 h-4 w-4" />
+                          Users
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          <FileText className="mr-2 h-4 w-4" />
+                          Documents
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          <Calendar className="mr-2 h-4 w-4" />
+                          Calendar
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          Messages
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuGroup>
+                      <CustomDropdownMenuSeparator />
+                      <CustomDropdownMenuItem variant="destructive">
+                        <Trash2 className="mr-2 h-4 w-4" />
+                        Delete
+                      </CustomDropdownMenuItem>
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+
+                {/* Interactive DropdownMenu */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive DropdownMenu</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline" className="hover:scale-105 transition-transform">
+                        Interactive Menu
+                      </Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent className="w-56" align="start">
+                      <CustomDropdownMenuLabel>Quick Actions</CustomDropdownMenuLabel>
+                      <CustomDropdownMenuGroup>
+                        <CustomDropdownMenuItem className="cursor-pointer hover:bg-primary hover:text-primary-foreground">
+                          <Plus className="mr-2 h-4 w-4" />
+                          Create New
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem className="cursor-pointer hover:bg-secondary hover:text-secondary-foreground">
+                          <Edit className="mr-2 h-4 w-4" />
+                          Edit
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem className="cursor-pointer hover:bg-accent hover:text-accent-foreground">
+                          <Search className="mr-2 h-4 w-4" />
+                          Search
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuGroup>
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+
+                {/* Custom Styled DropdownMenu */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Custom Styled DropdownMenu</h4>
+                  <CustomDropdownMenu>
+                    <CustomDropdownMenuTrigger asChild>
+                      <Button variant="outline" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
+                        Custom Styled
+                      </Button>
+                    </CustomDropdownMenuTrigger>
+                    <CustomDropdownMenuContent 
+                      className="w-56 bg-gradient-to-b from-gray-50 to-gray-100 border-2 border-blue-200 shadow-xl" 
+                      align="start"
+                    >
+                      <CustomDropdownMenuLabel className="text-blue-800 font-bold">
+                        Premium Features
+                      </CustomDropdownMenuLabel>
+                      <CustomDropdownMenuGroup>
+                        <CustomDropdownMenuItem className="hover:bg-blue-100 hover:text-blue-800 transition-colors">
+                          <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                          Premium Feature 1
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem className="hover:bg-blue-100 hover:text-blue-800 transition-colors">
+                          <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                          Premium Feature 2
+                        </CustomDropdownMenuItem>
+                        <CustomDropdownMenuItem className="hover:bg-blue-100 hover:text-blue-800 transition-colors">
+                          <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                          Premium Feature 3
+                        </CustomDropdownMenuItem>
+                      </CustomDropdownMenuGroup>
+                    </CustomDropdownMenuContent>
+                  </CustomDropdownMenu>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Breadcrumb Examples */}
          <Collapsible>
