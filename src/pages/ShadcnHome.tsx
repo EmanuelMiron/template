@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight } from 'lucide-react';
+import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle, ChevronRight, Calculator, Smile, User, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -67,6 +67,17 @@ import {
   type CarouselApi
 } from '@/components/Carousel';
 import CustomCombobox from '@/components/Combobox';
+import {
+  Command as CustomCommand,
+  CommandDialog as CustomCommandDialog,
+  CommandEmpty as CustomCommandEmpty,
+  CommandGroup as CustomCommandGroup,
+  CommandInput as CustomCommandInput,
+  CommandItem as CustomCommandItem,
+  CommandList as CustomCommandList,
+  CommandSeparator as CustomCommandSeparator,
+  CommandShortcut as CustomCommandShortcut,
+} from '@/components/Command';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -114,6 +125,215 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Command Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Command Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic Command Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic Command Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Basic Command Palette</h5>
+                      <CommandDemo />
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Command with Different Sizes</h5>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Small Size:</p>
+                          <CustomCommand commandSize="sm" className="rounded-lg border shadow-md">
+                            <CustomCommandInput placeholder="Type a command or search..." inputSize="sm" />
+                            <CustomCommandList>
+                              <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                              <CustomCommandGroup heading="Suggestions">
+                                <CustomCommandItem>
+                                  <span>Calendar</span>
+                                </CustomCommandItem>
+                                <CustomCommandItem>
+                                  <span>Search Emoji</span>
+                                </CustomCommandItem>
+                                <CustomCommandItem disabled>
+                                  <span>Calculator</span>
+                                </CustomCommandItem>
+                              </CustomCommandGroup>
+                            </CustomCommandList>
+                          </CustomCommand>
+                        </div>
+
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Large Size:</p>
+                          <CustomCommand commandSize="lg" className="rounded-lg border shadow-md">
+                            <CustomCommandInput placeholder="Type a command or search..." inputSize="lg" />
+                            <CustomCommandList>
+                              <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                              <CustomCommandGroup heading="Suggestions">
+                                <CustomCommandItem>
+                                  <span>Calendar</span>
+                                </CustomCommandItem>
+                                <CustomCommandItem>
+                                  <span>Search Emoji</span>
+                                </CustomCommandItem>
+                                <CustomCommandItem disabled>
+                                  <span>Calculator</span>
+                                </CustomCommandItem>
+                              </CustomCommandGroup>
+                            </CustomCommandList>
+                          </CustomCommand>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Variant Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Variant Examples</h4>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Primary Variant:</p>
+                      <CustomCommand variant="primary" className="rounded-lg border shadow-md">
+                        <CustomCommandInput placeholder="Type a command or search..." />
+                        <CustomCommandList>
+                          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                          <CustomCommandGroup heading="Suggestions">
+                            <CustomCommandItem>
+                              <span>Primary Option 1</span>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <span>Primary Option 2</span>
+                            </CustomCommandItem>
+                          </CustomCommandGroup>
+                        </CustomCommandList>
+                      </CustomCommand>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Secondary Variant:</p>
+                      <CustomCommand variant="secondary" className="rounded-lg border shadow-md">
+                        <CustomCommandInput placeholder="Type a command or search..." />
+                        <CustomCommandList>
+                          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                          <CustomCommandGroup heading="Suggestions">
+                            <CustomCommandItem>
+                              <span>Secondary Option 1</span>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <span>Secondary Option 2</span>
+                            </CustomCommandItem>
+                          </CustomCommandGroup>
+                        </CustomCommandList>
+                      </CustomCommand>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-2">Outline Variant:</p>
+                      <CustomCommand variant="outline" className="rounded-lg border shadow-md">
+                        <CustomCommandInput placeholder="Type a command or search..." />
+                        <CustomCommandList>
+                          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                          <CustomCommandGroup heading="Suggestions">
+                            <CustomCommandItem>
+                              <span>Outline Option 1</span>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <span>Outline Option 2</span>
+                            </CustomCommandItem>
+                          </CustomCommandGroup>
+                        </CustomCommandList>
+                      </CustomCommand>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advanced Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Advanced Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Command with Icons and Shortcuts</h5>
+                      <CustomCommand className="rounded-lg border shadow-md">
+                        <CustomCommandInput placeholder="Type a command or search..." />
+                        <CustomCommandList>
+                          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                          <CustomCommandGroup heading="Suggestions">
+                            <CustomCommandItem>
+                              <Calendar className="h-4 w-4" />
+                              <span>Calendar</span>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <Smile className="h-4 w-4" />
+                              <span>Search Emoji</span>
+                            </CustomCommandItem>
+                            <CustomCommandItem disabled>
+                              <Calculator className="h-4 w-4" />
+                              <span>Calculator</span>
+                            </CustomCommandItem>
+                          </CustomCommandGroup>
+                          <CustomCommandSeparator />
+                          <CustomCommandGroup heading="Settings">
+                            <CustomCommandItem>
+                              <User className="h-4 w-4" />
+                              <span>Profile</span>
+                              <CustomCommandShortcut>⌘P</CustomCommandShortcut>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <CreditCard className="h-4 w-4" />
+                              <span>Billing</span>
+                              <CustomCommandShortcut>⌘B</CustomCommandShortcut>
+                            </CustomCommandItem>
+                            <CustomCommandItem>
+                              <Settings className="h-4 w-4" />
+                              <span>Settings</span>
+                              <CustomCommandShortcut>⌘S</CustomCommandShortcut>
+                            </CustomCommandItem>
+                          </CustomCommandGroup>
+                        </CustomCommandList>
+                      </CustomCommand>
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Command Dialog</h5>
+                      <CommandDialogDemo />
+                    </div>
+
+                    <div>
+                      <h5 className="font-medium mb-2">Command Menu with Keyboard Shortcut</h5>
+                      <CommandMenuDemo />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Examples</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <h5 className="font-medium mb-2">Command with Many Options</h5>
+                      <CustomCommand className="rounded-lg border shadow-md">
+                        <CustomCommandInput placeholder="Search through many options..." />
+                        <CustomCommandList>
+                          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+                          <CustomCommandGroup heading="All Options">
+                            {Array.from({ length: 20 }, (_, i) => (
+                              <CustomCommandItem key={i}>
+                                <span>Option {i + 1}</span>
+                              </CustomCommandItem>
+                            ))}
+                          </CustomCommandGroup>
+                        </CustomCommandList>
+                      </CustomCommand>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Combobox Examples */}
          <Collapsible>
@@ -4174,6 +4394,156 @@ const ControlledComboboxDemo = () => {
         Selected value: <span className="font-medium">{value || 'None'}</span>
       </div>
     </div>
+  );
+};
+
+// Command Demo Component
+const CommandDemo = () => {
+  return (
+    <CustomCommand className="rounded-lg border shadow-md">
+      <CustomCommandInput placeholder="Type a command or search..." />
+      <CustomCommandList>
+        <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+        <CustomCommandGroup heading="Suggestions">
+          <CustomCommandItem>
+            <Calendar className="h-4 w-4" />
+            <span>Calendar</span>
+          </CustomCommandItem>
+          <CustomCommandItem>
+            <Smile className="h-4 w-4" />
+            <span>Search Emoji</span>
+          </CustomCommandItem>
+          <CustomCommandItem disabled>
+            <Calculator className="h-4 w-4" />
+            <span>Calculator</span>
+          </CustomCommandItem>
+        </CustomCommandGroup>
+        <CustomCommandSeparator />
+        <CustomCommandGroup heading="Settings">
+          <CustomCommandItem>
+            <User className="h-4 w-4" />
+            <span>Profile</span>
+            <CustomCommandShortcut>⌘P</CustomCommandShortcut>
+          </CustomCommandItem>
+          <CustomCommandItem>
+            <CreditCard className="h-4 w-4" />
+            <span>Billing</span>
+            <CustomCommandShortcut>⌘B</CustomCommandShortcut>
+          </CustomCommandItem>
+          <CustomCommandItem>
+            <Settings className="h-4 w-4" />
+            <span>Settings</span>
+            <CustomCommandShortcut>⌘S</CustomCommandShortcut>
+          </CustomCommandItem>
+        </CustomCommandGroup>
+      </CustomCommandList>
+    </CustomCommand>
+  );
+};
+
+// Command Dialog Demo Component
+const CommandDialogDemo = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return (
+    <>
+      <p className="text-muted-foreground text-sm mb-4">
+        Press{" "}
+        <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+          <span className="text-xs">⌘</span>J
+        </kbd>
+        {" "}to open the command dialog
+      </p>
+      <CustomCommandDialog open={open} onOpenChange={setOpen}>
+        <CustomCommandInput placeholder="Type a command or search..." />
+        <CustomCommandList>
+          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+          <CustomCommandGroup heading="Suggestions">
+            <CustomCommandItem>
+              <Calendar className="h-4 w-4" />
+              <span>Calendar</span>
+            </CustomCommandItem>
+            <CustomCommandItem>
+              <Smile className="h-4 w-4" />
+              <span>Search Emoji</span>
+            </CustomCommandItem>
+            <CustomCommandItem>
+              <Calculator className="h-4 w-4" />
+              <span>Calculator</span>
+            </CustomCommandItem>
+          </CustomCommandGroup>
+          <CustomCommandSeparator />
+          <CustomCommandGroup heading="Settings">
+            <CustomCommandItem>
+              <User className="h-4 w-4" />
+              <span>Profile</span>
+              <CustomCommandShortcut>⌘P</CustomCommandShortcut>
+            </CustomCommandItem>
+            <CustomCommandItem>
+              <CreditCard className="h-4 w-4" />
+              <span>Billing</span>
+              <CustomCommandShortcut>⌘B</CustomCommandShortcut>
+            </CustomCommandItem>
+            <CustomCommandItem>
+              <Settings className="h-4 w-4" />
+              <span>Settings</span>
+              <CustomCommandShortcut>⌘S</CustomCommandShortcut>
+            </CustomCommandItem>
+          </CustomCommandGroup>
+        </CustomCommandList>
+      </CustomCommandDialog>
+    </>
+  );
+};
+
+// Command Menu Demo Component
+const CommandMenuDemo = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return (
+    <>
+      <p className="text-muted-foreground text-sm mb-4">
+        Press{" "}
+        <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+          <span className="text-xs">⌘</span>K
+        </kbd>
+        {" "}to open the command menu
+      </p>
+      <CustomCommandDialog open={open} onOpenChange={setOpen}>
+        <CustomCommandInput placeholder="Type a command or search..." />
+        <CustomCommandList>
+          <CustomCommandEmpty>No results found.</CustomCommandEmpty>
+          <CustomCommandGroup heading="Suggestions">
+            <CustomCommandItem>Calendar</CustomCommandItem>
+            <CustomCommandItem>Search Emoji</CustomCommandItem>
+            <CustomCommandItem>Calculator</CustomCommandItem>
+          </CustomCommandGroup>
+        </CustomCommandList>
+      </CustomCommandDialog>
+    </>
   );
 };
 
