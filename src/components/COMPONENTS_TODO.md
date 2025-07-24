@@ -12,7 +12,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Stepper / Number Input** — Input with increment/decrement controls.
 - [ ] **Date Picker** — Calendar-based date selection.
 - [ ] **Time Picker** — Time selection with AM/PM or 24h support.
-- [ ] **Avatar** — User profile image with fallback and status indicator.
+- [x] **Avatar** — User profile image with fallback and status indicator.
 - [ ] **Badge** — Small label for status, notification, or category.
 - [ ] **Tooltip** — Hover/focus popup for extra info.
 - [ ] **Popover** — Floating panel for menus, actions, or info.

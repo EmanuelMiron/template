@@ -18,6 +18,7 @@ import CustomTextarea from '@/components/Textarea';
 import CustomCheckbox from '@/components/Checkbox';
 import { Accordion as CustomAccordion, AccordionItem as CustomAccordionItem, AccordionTrigger as CustomAccordionTrigger, AccordionContent as CustomAccordionContent } from '@/components/Accordion';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
+import { Avatar as CustomAvatar, AvatarImage as CustomAvatarImage, AvatarFallback as CustomAvatarFallback } from '@/components/Avatar';
 
 const themeIcons: Record<string, string> = {
   light: '🌞',
@@ -65,6 +66,190 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Avatar Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Avatar Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="space-y-6">
+                {/* Basic Avatar Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Basic Avatar Examples</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <CustomAvatar>
+                      <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <CustomAvatarFallback>CN</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="rounded-lg">
+                      <CustomAvatarImage
+                        src="https://github.com/evilrabbit.png"
+                        alt="@evilrabbit"
+                      />
+                      <CustomAvatarFallback>ER</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar>
+                      <CustomAvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                      <CustomAvatarFallback>LR</CustomAvatarFallback>
+                    </CustomAvatar>
+                  </div>
+                </div>
+
+                {/* Variant Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Variant Examples</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar variant="primary">
+                        <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <CustomAvatarFallback>CN</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Primary</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar variant="secondary">
+                        <CustomAvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+                        <CustomAvatarFallback>ER</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Secondary</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar variant="outline">
+                        <CustomAvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                        <CustomAvatarFallback>LR</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Outline</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Size Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Size Examples</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar avatarSize="sm">
+                        <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <CustomAvatarFallback>CN</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Small</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar avatarSize="md">
+                        <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <CustomAvatarFallback>CN</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Medium</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar avatarSize="lg">
+                        <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <CustomAvatarFallback>CN</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Large</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <CustomAvatar avatarSize="xl">
+                        <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                        <CustomAvatarFallback>CN</CustomAvatarFallback>
+                      </CustomAvatar>
+                      <span className="text-xs text-muted-foreground">Extra Large</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fallback Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Fallback Examples</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <CustomAvatar variant="primary">
+                      <CustomAvatarFallback>JD</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar variant="secondary">
+                      <CustomAvatarFallback>SM</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar variant="outline">
+                      <CustomAvatarFallback>AB</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar avatarSize="lg" variant="primary">
+                      <CustomAvatarFallback>JS</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar avatarSize="xl" variant="secondary">
+                      <CustomAvatarFallback>MK</CustomAvatarFallback>
+                    </CustomAvatar>
+                  </div>
+                </div>
+
+                {/* Grouped Avatars */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Grouped Avatars</h4>
+                  <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+                    <CustomAvatar>
+                      <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <CustomAvatarFallback>CN</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar>
+                      <CustomAvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                      <CustomAvatarFallback>LR</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar>
+                      <CustomAvatarImage
+                        src="https://github.com/evilrabbit.png"
+                        alt="@evilrabbit"
+                      />
+                      <CustomAvatarFallback>ER</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar>
+                      <CustomAvatarFallback>+2</CustomAvatarFallback>
+                    </CustomAvatar>
+                  </div>
+                </div>
+
+                {/* Different Shapes */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Different Shapes</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <CustomAvatar className="rounded-full">
+                      <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <CustomAvatarFallback>CN</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="rounded-lg">
+                      <CustomAvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+                      <CustomAvatarFallback>ER</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="rounded-md">
+                      <CustomAvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                      <CustomAvatarFallback>LR</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="rounded-none">
+                      <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <CustomAvatarFallback>CN</CustomAvatarFallback>
+                    </CustomAvatar>
+                  </div>
+                </div>
+
+                {/* Interactive Examples */}
+                <div>
+                  <h4 className="font-semibold text-lg mb-4">Interactive Examples</h4>
+                  <div className="flex flex-row flex-wrap items-center gap-6">
+                    <CustomAvatar className="cursor-pointer hover:scale-110 transition-transform">
+                      <CustomAvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <CustomAvatarFallback>CN</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="cursor-pointer hover:scale-110 transition-transform" variant="secondary">
+                      <CustomAvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+                      <CustomAvatarFallback>ER</CustomAvatarFallback>
+                    </CustomAvatar>
+                    <CustomAvatar className="cursor-pointer hover:scale-110 transition-transform" variant="outline">
+                      <CustomAvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                      <CustomAvatarFallback>LR</CustomAvatarFallback>
+                    </CustomAvatar>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
 
          {/* Custom Alert Examples */}
          <Collapsible>
