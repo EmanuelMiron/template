@@ -11,7 +11,7 @@ import { Accordion as ShadAccordion, AccordionContent as ShadAccordionContent, A
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Alert as CustomAlert, AlertDescription as CustomAlertDescription } from '@/components/Alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+
 import { AlertDialog as CustomAlertDialog, AlertDialogAction as CustomAlertDialogAction, AlertDialogCancel as CustomAlertDialogCancel, AlertDialogContent as CustomAlertDialogContent, AlertDialogDescription as CustomAlertDialogDescription, AlertDialogFooter as CustomAlertDialogFooter, AlertDialogHeader as CustomAlertDialogHeader, AlertDialogTitle as CustomAlertDialogTitle, AlertDialogTrigger as CustomAlertDialogTrigger } from '@/components/AlertDialog';
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
@@ -622,17 +622,17 @@ const ShadcnHome = () => {
                       </CustomBreadcrumbItem>
                       <CustomBreadcrumbSeparator />
                       <CustomBreadcrumbItem>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger className="flex items-center gap-1">
+                        <CustomDropdownMenu>
+                          <CustomDropdownMenuTrigger className="flex items-center gap-1">
                             <CustomBreadcrumbEllipsis className="size-4" />
                             <span className="sr-only">Toggle menu</span>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="start">
-                            <DropdownMenuItem>Documentation</DropdownMenuItem>
-                            <DropdownMenuItem>Themes</DropdownMenuItem>
-                            <DropdownMenuItem>GitHub</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                          </CustomDropdownMenuTrigger>
+                          <CustomDropdownMenuContent align="start">
+                            <CustomDropdownMenuItem>Documentation</CustomDropdownMenuItem>
+                            <CustomDropdownMenuItem>Themes</CustomDropdownMenuItem>
+                            <CustomDropdownMenuItem>GitHub</CustomDropdownMenuItem>
+                          </CustomDropdownMenuContent>
+                        </CustomDropdownMenu>
                       </CustomBreadcrumbItem>
                       <CustomBreadcrumbSeparator />
                       <CustomBreadcrumbItem>
@@ -658,18 +658,18 @@ const ShadcnHome = () => {
                         <ChevronRight className="h-3.5 w-3.5" />
                       </CustomBreadcrumbSeparator>
                       <CustomBreadcrumbItem>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
+                        <CustomDropdownMenu>
+                          <CustomDropdownMenuTrigger className="flex items-center gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5">
                             Components
                             <ChevronRight className="rotate-90" />
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="start">
-                            <DropdownMenuItem>Documentation</DropdownMenuItem>
-                            <DropdownMenuItem>Themes</DropdownMenuItem>
-                            <DropdownMenuItem>GitHub</DropdownMenuItem>
-                            <DropdownMenuItem>Examples</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
+                          </CustomDropdownMenuTrigger>
+                          <CustomDropdownMenuContent align="start">
+                            <CustomDropdownMenuItem>Documentation</CustomDropdownMenuItem>
+                            <CustomDropdownMenuItem>Themes</CustomDropdownMenuItem>
+                            <CustomDropdownMenuItem>GitHub</CustomDropdownMenuItem>
+                            <CustomDropdownMenuItem>Examples</CustomDropdownMenuItem>
+                          </CustomDropdownMenuContent>
+                        </CustomDropdownMenu>
                       </CustomBreadcrumbItem>
                       <CustomBreadcrumbSeparator>
                         <ChevronRight className="h-3.5 w-3.5" />
