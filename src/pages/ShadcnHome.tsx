@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -14,6 +13,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
 import CustomTextarea from '@/components/Textarea';
+import CustomCheckbox from '@/components/Checkbox';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/Collapsible';
 
 const themeIcons: Record<string, string> = {
@@ -62,6 +62,110 @@ const ShadcnHome = () => {
         </div>
 
         <div className="space-y-8">
+
+         {/* Custom Checkbox Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom Checkbox Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <CustomCheckbox 
+                    label="Primary Variant"
+                    variant="primary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Secondary Variant"
+                    variant="secondary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Outline Variant"
+                    variant="outline"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Disabled Checkbox"
+                    variant="primary"
+                    size="md"
+                    disabled
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="With Description"
+                    description="This is a helpful description for the checkbox."
+                    variant="primary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="With Error"
+                    error="This field is required and must be checked."
+                    variant="primary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Small Size"
+                    variant="outline"
+                    size="sm"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Large Size"
+                    variant="secondary"
+                    size="lg"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Terms and Conditions"
+                    description="I agree to the terms and conditions of this service."
+                    variant="primary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Newsletter Subscription"
+                    description="Receive updates and newsletters via email."
+                    variant="outline"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Marketing Communications"
+                    description="Allow us to send you marketing materials."
+                    variant="secondary"
+                    size="md"
+                  />
+                </div>
+                <div>
+                  <CustomCheckbox 
+                    label="Required Field"
+                    error="You must accept this to continue."
+                    variant="primary"
+                    size="md"
+                  />
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
+
+
         {/* Custom Collapsible Examples */}
         <Collapsible>
             <CollapsibleTrigger variant="primary" size="lg">
@@ -814,29 +918,6 @@ const ShadcnHome = () => {
                     </SelectContent>
                   </Select>
                   <span className="text-xs text-muted-foreground mt-1 block">This is some helper text.</span>
-                </div>
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
-
-          {/* Checkbox Examples */}
-          <Collapsible>
-            <CollapsibleTrigger variant="primary" size="lg">
-              <h2 className="text-2xl font-semibold">Checkbox Examples</h2>
-            </CollapsibleTrigger>
-            <CollapsibleContent variant="outline" padding="lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox1" />
-                  <label htmlFor="checkbox1" className="font-medium">Primary</label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox2" />
-                  <label htmlFor="checkbox2" className="font-medium">Secondary</label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="checkbox3" disabled />
-                  <label htmlFor="checkbox3" className="font-medium">Disabled</label>
                 </div>
               </div>
             </CollapsibleContent>
