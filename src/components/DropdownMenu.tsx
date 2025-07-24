@@ -6,12 +6,13 @@
  * All colors are set via CSS variables for theme compatibility.
  */
 import React from 'react';
-import { 
+import {
   DropdownMenu as ShadDropdownMenu,
   DropdownMenuTrigger as ShadDropdownMenuTrigger,
   DropdownMenuContent as ShadDropdownMenuContent,
   DropdownMenuItem as ShadDropdownMenuItem,
   DropdownMenuCheckboxItem as ShadDropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup as ShadDropdownMenuRadioGroup,
   DropdownMenuRadioItem as ShadDropdownMenuRadioItem,
   DropdownMenuLabel as ShadDropdownMenuLabel,
   DropdownMenuSeparator as ShadDropdownMenuSeparator,
@@ -53,6 +54,11 @@ export interface DropdownMenuCheckboxItemProps extends React.ComponentProps<type
 }
 
 export interface DropdownMenuRadioItemProps extends React.ComponentProps<typeof ShadDropdownMenuRadioItem> {
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export interface DropdownMenuRadioGroupProps extends React.ComponentProps<typeof ShadDropdownMenuRadioGroup> {
   className?: string;
   children?: React.ReactNode;
 }
@@ -295,6 +301,31 @@ const DropdownMenuRadioItem = React.forwardRef<React.ElementRef<typeof ShadDropd
   }
 );
 
+const DropdownMenuRadioGroup = React.forwardRef<React.ElementRef<typeof ShadDropdownMenuRadioGroup>, DropdownMenuRadioGroupProps>(
+  (
+    {
+      className = '',
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <ShadDropdownMenuRadioGroup
+        ref={ref}
+        data-slot="dropdown-menu-radio-group"
+        className={cn(
+          'transition-colors duration-200',
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </ShadDropdownMenuRadioGroup>
+    );
+  }
+);
+
 const DropdownMenuLabel = React.forwardRef<React.ElementRef<typeof ShadDropdownMenuLabel>, DropdownMenuLabelProps>(
   (
     {
@@ -474,6 +505,7 @@ DropdownMenuContent.displayName = 'DropdownMenuContent';
 DropdownMenuItem.displayName = 'DropdownMenuItem';
 DropdownMenuCheckboxItem.displayName = 'DropdownMenuCheckboxItem';
 DropdownMenuRadioItem.displayName = 'DropdownMenuRadioItem';
+DropdownMenuRadioGroup.displayName = 'DropdownMenuRadioGroup';
 DropdownMenuLabel.displayName = 'DropdownMenuLabel';
 DropdownMenuSeparator.displayName = 'DropdownMenuSeparator';
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';
@@ -489,6 +521,7 @@ export {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
