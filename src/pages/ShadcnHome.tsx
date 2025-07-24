@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar } from 'lucide-react';
+import { Search, MessageSquare, Info, AlertCircle, Star, Settings, FileText, Users, Calendar, Trash2, Edit, Plus, X, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,6 +11,7 @@ import { Accordion as ShadAccordion, AccordionContent as ShadAccordionContent, A
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Alert as CustomAlert, AlertTitle as CustomAlertTitle, AlertDescription as CustomAlertDescription } from '@/components/Alert';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { AlertDialog as CustomAlertDialog, AlertDialogAction as CustomAlertDialogAction, AlertDialogCancel as CustomAlertDialogCancel, AlertDialogContent as CustomAlertDialogContent, AlertDialogDescription as CustomAlertDialogDescription, AlertDialogFooter as CustomAlertDialogFooter, AlertDialogHeader as CustomAlertDialogHeader, AlertDialogTitle as CustomAlertDialogTitle, AlertDialogTrigger as CustomAlertDialogTrigger } from '@/components/AlertDialog';
 import CustomInput from '@/components/Input';
 import CustomSelect from '@/components/Select';
 import CustomTextarea from '@/components/Textarea';
@@ -175,6 +176,281 @@ const ShadcnHome = () => {
                     </div>
                   </CustomAlertDescription>
                 </CustomAlert>
+                             </div>
+             </CollapsibleContent>
+           </Collapsible>
+
+         {/* Custom AlertDialog Examples */}
+         <Collapsible>
+            <CollapsibleTrigger variant="primary" size="lg">
+              <h2 className="text-2xl font-semibold">Custom AlertDialog Component Examples</h2>
+            </CollapsibleTrigger>
+            <CollapsibleContent variant="outline" padding="lg">
+                            <div className="space-y-4">
+                <div className="flex flex-wrap gap-4 items-center">
+                  {/* Basic AlertDialog */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="outline" size="md">
+                      Show Basic Dialog
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="outline">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Are you absolutely sure?</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This action cannot be undone. This will permanently delete your
+                          account and remove your data from our servers.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="destructive" size="md">Continue</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+
+                  {/* Primary Variant AlertDialog */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="primary" size="md">
+                      Primary Dialog
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="primary">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Confirm Action</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This dialog uses the primary variant with theme-aware colors.
+                          The content border and styling adapt to your current theme.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="primary" size="md">Confirm</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+
+                  {/* Secondary Variant AlertDialog */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="secondary" size="md">
+                      Secondary Dialog
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="secondary">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Secondary Action</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This dialog uses the secondary variant. Notice how the colors
+                          adapt to your theme while maintaining the secondary styling.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="secondary" size="md">Proceed</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+
+                  {/* Different Button Sizes */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="outline" size="lg">
+                      Large Buttons Dialog
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="outline">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Large Button Example</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This dialog demonstrates different button sizes. The trigger is large,
+                          and the action buttons can be customized independently.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="sm">Small Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="primary" size="lg">Large Action</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+
+                  {/* Destructive Action Dialog */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="destructive" size="md">
+                      Delete Account
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="outline">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Delete Account</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This action cannot be undone. This will permanently delete your
+                          account and remove all your data from our servers.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="destructive" size="md">Delete Account</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+
+                  {/* Small Trigger Dialog */}
+                  <CustomAlertDialog>
+                    <CustomAlertDialogTrigger variant="outline" size="sm">
+                      Small Trigger
+                    </CustomAlertDialogTrigger>
+                    <CustomAlertDialogContent variant="outline">
+                      <CustomAlertDialogHeader>
+                        <CustomAlertDialogTitle>Small Trigger Example</CustomAlertDialogTitle>
+                        <CustomAlertDialogDescription>
+                          This dialog uses a small trigger button. Perfect for compact layouts
+                          where space is limited.
+                        </CustomAlertDialogDescription>
+                      </CustomAlertDialogHeader>
+                      <CustomAlertDialogFooter>
+                        <CustomAlertDialogCancel variant="outline" size="sm">Cancel</CustomAlertDialogCancel>
+                        <CustomAlertDialogAction variant="primary" size="sm">OK</CustomAlertDialogAction>
+                      </CustomAlertDialogFooter>
+                    </CustomAlertDialogContent>
+                  </CustomAlertDialog>
+                </div>
+
+                 {/* Icon Button Examples */}
+                 <div className="space-y-4">
+                   <h4 className="font-semibold text-lg">Icon Button Examples</h4>
+                   
+                   <div className="flex flex-wrap gap-4 items-center">
+                     {/* Delete Icon Button */}
+                     <CustomAlertDialog>
+                       <CustomAlertDialogTrigger 
+                         variant="destructive" 
+                         size="md" 
+                         icon={<Trash2 />} 
+                         iconOnly
+                       />
+                       <CustomAlertDialogContent variant="outline">
+                         <CustomAlertDialogHeader>
+                           <CustomAlertDialogTitle>Delete Item</CustomAlertDialogTitle>
+                           <CustomAlertDialogDescription>
+                             Are you sure you want to delete this item? This action cannot be undone
+                             and the item will be permanently removed from the system.
+                           </CustomAlertDialogDescription>
+                         </CustomAlertDialogHeader>
+                         <CustomAlertDialogFooter>
+                           <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                           <CustomAlertDialogAction variant="destructive" size="md">Delete</CustomAlertDialogAction>
+                         </CustomAlertDialogFooter>
+                       </CustomAlertDialogContent>
+                     </CustomAlertDialog>
+
+                     {/* Edit Icon Button */}
+                     <CustomAlertDialog>
+                       <CustomAlertDialogTrigger 
+                         variant="primary" 
+                         size="md" 
+                         icon={<Edit />} 
+                         iconOnly
+                       />
+                       <CustomAlertDialogContent variant="primary">
+                         <CustomAlertDialogHeader>
+                           <CustomAlertDialogTitle>Edit Item</CustomAlertDialogTitle>
+                           <CustomAlertDialogDescription>
+                             Are you sure you want to edit this item? Any unsaved changes will be lost.
+                           </CustomAlertDialogDescription>
+                         </CustomAlertDialogHeader>
+                         <CustomAlertDialogFooter>
+                           <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                           <CustomAlertDialogAction variant="primary" size="md">Edit</CustomAlertDialogAction>
+                         </CustomAlertDialogFooter>
+                       </CustomAlertDialogContent>
+                     </CustomAlertDialog>
+
+                     {/* Add Icon Button */}
+                     <CustomAlertDialog>
+                       <CustomAlertDialogTrigger 
+                         variant="secondary" 
+                         size="md" 
+                         icon={<Plus />} 
+                         iconOnly
+                       />
+                       <CustomAlertDialogContent variant="secondary">
+                         <CustomAlertDialogHeader>
+                           <CustomAlertDialogTitle>Add New Item</CustomAlertDialogTitle>
+                           <CustomAlertDialogDescription>
+                             Are you ready to add a new item? This will create a new entry in the system.
+                           </CustomAlertDialogDescription>
+                         </CustomAlertDialogHeader>
+                         <CustomAlertDialogFooter>
+                           <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                           <CustomAlertDialogAction variant="secondary" size="md">Add</CustomAlertDialogAction>
+                         </CustomAlertDialogFooter>
+                       </CustomAlertDialogContent>
+                     </CustomAlertDialog>
+
+                     {/* Close Icon Button */}
+                     <CustomAlertDialog>
+                       <CustomAlertDialogTrigger 
+                         variant="outline" 
+                         size="sm" 
+                         icon={<X />} 
+                         iconOnly
+                       />
+                       <CustomAlertDialogContent variant="outline">
+                         <CustomAlertDialogHeader>
+                           <CustomAlertDialogTitle>Close Window</CustomAlertDialogTitle>
+                           <CustomAlertDialogDescription>
+                             Are you sure you want to close this window? Any unsaved changes will be lost.
+                           </CustomAlertDialogDescription>
+                         </CustomAlertDialogHeader>
+                         <CustomAlertDialogFooter>
+                           <CustomAlertDialogCancel variant="outline" size="sm">Stay</CustomAlertDialogCancel>
+                           <CustomAlertDialogAction variant="outline" size="sm">Close</CustomAlertDialogAction>
+                         </CustomAlertDialogFooter>
+                       </CustomAlertDialogContent>
+                     </CustomAlertDialog>
+
+                     {/* Warning Icon Button */}
+                     <CustomAlertDialog>
+                       <CustomAlertDialogTrigger 
+                         variant="outline" 
+                         size="lg" 
+                         icon={<AlertTriangle />} 
+                         iconOnly
+                       />
+                       <CustomAlertDialogContent variant="outline">
+                         <CustomAlertDialogHeader>
+                           <CustomAlertDialogTitle>Warning Action</CustomAlertDialogTitle>
+                           <CustomAlertDialogDescription>
+                             This action may have serious consequences. Are you absolutely sure
+                             you want to proceed with this operation?
+                           </CustomAlertDialogDescription>
+                         </CustomAlertDialogHeader>
+                         <CustomAlertDialogFooter>
+                           <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                           <CustomAlertDialogAction variant="destructive" size="md">Proceed</CustomAlertDialogAction>
+                         </CustomAlertDialogFooter>
+                       </CustomAlertDialogContent>
+                     </CustomAlertDialog>
+                   </div>
+
+                   {/* Icon with Text Button */}
+                   <CustomAlertDialog>
+                     <CustomAlertDialogTrigger 
+                       variant="primary" 
+                       size="md" 
+                       icon={<Trash2 />}
+                     >
+                       Delete with Text
+                     </CustomAlertDialogTrigger>
+                     <CustomAlertDialogContent variant="outline">
+                       <CustomAlertDialogHeader>
+                         <CustomAlertDialogTitle>Delete with Text</CustomAlertDialogTitle>
+                         <CustomAlertDialogDescription>
+                           This example shows an icon button with text. Useful when you want
+                           both visual and textual context for the action.
+                         </CustomAlertDialogDescription>
+                       </CustomAlertDialogHeader>
+                       <CustomAlertDialogFooter>
+                         <CustomAlertDialogCancel variant="outline" size="md">Cancel</CustomAlertDialogCancel>
+                         <CustomAlertDialogAction variant="destructive" size="md">Delete</CustomAlertDialogAction>
+                       </CustomAlertDialogFooter>
+                     </CustomAlertDialogContent>
+                   </CustomAlertDialog>
+                 </div>
               </div>
             </CollapsibleContent>
           </Collapsible>

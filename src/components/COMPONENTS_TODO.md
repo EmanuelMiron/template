@@ -17,6 +17,7 @@ Below is a list of 39 reusable UI components to build for your template. Check t
 - [ ] **Tooltip** — Hover/focus popup for extra info.
 - [ ] **Popover** — Floating panel for menus, actions, or info.
 - [ ] **Dropdown Menu** — Menu triggered by button or icon.
+- [x] **AlertDialog** — Confirmation dialog with action and cancel buttons.
 - [ ] **Modal (Dialog)** — Centered overlay for forms, alerts, or content.
 - [ ] **Drawer (Sidebar)** — Slide-in panel from edge of screen.
 - [x] **Alert** — Banner for success, error, warning, or info with variants and theming.
