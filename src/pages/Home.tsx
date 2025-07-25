@@ -30,6 +30,7 @@ import { MenubarExample } from "@/components/examples/MenubarExample";
 import { PaginationExample } from "@/components/examples/PaginationExample";
 import { PopoverExample } from "@/components/examples/PopoverExample";
 import { ProgressExample } from "@/components/examples/ProgressExample";
+import { ResizableExample } from "@/components/examples/ResizableExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -72,6 +73,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <ResizableExample />
           <ProgressExample />
           <PopoverExample />
           <PaginationExample />
