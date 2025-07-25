@@ -31,6 +31,7 @@ import { PaginationExample } from "@/components/examples/PaginationExample";
 import { PopoverExample } from "@/components/examples/PopoverExample";
 import { ProgressExample } from "@/components/examples/ProgressExample";
 import { ResizableExample } from "@/components/examples/ResizableExample";
+import { ScrollAreaExample } from "@/components/examples/ScrollAreaExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -73,6 +74,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <ScrollAreaExample />
           <ResizableExample />
           <ProgressExample />
           <PopoverExample />
