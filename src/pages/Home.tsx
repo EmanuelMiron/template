@@ -28,6 +28,7 @@ import { InputOTPExample } from "@/components/examples/InputOTPExample";
 import { LabelExample } from "@/components/examples/LabelExample";
 import { MenubarExample } from "@/components/examples/MenubarExample";
 import { PaginationExample } from "@/components/examples/PaginationExample";
+import { PopoverExample } from "@/components/examples/PopoverExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -70,6 +71,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <PopoverExample />
           <PaginationExample />
           <MenubarExample />
           <LabelExample />
