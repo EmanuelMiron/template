@@ -1,5 +1,5 @@
 import React from 'react';
-import { Minus, Plus, Settings, User, FileText, Menu, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Minus, Plus, Settings, User, FileText, Menu, ArrowUp, ArrowLeft, ArrowRight } from 'lucide-react';
 import {
   Collapsible,
   CollapsibleContent,

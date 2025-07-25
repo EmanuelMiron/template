@@ -24,6 +24,7 @@ import { DatePickerExample } from "@/components/examples/DatePickerExample";
 import { DialogExample } from "@/components/examples/DialogExample";
 import { DrawerExample } from "@/components/examples/DrawerExample";
 import { HoverCardExample } from "@/components/examples/HoverCardExample";
+import { InputOTPExample } from "@/components/examples/InputOTPExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -66,6 +67,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <InputOTPExample />
           <HoverCardExample />
           <DrawerExample />
           <DialogExample />
