@@ -6,7 +6,6 @@
  * All colors are set via CSS variables for theme compatibility.
  */
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
 import { 
   Select as ShadSelect,
   SelectContent,
