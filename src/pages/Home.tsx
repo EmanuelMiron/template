@@ -41,6 +41,7 @@ import { SonnerExample } from "@/components/examples/SonnerExample";
 import { SwitchExample } from "@/components/examples/SwitchExample";
 import { TabsExample } from "@/components/examples/TabsExample";
 import { ToggleExample } from "@/components/examples/ToggleExample";
+import { ToggleGroupExample } from "@/components/examples/ToggleGroupExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -83,6 +84,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <ToggleGroupExample />
           <ToggleExample />
           <TabsExample />
           <SwitchExample />
