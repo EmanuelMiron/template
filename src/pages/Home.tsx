@@ -43,6 +43,14 @@ import { TabsExample } from "@/components/examples/TabsExample";
 import { ToggleExample } from "@/components/examples/ToggleExample";
 import { ToggleGroupExample } from "@/components/examples/ToggleGroupExample";
 import { TooltipExample } from "@/components/examples/TooltipExample";
+import HeroSection from "@/sections/HeroSection";
+import FeaturesSection from "@/sections/FeaturesSection";
+import AboutSection from "@/sections/AboutSection";
+import NavigationHeader from "@/sections/NavigationHeader";
+import FooterSection from "@/sections/FooterSection";
+import { TransparentHeaderSection } from '@/sections/TransparentHeaderSection';
+import { PricingTablesSection } from '@/sections/PricingTablesSection';
+import { PortfolioGridSection } from '@/sections/PortfolioGridSection';
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -128,6 +136,17 @@ const Home = () => {
           <RadioGroupExample />
           <SelectExample />
           <TextareaExample />
+        </div>
+
+        <div className="space-y-8">
+          <TransparentHeaderSection />
+          <PricingTablesSection />
+          <PortfolioGridSection />
+          <HeroSection />
+          <FeaturesSection />
+          <AboutSection />
+          <NavigationHeader />
+          <FooterSection />
         </div>
       </div>
     </div>
