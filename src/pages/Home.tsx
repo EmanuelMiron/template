@@ -42,6 +42,7 @@ import { SwitchExample } from "@/components/examples/SwitchExample";
 import { TabsExample } from "@/components/examples/TabsExample";
 import { ToggleExample } from "@/components/examples/ToggleExample";
 import { ToggleGroupExample } from "@/components/examples/ToggleGroupExample";
+import { TooltipExample } from "@/components/examples/TooltipExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -84,6 +85,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <TooltipExample />
           <ToggleGroupExample />
           <ToggleExample />
           <TabsExample />

@@ -13,6 +13,23 @@ export const ToggleGroupExample = () => {
   const [listType, setListType] = useState<string>('bullet');
   const [heading, setHeading] = useState<string>('');
 
+  // Wrapper functions to handle type conversion
+  const handleTextFormatChange = (value: string | string[]) => {
+    setTextFormat(Array.isArray(value) ? value : []);
+  };
+
+  const handleAlignmentChange = (value: string | string[]) => {
+    setAlignment(Array.isArray(value) ? value[0] || 'left' : value);
+  };
+
+  const handleListTypeChange = (value: string | string[]) => {
+    setListType(Array.isArray(value) ? value[0] || 'bullet' : value);
+  };
+
+  const handleHeadingChange = (value: string | string[]) => {
+    setHeading(Array.isArray(value) ? value[0] || '' : value);
+  };
+
   return (
     <Collapsible>
       <CollapsibleTrigger variant="primary" size="lg">
@@ -31,7 +48,7 @@ export const ToggleGroupExample = () => {
                   size="md"
                   type="multiple"
                   value={textFormat}
-                  onValueChange={setTextFormat}
+                  onValueChange={handleTextFormatChange}
                 >
                   <ToggleGroupItem value="bold" aria-label="Toggle bold">
                     <Bold className="h-4 w-4" />
@@ -55,7 +72,7 @@ export const ToggleGroupExample = () => {
                   size="md"
                   type="single"
                   value={alignment}
-                  onValueChange={setAlignment}
+                  onValueChange={handleAlignmentChange}
                 >
                   <ToggleGroupItem value="left" aria-label="Align left">
                     <AlignLeft className="h-4 w-4" />
@@ -79,7 +96,7 @@ export const ToggleGroupExample = () => {
                   size="md"
                   type="multiple"
                   value={textFormat}
-                  onValueChange={setTextFormat}
+                  onValueChange={handleTextFormatChange}
                 >
                   <ToggleGroupItem value="bold" aria-label="Toggle bold">
                     <Bold className="h-4 w-4" />
@@ -191,7 +208,7 @@ export const ToggleGroupExample = () => {
                   size="md"
                   type="single"
                   value={heading}
-                  onValueChange={setHeading}
+                  onValueChange={handleHeadingChange}
                 >
                   <ToggleGroupItem value="h1" aria-label="Heading 1">
                     <Heading1 className="h-4 w-4 mr-2" />
@@ -241,7 +258,6 @@ export const ToggleGroupExample = () => {
                   variant="primary"
                   size="md"
                   type="multiple"
-                  disabled
                 >
                   <ToggleGroupItem value="bold" aria-label="Toggle bold">
                     <Bold className="h-4 w-4" />
@@ -262,7 +278,7 @@ export const ToggleGroupExample = () => {
                   size="md"
                   type="single"
                   value={listType}
-                  onValueChange={setListType}
+                  onValueChange={handleListTypeChange}
                 >
                   <ToggleGroupItem value="bullet" aria-label="Bullet list">
                     <List className="h-4 w-4" />
@@ -290,7 +306,7 @@ export const ToggleGroupExample = () => {
                     size="sm"
                     type="multiple"
                     value={textFormat}
-                    onValueChange={setTextFormat}
+                    onValueChange={handleTextFormatChange}
                   >
                     <ToggleGroupItem value="bold" aria-label="Toggle bold">
                       <Bold className="h-3 w-3" />
@@ -319,7 +335,7 @@ export const ToggleGroupExample = () => {
                     size="sm"
                     type="single"
                     value={alignment}
-                    onValueChange={setAlignment}
+                    onValueChange={handleAlignmentChange}
                   >
                     <ToggleGroupItem value="left" aria-label="Align left">
                       <AlignLeft className="h-3 w-3" />
@@ -351,7 +367,7 @@ export const ToggleGroupExample = () => {
                     size="md"
                     type="single"
                     value={alignment}
-                    onValueChange={setAlignment}
+                    onValueChange={handleAlignmentChange}
                   >
                     <ToggleGroupItem value="grid" aria-label="Grid view">
                       <AlignLeft className="h-4 w-4 mr-2" />
@@ -380,7 +396,7 @@ export const ToggleGroupExample = () => {
                     size="md"
                     type="multiple"
                     value={textFormat}
-                    onValueChange={setTextFormat}
+                    onValueChange={handleTextFormatChange}
                   >
                     <ToggleGroupItem value="darkMode" aria-label="Dark mode">
                       <Bold className="h-4 w-4 mr-2" />
@@ -415,7 +431,7 @@ export const ToggleGroupExample = () => {
                     size="sm"
                     type="multiple"
                     value={textFormat}
-                    onValueChange={setTextFormat}
+                    onValueChange={handleTextFormatChange}
                   >
                     <ToggleGroupItem value="bold" aria-label="Toggle bold">
                       <Bold className="h-3 w-3" />
@@ -438,7 +454,7 @@ export const ToggleGroupExample = () => {
                     size="sm"
                     type="single"
                     value={alignment}
-                    onValueChange={setAlignment}
+                    onValueChange={handleAlignmentChange}
                   >
                     <ToggleGroupItem value="left" aria-label="Align left">
                       <AlignLeft className="h-3 w-3" />
@@ -458,7 +474,7 @@ export const ToggleGroupExample = () => {
                     size="sm"
                     type="single"
                     value={listType}
-                    onValueChange={setListType}
+                    onValueChange={handleListTypeChange}
                   >
                     <ToggleGroupItem value="bullet" aria-label="Bullet list">
                       <List className="h-3 w-3" />
