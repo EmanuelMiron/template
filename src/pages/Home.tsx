@@ -37,6 +37,7 @@ import { SheetExample } from "@/components/examples/SheetExample";
 import { SidebarExample } from "@/components/examples/SidebarExample";
 import { SkeletonExample } from "@/components/examples/SkeletonExample";
 import { SliderExample } from "@/components/examples/SliderExample";
+import { SonnerExample } from "@/components/examples/SonnerExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -79,6 +80,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <SonnerExample />
           <SliderExample />
           <SkeletonExample />
           <SidebarExample />
