@@ -32,6 +32,7 @@ import { PopoverExample } from "@/components/examples/PopoverExample";
 import { ProgressExample } from "@/components/examples/ProgressExample";
 import { ResizableExample } from "@/components/examples/ResizableExample";
 import { ScrollAreaExample } from "@/components/examples/ScrollAreaExample";
+import { SeparatorExample } from "@/components/examples/SeparatorExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -74,6 +75,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <SeparatorExample />
           <ScrollAreaExample />
           <ResizableExample />
           <ProgressExample />
