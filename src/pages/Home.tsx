@@ -23,6 +23,7 @@ import { AccordionExample } from "@/components/examples/AccordionExample";
 import { DatePickerExample } from "@/components/examples/DatePickerExample";
 import { DialogExample } from "@/components/examples/DialogExample";
 import { DrawerExample } from "@/components/examples/DrawerExample";
+import { HoverCardExample } from "@/components/examples/HoverCardExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -65,6 +66,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <HoverCardExample />
           <DrawerExample />
           <DialogExample />
           <DatePickerExample />
