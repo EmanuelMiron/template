@@ -26,6 +26,7 @@ import { DrawerExample } from "@/components/examples/DrawerExample";
 import { HoverCardExample } from "@/components/examples/HoverCardExample";
 import { InputOTPExample } from "@/components/examples/InputOTPExample";
 import { LabelExample } from "@/components/examples/LabelExample";
+import { MenubarExample } from "@/components/examples/MenubarExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -68,6 +69,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <MenubarExample />
           <LabelExample />
           <InputOTPExample />
           <HoverCardExample />
