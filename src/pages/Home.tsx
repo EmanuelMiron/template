@@ -33,6 +33,7 @@ import { ProgressExample } from "@/components/examples/ProgressExample";
 import { ResizableExample } from "@/components/examples/ResizableExample";
 import { ScrollAreaExample } from "@/components/examples/ScrollAreaExample";
 import { SeparatorExample } from "@/components/examples/SeparatorExample";
+import { SheetExample } from "@/components/examples/SheetExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -75,6 +76,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <SheetExample />
           <SeparatorExample />
           <ScrollAreaExample />
           <ResizableExample />
