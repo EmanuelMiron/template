@@ -97,7 +97,9 @@ const InputOTP: React.FC<InputOTPProps> = ({
   label,
   helperText,
   error,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   variant = 'primary',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   size = 'md',
   className = '',
   containerClassName = '',
