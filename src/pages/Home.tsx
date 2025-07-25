@@ -22,6 +22,7 @@ import { AlertDialogExample } from "@/components/examples/AlertDialogExample";
 import { AccordionExample } from "@/components/examples/AccordionExample";
 import { DatePickerExample } from "@/components/examples/DatePickerExample";
 import { DialogExample } from "@/components/examples/DialogExample";
+import { DrawerExample } from "@/components/examples/DrawerExample";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
@@ -64,6 +65,7 @@ const Home = () => {
         </div>
 
         <div className="space-y-8">
+          <DrawerExample />
           <DialogExample />
           <DatePickerExample />
           <AccordionExample />
