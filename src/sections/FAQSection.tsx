@@ -3,48 +3,27 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import Badge from '@/components/Badge';
 import { HelpCircle, Search } from 'lucide-react';
 
-export interface FAQSectionProps {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  layout?: 'accordion' | 'grid' | 'list';
-  showSearch?: boolean;
-  showBadges?: boolean;
-  showCategories?: boolean;
-  className?: string;
-}
+// ============================================================================
+// CONFIGURATION - AI AGENT: Modify these values to customize the FAQ section
+// ============================================================================
 
-const FAQSection: React.FC<FAQSectionProps> = ({
-  size = 'lg',
-  title = "Frequently Asked Questions",
-  subtitle = "FAQ",
-  description = "Find answers to the most common questions about our platform and services.",
-  layout = 'accordion',
-  showSearch = true,
-  showBadges = true,
-  showCategories = true,
-  className = '',
-}) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const sizeClasses = {
-    sm: 'py-12',
-    md: 'py-16',
-    lg: 'py-24',
-  };
-
-  const categories = [
+const defaultConfig = {
+  // Header content
+  title: "Frequently Asked Questions",
+  subtitle: "FAQ",
+  description: "Find answers to the most common questions about our platform and services.",
+  
+  // Categories for filtering
+  categories: [
     { id: 'all', name: 'All Questions', count: 12 },
     { id: 'general', name: 'General', count: 4 },
     { id: 'technical', name: 'Technical', count: 4 },
     { id: 'billing', name: 'Billing', count: 2 },
     { id: 'support', name: 'Support', count: 2 },
-  ];
-
-  const faqs = [
+  ],
+  
+  // FAQ items
+  faqs: [
     {
       id: 1,
       category: 'general',
@@ -117,7 +96,83 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       question: "How often do you release updates?",
       answer: "We release regular updates with new features, bug fixes, and improvements. Major releases typically come every few months, with minor updates and patches released more frequently. We maintain backward compatibility whenever possible.",
     },
-  ];
+  ],
+  
+  // Search placeholder text
+  searchPlaceholder: "Search questions...",
+  
+  // No results message
+  noResultsTitle: "No questions found",
+  noResultsDescription: "Try adjusting your search terms or browse all categories.",
+};
+
+// Example configuration for a restaurant website
+// const restaurantConfig = {
+//   title: "Common Questions",
+//   subtitle: "FAQ",
+//   description: "Everything you need to know about dining with us.",
+//   categories: [
+//     { id: 'all', name: 'All Questions', count: 8 },
+//     { id: 'reservations', name: 'Reservations', count: 3 },
+//     { id: 'menu', name: 'Menu & Food', count: 2 },
+//     { id: 'hours', name: 'Hours & Location', count: 2 },
+//     { id: 'events', name: 'Events', count: 1 },
+//   ],
+//   faqs: [
+//     {
+//       id: 1,
+//       category: 'reservations',
+//       question: "How do I make a reservation?",
+//       answer: "You can make a reservation online through our website, by calling us directly, or through popular booking platforms. We recommend booking at least 24 hours in advance for weekend dining.",
+//     },
+//     {
+//       id: 2,
+//       category: 'menu',
+//       question: "Do you accommodate dietary restrictions?",
+//       answer: "Yes, we offer vegetarian, vegan, and gluten-free options. Please let us know about any dietary restrictions when making your reservation so we can prepare accordingly.",
+//     },
+//     // ... more restaurant-specific FAQs
+//   ],
+//   searchPlaceholder: "Search our FAQ...",
+//   noResultsTitle: "No questions found",
+//   noResultsDescription: "Try adjusting your search terms or contact us directly.",
+// };
+
+export interface FAQSectionProps {
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  layout?: 'accordion' | 'grid' | 'list';
+  showSearch?: boolean;
+  showBadges?: boolean;
+  showCategories?: boolean;
+  className?: string;
+}
+
+export const FAQSection: React.FC<FAQSectionProps> = ({
+  size = 'lg',
+  title = defaultConfig.title,
+  subtitle = defaultConfig.subtitle,
+  description = defaultConfig.description,
+  layout = 'accordion',
+  showSearch = true,
+  showBadges = true,
+  showCategories = true,
+  className = '',
+}) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const sizeClasses = {
+    sm: 'py-12',
+    md: 'py-16',
+    lg: 'py-24',
+  };
+
+  const categories = defaultConfig.categories;
+  const faqs = defaultConfig.faqs;
 
   const filteredFAQs = faqs.filter(faq => {
     const matchesSearch = faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -127,19 +182,38 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   });
 
   return (
-    <section className={`${sizeClasses[size]} bg-gray-50 ${className}`}>
+    <section 
+      className={`${sizeClasses[size]} ${className}`}
+      style={{
+        backgroundColor: "var(--color-background-secondary)",
+        color: "var(--color-foreground)"
+      }}
+    >
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
           {showBadges && (
-            <Badge variant="primary" className="mb-4">
+            <Badge 
+              variant="primary" 
+              className="mb-6"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-background)"
+              }}
+            >
               {subtitle}
             </Badge>
           )}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ color: "var(--color-foreground)" }}
+          >
             {title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p 
+            className="text-xl max-w-3xl mx-auto leading-relaxed"
+            style={{ color: "var(--color-foreground-secondary)" }}
+          >
             {description}
           </p>
         </div>
@@ -148,13 +222,30 @@ const FAQSection: React.FC<FAQSectionProps> = ({
         {showSearch && (
           <div className="max-w-md mx-auto mb-12">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search 
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
+                style={{ color: "var(--color-foreground-secondary)" }}
+              />
               <input
                 type="text"
-                placeholder="Search questions..."
+                placeholder={defaultConfig.searchPlaceholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-foreground)",
+                  outline: "none"
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "var(--color-primary)";
+                  e.target.style.boxShadow = "0 0 0 2px var(--color-primary)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "var(--color-border)";
+                  e.target.style.boxShadow = "none";
+                }}
               />
             </div>
           </div>
@@ -167,11 +258,21 @@ const FAQSection: React.FC<FAQSectionProps> = ({
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-                }`}
+                className="px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
+                style={{
+                  backgroundColor: selectedCategory === category.id 
+                    ? "var(--color-primary)" 
+                    : "var(--color-background)",
+                  color: selectedCategory === category.id 
+                    ? "var(--color-background)" 
+                    : "var(--color-foreground)",
+                  border: selectedCategory === category.id 
+                    ? "none" 
+                    : "1px solid var(--color-border)",
+                  boxShadow: selectedCategory === category.id 
+                    ? "0 4px 12px rgba(0, 0, 0, 0.15)" 
+                    : "0 2px 4px rgba(0, 0, 0, 0.05)"
+                }}
               >
                 {category.name} ({category.count})
               </button>
@@ -184,15 +285,35 @@ const FAQSection: React.FC<FAQSectionProps> = ({
           <div className="max-w-4xl mx-auto">
             <Accordion type="single" collapsible className="space-y-4">
               {filteredFAQs.map((faq) => (
-                <AccordionItem key={faq.id} value={`item-${faq.id}`}>
-                  <AccordionTrigger className="text-left">
-                    <div className="flex items-start space-x-3">
-                      <HelpCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="font-medium text-gray-900">{faq.question}</span>
+                <AccordionItem 
+                  key={faq.id} 
+                  value={`item-${faq.id}`}
+                  className="rounded-lg overflow-hidden"
+                >
+                  <AccordionTrigger className="text-left px-6 py-4 hover:no-underline">
+                    <div className="flex items-start space-x-4">
+                      <div 
+                        className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ 
+                          backgroundColor: "var(--color-background-hover)",
+                          color: "var(--color-primary)"
+                        }}
+                      >
+                        <HelpCircle className="w-4 h-4" />
+                      </div>
+                      <span 
+                        className="font-semibold text-lg"
+                        style={{ color: "var(--color-foreground)" }}
+                      >
+                        {faq.question}
+                      </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="pl-8 text-gray-600 leading-relaxed">
+                  <AccordionContent className="px-6 pb-4">
+                    <div 
+                      className="pl-12 leading-relaxed"
+                      style={{ color: "var(--color-foreground-secondary)" }}
+                    >
                       {faq.answer}
                     </div>
                   </AccordionContent>
@@ -205,12 +326,36 @@ const FAQSection: React.FC<FAQSectionProps> = ({
         {layout === 'grid' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {filteredFAQs.map((faq) => (
-              <div key={faq.id} className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                <div className="flex items-start space-x-3 mb-4">
-                  <HelpCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <h3 className="font-semibold text-gray-900">{faq.question}</h3>
+              <div 
+                key={faq.id} 
+                className="rounded-xl p-6 transition-all duration-200 hover:scale-105"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)"
+                }}
+              >
+                <div className="flex items-start space-x-4 mb-4">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ 
+                      backgroundColor: "var(--color-background-hover)",
+                      color: "var(--color-primary)"
+                    }}
+                  >
+                    <HelpCircle className="w-5 h-5" />
+                  </div>
+                  <h3 
+                    className="font-semibold text-lg"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
+                    {faq.question}
+                  </h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed pl-8">
+                <p 
+                  className="leading-relaxed pl-14"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                >
                   {faq.answer}
                 </p>
               </div>
@@ -221,12 +366,36 @@ const FAQSection: React.FC<FAQSectionProps> = ({
         {layout === 'list' && (
           <div className="max-w-4xl mx-auto space-y-6">
             {filteredFAQs.map((faq) => (
-              <div key={faq.id} className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                <div className="flex items-start space-x-3 mb-4">
-                  <HelpCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <h3 className="font-semibold text-gray-900">{faq.question}</h3>
+              <div 
+                key={faq.id} 
+                className="rounded-xl p-6 transition-all duration-200 hover:scale-105"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  border: "1px solid var(--color-border)",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)"
+                }}
+              >
+                <div className="flex items-start space-x-4 mb-4">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ 
+                      backgroundColor: "var(--color-background-hover)",
+                      color: "var(--color-primary)"
+                    }}
+                  >
+                    <HelpCircle className="w-5 h-5" />
+                  </div>
+                  <h3 
+                    className="font-semibold text-lg"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
+                    {faq.question}
+                  </h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed pl-8">
+                <p 
+                  className="leading-relaxed pl-14"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                >
                   {faq.answer}
                 </p>
               </div>
@@ -236,11 +405,27 @@ const FAQSection: React.FC<FAQSectionProps> = ({
 
         {/* No Results */}
         {filteredFAQs.length === 0 && (
-          <div className="text-center py-12">
-            <HelpCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No questions found</h3>
-            <p className="text-gray-600">
-              Try adjusting your search terms or browse all categories.
+          <div className="text-center py-16">
+            <div 
+              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+              style={{ 
+                backgroundColor: "var(--color-background-hover)",
+                color: "var(--color-foreground-secondary)"
+              }}
+            >
+              <HelpCircle className="w-10 h-10" />
+            </div>
+            <h3 
+              className="text-2xl font-semibold mb-3"
+              style={{ color: "var(--color-foreground)" }}
+            >
+              {defaultConfig.noResultsTitle}
+            </h3>
+            <p 
+              className="text-lg"
+              style={{ color: "var(--color-foreground-secondary)" }}
+            >
+              {defaultConfig.noResultsDescription}
             </p>
           </div>
         )}
@@ -248,5 +433,3 @@ const FAQSection: React.FC<FAQSectionProps> = ({
     </section>
   );
 };
-
-export default FAQSection; 
