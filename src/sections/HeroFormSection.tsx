@@ -5,6 +5,144 @@ import Textarea from '@/components/Textarea';
 import Badge from '@/components/Badge';
 import { ArrowRight, Mail, Phone, MapPin, CheckCircle, Shield } from 'lucide-react';
 
+// ============================================================================
+// CONFIGURATION - AI AGENT: Modify these values to customize the hero form section
+// ============================================================================
+
+const defaultConfig = {
+  // Header content
+  title: "Get Started Today",
+  subtitle: "Join Thousands of Users",
+  description: "Ready to transform your business? Get in touch with our team and discover how we can help you achieve your goals.",
+  
+  // Badge content
+  badge: {
+    text: "🚀 Get Started",
+  },
+  
+  // Features list
+  features: [
+    { icon: <CheckCircle className="w-5 h-5" />, text: "Free consultation" },
+    { icon: <CheckCircle className="w-5 h-5" />, text: "No commitment required" },
+    { icon: <CheckCircle className="w-5 h-5" />, text: "24/7 support" }
+  ],
+  
+  // Trust elements
+  trustElements: [
+    { icon: <Shield className="w-5 h-5" />, text: "GDPR Compliant" },
+    { icon: <Shield className="w-5 h-5" />, text: "SSL Secured" },
+    { icon: <Shield className="w-5 h-5" />, text: "Privacy Protected" }
+  ],
+  
+  // Contact information
+  contactInfo: [
+    { icon: <Mail className="w-5 h-5" />, label: "Email", value: "hello@company.com" },
+    { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+1 (555) 123-4567" },
+    { icon: <MapPin className="w-5 h-5" />, label: "Address", value: "123 Business St, City, State 12345" }
+  ],
+  
+  // Form configurations
+  formConfigs: {
+    contact: {
+      title: "Contact Us",
+      description: "Fill out the form below and we'll get back to you.",
+      submitText: "Send Message",
+      fields: {
+        showBudget: true,
+        showTimeline: true,
+        showMessage: true,
+      }
+    },
+    signup: {
+      title: "Create Account",
+      description: "Join our platform and start building today.",
+      submitText: "Create Account",
+      fields: {
+        showBudget: false,
+        showTimeline: false,
+        showMessage: false,
+      }
+    },
+    newsletter: {
+      title: "Stay Updated",
+      description: "Get the latest updates and insights delivered to your inbox.",
+      submitText: "Subscribe",
+      fields: {
+        showBudget: false,
+        showTimeline: false,
+        showMessage: false,
+      }
+    }
+  },
+  
+  // Success message
+  successMessage: {
+    title: "Thank You!",
+    description: "We'll get back to you within 24 hours."
+  }
+};
+
+// Example configuration for a restaurant website
+// const restaurantConfig = {
+//   title: "Make a Reservation",
+//   subtitle: "Experience Fine Dining",
+//   description: "Book your table at our award-winning restaurant and enjoy an unforgettable culinary experience.",
+//   badge: {
+//     text: "🍽️ Reserve Now",
+//   },
+//   features: [
+//     { icon: <CheckCircle className="w-5 h-5" />, text: "Free cancellation" },
+//     { icon: <CheckCircle className="w-5 h-5" />, text: "Special requests" },
+//     { icon: <CheckCircle className="w-5 h-5" />, text: "Dietary accommodations" }
+//   ],
+//   trustElements: [
+//     { icon: <Shield className="w-5 h-5" />, text: "Safe & Clean" },
+//     { icon: <Shield className="w-5 h-5" />, text: "Contactless Service" },
+//     { icon: <Shield className="w-5 h-5" />, text: "Health Protocols" }
+//   ],
+//   contactInfo: [
+//     { icon: <Mail className="w-5 h-5" />, label: "Email", value: "reservations@restaurant.com" },
+//     { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+1 (555) 123-4567" },
+//     { icon: <MapPin className="w-5 h-5" />, label: "Address", value: "456 Gourmet Ave, Foodie City, FC 54321" }
+//   ],
+//   formConfigs: {
+//     contact: {
+//       title: "Make Reservation",
+//       description: "Book your table and we'll confirm your reservation.",
+//       submitText: "Book Table",
+//       fields: {
+//         showBudget: false,
+//         showTimeline: true,
+//         showMessage: true,
+//       }
+//     },
+//     signup: {
+//       title: "Join Our VIP Club",
+//       description: "Get exclusive access to special events and promotions.",
+//       submitText: "Join VIP Club",
+//       fields: {
+//         showBudget: false,
+//         showTimeline: false,
+//         showMessage: false,
+//       }
+//     },
+//     newsletter: {
+//       title: "Stay Updated",
+//       description: "Get updates about new menu items and special events.",
+//       submitText: "Subscribe",
+//       fields: {
+//         showBudget: false,
+//         showTimeline: false,
+//         showMessage: false,
+//       }
+//     }
+//   },
+//   successMessage: {
+//     title: "Reservation Confirmed!",
+//     description: "We'll send you a confirmation email shortly."
+//   }
+// };
+
 export interface HeroFormSectionProps {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
@@ -19,9 +157,9 @@ export interface HeroFormSectionProps {
 
 export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
   size = 'lg',
-  title = "Get Started Today",
-  subtitle = "Join Thousands of Users",
-  description = "Ready to transform your business? Get in touch with our team and discover how we can help you achieve your goals.",
+  title = defaultConfig.title,
+  subtitle = defaultConfig.subtitle,
+  description = defaultConfig.description,
   formType = 'contact',
   showContactInfo = true,
   showFeatures = true,
@@ -74,29 +212,27 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
     lg: 'py-24'
   };
 
-  const features = [
-    { icon: <CheckCircle className="w-5 h-5" />, text: "Free consultation" },
-    { icon: <CheckCircle className="w-5 h-5" />, text: "No commitment required" },
-    { icon: <CheckCircle className="w-5 h-5" />, text: "24/7 support" }
-  ];
-
-  const trustElements = [
-    { icon: <Shield className="w-5 h-5" />, text: "GDPR Compliant" },
-    { icon: <Shield className="w-5 h-5" />, text: "SSL Secured" },
-    { icon: <Shield className="w-5 h-5" />, text: "Privacy Protected" }
-  ];
-
-  const contactInfo = [
-    { icon: <Mail className="w-5 h-5" />, label: "Email", value: "hello@company.com" },
-    { icon: <Phone className="w-5 h-5" />, label: "Phone", value: "+1 (555) 123-4567" },
-    { icon: <MapPin className="w-5 h-5" />, label: "Address", value: "123 Business St, City, State 12345" }
-  ];
+  const features = defaultConfig.features;
+  const trustElements = defaultConfig.trustElements;
+  const contactInfo = defaultConfig.contactInfo;
+  const formConfig = defaultConfig.formConfigs[formType];
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center ${sizeClasses[size]} bg-gradient-to-br from-slate-50 to-blue-50`}>
+    <section 
+      className={`relative min-h-screen flex items-center justify-center ${sizeClasses[size]}`}
+      style={{
+        backgroundColor: "var(--color-background-secondary)"
+      }}
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)",
+            backgroundSize: "50px 50px"
+          }}
+        />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,24 +241,40 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
             {/* Left Content */}
             <div className="text-center lg:text-left">
               {/* Badge */}
-              <Badge variant="primary" className="mb-6">
-                🚀 Get Started
+              <Badge 
+                variant="primary" 
+                className="mb-6"
+                style={{
+                  backgroundColor: "var(--color-primary)",
+                  color: "var(--color-background)"
+                }}
+              >
+                {defaultConfig.badge.text}
               </Badge>
 
               {/* Title */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                style={{ color: "var(--color-foreground)" }}
+              >
                 {title}
               </h1>
 
               {/* Subtitle */}
               {subtitle && (
-                <p className="text-xl sm:text-2xl text-blue-600 mb-4 font-medium">
+                <p 
+                  className="text-xl sm:text-2xl mb-4 font-medium"
+                  style={{ color: "var(--color-primary)" }}
+                >
                   {subtitle}
                 </p>
               )}
 
               {/* Description */}
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p 
+                className="text-lg mb-8 leading-relaxed"
+                style={{ color: "var(--color-foreground-secondary)" }}
+              >
                 {description}
               </p>
 
@@ -131,7 +283,11 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
                 <div className="mb-8">
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     {features.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-2 text-green-600">
+                      <div 
+                        key={index} 
+                        className="flex items-center gap-2"
+                        style={{ color: "var(--color-primary)" }}
+                      >
                         {feature.icon}
                         <span className="text-sm font-medium">{feature.text}</span>
                       </div>
@@ -144,11 +300,21 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
               {showContactInfo && (
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-center gap-3 text-gray-600">
-                      <div className="text-blue-600">{info.icon}</div>
+                    <div key={index} className="flex items-center gap-3">
+                      <div style={{ color: "var(--color-primary)" }}>{info.icon}</div>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{info.label}</div>
-                        <div className="text-sm">{info.value}</div>
+                        <div 
+                          className="text-sm font-medium"
+                          style={{ color: "var(--color-foreground)" }}
+                        >
+                          {info.label}
+                        </div>
+                        <div 
+                          className="text-sm"
+                          style={{ color: "var(--color-foreground-secondary)" }}
+                        >
+                          {info.value}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -157,27 +323,45 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
             </div>
 
             {/* Right Form */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div 
+              className="rounded-2xl shadow-xl p-8 border"
+              style={{
+                backgroundColor: "var(--color-background)",
+                borderColor: "var(--color-border)"
+              }}
+            >
               {isSubmitted ? (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
+                  <div 
+                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{ backgroundColor: "var(--color-background-hover)" }}
+                  >
+                    <CheckCircle 
+                      className="w-8 h-8" 
+                      style={{ color: "var(--color-primary)" }}
+                    />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
-                  <p className="text-gray-600">We'll get back to you within 24 hours.</p>
+                  <h3 
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
+                    {defaultConfig.successMessage.title}
+                  </h3>
+                  <p style={{ color: "var(--color-foreground-secondary)" }}>
+                    {defaultConfig.successMessage.description}
+                  </p>
                 </div>
               ) : (
                 <>
                   <div className="text-center mb-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                      {formType === 'contact' && 'Contact Us'}
-                      {formType === 'signup' && 'Create Account'}
-                      {formType === 'newsletter' && 'Stay Updated'}
+                    <h2 
+                      className="text-2xl font-bold mb-2"
+                      style={{ color: "var(--color-foreground)" }}
+                    >
+                      {formConfig.title}
                     </h2>
-                    <p className="text-gray-600">
-                      {formType === 'contact' && 'Fill out the form below and we\'ll get back to you.'}
-                      {formType === 'signup' && 'Join our platform and start building today.'}
-                      {formType === 'newsletter' && 'Get the latest updates and insights delivered to your inbox.'}
+                    <p style={{ color: "var(--color-foreground-secondary)" }}>
+                      {formConfig.description}
                     </p>
                   </div>
 
@@ -216,7 +400,7 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                     />
 
-                    {formType === 'contact' && (
+                    {formType === 'contact' && formConfig.fields.showBudget && (
                       <>
                         <div className="grid sm:grid-cols-2 gap-4">
                           <Input
@@ -233,14 +417,16 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
                           />
                         </div>
 
-                        <Textarea
-                          label="Message"
-                          placeholder="Tell us about your project..."
-                          value={formData.message}
-                          onChange={(e) => handleInputChange('message', e.target.value)}
-                          rows={4}
-                          required
-                        />
+                        {formConfig.fields.showMessage && (
+                          <Textarea
+                            label="Message"
+                            placeholder="Tell us about your project..."
+                            value={formData.message}
+                            onChange={(e) => handleInputChange('message', e.target.value)}
+                            rows={4}
+                            required
+                          />
+                        )}
                       </>
                     )}
 
@@ -258,9 +444,7 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
-                          {formType === 'contact' && 'Send Message'}
-                          {formType === 'signup' && 'Create Account'}
-                          {formType === 'newsletter' && 'Subscribe'}
+                          {formConfig.submitText}
                           <ArrowRight className="w-4 h-4" />
                         </div>
                       )}
@@ -269,10 +453,17 @@ export const HeroFormSection: React.FC<HeroFormSectionProps> = ({
 
                   {/* Trust Elements */}
                   {showTrust && (
-                    <div className="mt-6 pt-6 border-t border-gray-100">
+                    <div 
+                      className="mt-6 pt-6"
+                      style={{ borderTop: "1px solid var(--color-border)" }}
+                    >
                       <div className="flex flex-wrap gap-4 justify-center">
                         {trustElements.map((element, index) => (
-                          <div key={index} className="flex items-center gap-2 text-gray-500 text-sm">
+                          <div 
+                            key={index} 
+                            className="flex items-center gap-2 text-sm"
+                            style={{ color: "var(--color-foreground-secondary)" }}
+                          >
                             {element.icon}
                             <span>{element.text}</span>
                           </div>
