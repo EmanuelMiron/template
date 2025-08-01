@@ -10,41 +10,20 @@ import {
   Users, 
   Lock, 
   Clock,
-  ArrowRight,
   CheckCircle
 } from 'lucide-react';
 
-export interface FeaturesSectionProps {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  layout?: 'grid' | 'cards' | 'list';
-  showIcons?: boolean;
-  showBadges?: boolean;
-  showCTAs?: boolean;
-  className?: string;
-}
+// ============================================================================
+// CONFIGURATION - AI AGENT: Modify these values to customize the features section
+// ============================================================================
 
-const FeaturesSection: React.FC<FeaturesSectionProps> = ({
-  size = 'lg',
-  title = "Powerful Features",
-  subtitle = "What We Offer",
-  description = "Discover the amazing features that make our platform the perfect choice for your next project.",
-  layout = 'grid',
-  showIcons = true,
-  showBadges = true,
-  showCTAs = true,
-  className = '',
-}) => {
-  const sizeClasses = {
-    sm: 'py-12',
-    md: 'py-16',
-    lg: 'py-24',
-  };
-
-  const features = [
+const defaultConfig = {
+  // Header content
+  title: "Powerful Features",
+  description: "Discover the amazing features that make our platform the perfect choice for your next project.",
+  
+  // Features array
+  features: [
     {
       icon: Zap,
       title: "Lightning Fast",
@@ -101,43 +80,131 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       badge: "Support",
       benefits: ["Live chat", "Phone support", "Knowledge base"],
     },
-  ];
+  ],
+};
+
+// Example configuration for a restaurant website
+// const restaurantConfig = {
+//   title: "Why Choose Us",
+//   subtitle: "Our Promise",
+//   description: "Experience the difference that quality ingredients, expert chefs, and exceptional service make.",
+//   features: [
+//     {
+//       icon: Shield,
+//       title: "Fresh Ingredients",
+//       description: "We source only the finest, locally-sourced ingredients for every dish we serve.",
+//       badge: "Quality",
+//       benefits: ["Local suppliers", "Daily deliveries", "Organic options"],
+//     },
+//     {
+//       icon: Users,
+//       title: "Expert Chefs",
+//       description: "Our team of experienced chefs brings creativity and passion to every meal.",
+//       badge: "Expertise",
+//       benefits: ["Award-winning chefs", "Creative menus", "Seasonal specials"],
+//     },
+//     {
+//       icon: Clock,
+//       title: "Fast Service",
+//       description: "We respect your time with quick, efficient service without compromising quality.",
+//       badge: "Efficient",
+//       benefits: ["Quick preparation", "Online ordering", "Delivery options"],
+//     },
+//     // ... more restaurant-specific features
+//   ],
+// };
+
+export interface FeaturesSectionProps {
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  title?: string;
+  description?: string;
+  layout?: 'grid' | 'cards' | 'list';
+  showIcons?: boolean;
+  className?: string;
+}
+
+export const FeaturesSection: React.FC<FeaturesSectionProps> = ({
+  size = 'lg',
+  title = defaultConfig.title,
+  description = defaultConfig.description,
+  layout = 'grid',
+  showIcons = true,
+  className = '',
+}) => {
+  const sizeClasses = {
+    sm: 'py-12',
+    md: 'py-16',
+    lg: 'py-24',
+  };
+
+  const features = defaultConfig.features;
 
   const renderFeatureCard = (feature: typeof features[0], index: number) => (
-    <Card key={index} variant="outline" className="group hover:shadow-lg transition-all duration-300">
+    <Card 
+      key={index} 
+      variant="outline" 
+      className="group hover:shadow-lg transition-all duration-300"
+      style={{
+        backgroundColor: "var(--color-background)",
+        border: "1px solid var(--color-border)"
+      }}
+    >
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             {showIcons && (
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                <feature.icon className="w-6 h-6 text-blue-600" />
+              <div 
+                className="w-12 h-12 rounded-lg flex items-center justify-center transition-colors"
+                style={{ 
+                  backgroundColor: "var(--color-background-hover)",
+                  color: "var(--color-primary)"
+                }}
+              >
+                <feature.icon className="w-6 h-6" />
               </div>
             )}
             <div>
-              <CardTitle className="text-xl font-semibold text-gray-900 mb-2">
+              <CardTitle 
+                className="text-xl font-semibold mb-2"
+                style={{ color: "var(--color-foreground)" }}
+              >
                 {feature.title}
               </CardTitle>
-              {showBadges && feature.badge && (
-                <Badge variant="primary" badgeSize="sm" className="mb-2">
+              {feature.badge && (
+                <Badge 
+                  variant="primary" 
+                  badgeSize="sm" 
+                  className="mb-2"
+                  style={{
+                    backgroundColor: "var(--color-primary)",
+                    color: "var(--color-background)"
+                  }}
+                >
                   {feature.badge}
                 </Badge>
               )}
             </div>
           </div>
-          {showCTAs && (
-            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
-          )}
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-600 mb-4 leading-relaxed">
+        <p 
+          className="mb-4 leading-relaxed"
+          style={{ color: "var(--color-foreground-secondary)" }}
+        >
           {feature.description}
         </p>
         <ul className="space-y-2">
           {feature.benefits.map((benefit, benefitIndex) => (
-            <li key={benefitIndex} className="flex items-center text-sm text-gray-600">
-              <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-              {benefit}
+            <li key={benefitIndex} className="flex items-center text-sm">
+              <CheckCircle 
+                className="w-4 h-4 mr-2 flex-shrink-0" 
+                style={{ color: "var(--color-primary)" }}
+              />
+              <span style={{ color: "var(--color-foreground-secondary)" }}>
+                {benefit}
+              </span>
             </li>
           ))}
         </ul>
@@ -146,19 +213,26 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
   );
 
   return (
-    <section className={`${sizeClasses[size]} bg-white ${className}`}>
+    <section 
+      className={`${sizeClasses[size]} ${className}`}
+      style={{
+        backgroundColor: "var(--color-background-secondary)",
+        color: "var(--color-foreground)"
+      }}
+    >
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          {showBadges && (
-            <Badge variant="primary" className="mb-4">
-              {subtitle}
-            </Badge>
-          )}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ color: "var(--color-foreground)" }}
+          >
             {title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p 
+            className="text-xl max-w-3xl mx-auto leading-relaxed"
+            style={{ color: "var(--color-foreground-secondary)" }}
+          >
             {description}
           </p>
         </div>
@@ -174,20 +248,52 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         {layout === 'cards' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} variant="outline" className="text-center group hover:shadow-lg transition-all duration-300">
+              <Card 
+                key={index} 
+                variant="outline" 
+                className="text-center group hover:shadow-lg transition-all duration-300"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  border: "1px solid var(--color-border)"
+                }}
+              >
                 <CardContent className="pt-6">
                   {showIcons && (
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-                      <feature.icon className="w-8 h-8 text-blue-600" />
+                    <div 
+                      className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors"
+                      style={{ 
+                        backgroundColor: "var(--color-background-hover)",
+                        color: "var(--color-primary)"
+                      }}
+                    >
+                      <feature.icon className="w-8 h-8" />
                     </div>
                   )}
-                  {showBadges && feature.badge && (
-                    <Badge variant="primary" badgeSize="sm" className="mb-3">
+                  {feature.badge && (
+                    <Badge 
+                      variant="primary" 
+                      badgeSize="sm" 
+                      className="mb-3"
+                      style={{
+                        backgroundColor: "var(--color-primary)",
+                        color: "var(--color-background)"
+                      }}
+                    >
                       {feature.badge}
                     </Badge>
                   )}
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                  <h3 
+                    className="text-xl font-semibold mb-3"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
+                    {feature.title}
+                  </h3>
+                  <p 
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--color-foreground-secondary)" }}
+                  >
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -198,36 +304,69 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         {layout === 'list' && (
           <div className="max-w-4xl mx-auto space-y-6">
             {features.map((feature, index) => (
-              <Card key={index} variant="outline" className="group hover:shadow-lg transition-all duration-300">
+              <Card 
+                key={index} 
+                variant="outline" 
+                className="group hover:shadow-lg transition-all duration-300"
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  border: "1px solid var(--color-border)"
+                }}
+              >
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     {showIcons && (
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors flex-shrink-0">
-                        <feature.icon className="w-6 h-6 text-blue-600" />
+                      <div 
+                        className="w-12 h-12 rounded-lg flex items-center justify-center transition-colors flex-shrink-0"
+                        style={{ 
+                          backgroundColor: "var(--color-background-hover)",
+                          color: "var(--color-primary)"
+                        }}
+                      >
+                        <feature.icon className="w-6 h-6" />
                       </div>
                     )}
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
-                        {showBadges && feature.badge && (
-                          <Badge variant="primary" badgeSize="sm">
+                        <h3 
+                          className="text-xl font-semibold"
+                          style={{ color: "var(--color-foreground)" }}
+                        >
+                          {feature.title}
+                        </h3>
+                        {feature.badge && (
+                          <Badge 
+                            variant="primary" 
+                            badgeSize="sm"
+                            style={{
+                              backgroundColor: "var(--color-primary)",
+                              color: "var(--color-background)"
+                            }}
+                          >
                             {feature.badge}
                           </Badge>
                         )}
                       </div>
-                      <p className="text-gray-600 mb-3 leading-relaxed">{feature.description}</p>
+                      <p 
+                        className="mb-3 leading-relaxed"
+                        style={{ color: "var(--color-foreground-secondary)" }}
+                      >
+                        {feature.description}
+                      </p>
                       <ul className="grid grid-cols-1 md:grid-cols-3 gap-2">
                         {feature.benefits.map((benefit, benefitIndex) => (
-                          <li key={benefitIndex} className="flex items-center text-sm text-gray-600">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                            {benefit}
+                          <li key={benefitIndex} className="flex items-center text-sm">
+                            <CheckCircle 
+                              className="w-4 h-4 mr-2 flex-shrink-0" 
+                              style={{ color: "var(--color-primary)" }}
+                            />
+                            <span style={{ color: "var(--color-foreground-secondary)" }}>
+                              {benefit}
+                            </span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    {showCTAs && (
-                      <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0" />
-                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -238,5 +377,3 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
     </section>
   );
 };
-
-export default FeaturesSection; 
