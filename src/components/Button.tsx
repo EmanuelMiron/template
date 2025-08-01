@@ -28,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
     'focus:outline-none',
     'focus:ring-2',
     'focus:ring-offset-2',
+    'cursor-pointer',
     'disabled:cursor-not-allowed',
     'disabled:opacity-50',
   ];
