@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Collapsible,
   CollapsibleContent,
@@ -120,7 +120,7 @@ export const MenubarExample = () => {
                       <MenubarItem variant="outline" size="md">Profile</MenubarItem>
                       <MenubarItem variant="outline" size="md">Settings</MenubarItem>
                       <MenubarSeparator variant="outline" />
-                      <MenubarItem variant="outline" size="md" variant="destructive">Sign Out</MenubarItem>
+                      <MenubarItem variant="outline" size="md">Sign Out</MenubarItem>
                     </MenubarContent>
                   </MenubarMenu>
                 </Menubar>
@@ -445,7 +445,7 @@ export const MenubarExample = () => {
                     <MenubarItem variant="primary" size="md">Interactive Item 1</MenubarItem>
                     <MenubarItem variant="primary" size="md">Interactive Item 2</MenubarItem>
                     <MenubarSeparator variant="primary" />
-                    <MenubarItem variant="primary" size="md" variant="destructive">Destructive Action</MenubarItem>
+                    <MenubarItem variant="primary" size="md">Destructive Action</MenubarItem>
                   </MenubarContent>
                 </MenubarMenu>
               </Menubar>
