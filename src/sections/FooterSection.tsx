@@ -1,53 +1,30 @@
-import React, { useState } from 'react';
-import Input from '@/components/Input';
-import Button from '@/components/Button';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
+import React from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
   Github,
   Heart,
-  ArrowRight
-} from 'lucide-react';
+} from "lucide-react";
 
-export interface FooterSectionProps {
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  showNewsletter?: boolean;
-  showSocial?: boolean;
-  showContact?: boolean;
-  showLinks?: boolean;
-  className?: string;
-}
+// ============================================================================
+// CONFIGURATION - AI AGENT: Modify these values to customize the footer section
+// ============================================================================
 
-const FooterSection: React.FC<FooterSectionProps> = ({
-  variant = 'primary',
-  size = 'lg',
-  showNewsletter = true,
-  showSocial = true,
-  showContact = true,
-  showLinks = true,
-  className = '',
-}) => {
-  const [email, setEmail] = useState('');
+const defaultConfig = {
+  // Company information
+  company: {
+    name: "CompanyName",
+    description:
+      "Building the future of web development with modern, accessible, and performant components.",
+  },
 
-  const sizeClasses = {
-    sm: 'py-12',
-    md: 'py-16',
-    lg: 'py-24',
-  };
-
-  const variantClasses = {
-    primary: 'bg-gray-900 text-white',
-    secondary: 'bg-gray-800 text-white',
-    outline: 'bg-white text-gray-900 border-t border-gray-200',
-  };
-
-  const footerLinks = {
+  // Footer links organized by category
+  footerLinks: {
     product: [
       { name: "Features", href: "#" },
       { name: "Pricing", href: "#" },
@@ -76,44 +53,177 @@ const FooterSection: React.FC<FooterSectionProps> = ({
       { name: "GDPR", href: "#" },
       { name: "Security", href: "#" },
     ],
-  };
+  },
 
-  const socialLinks = [
+  // Social media links
+  socialLinks: [
     { name: "Facebook", icon: Facebook, href: "#" },
     { name: "Twitter", icon: Twitter, href: "#" },
     { name: "Instagram", icon: Instagram, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
     { name: "GitHub", icon: Github, href: "#" },
-  ];
+  ],
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Newsletter subscription:', email);
-    setEmail('');
+  // Contact information
+  contact: {
+    email: "hello@company.com",
+    phone: "+1 (555) 123-4567",
+    address: "123 Innovation St, Tech City, TC 12345",
+  },
+
+  // Copyright and bottom section
+  copyright: {
+    text: "© 2024 CompanyName. All rights reserved.",
+    madeWithText: "Made with",
+    byText: "by our team",
+  },
+};
+
+// Example configuration for a restaurant website
+// const restaurantConfig = {
+//   company: {
+//     name: "TasteBuds Restaurant",
+//     description: "Serving delicious, locally-sourced cuisine in a warm and welcoming atmosphere.",
+//   },
+//   footerLinks: {
+//     menu: [
+//       { name: "Our Menu", href: "#" },
+//       { name: "Daily Specials", href: "#" },
+//       { name: "Wine List", href: "#" },
+//       { name: "Private Events", href: "#" },
+//       { name: "Gift Cards", href: "#" },
+//     ],
+//     about: [
+//       { name: "Our Story", href: "#" },
+//       { name: "Chef's Bio", href: "#" },
+//       { name: "Reviews", href: "#" },
+//       { name: "Press", href: "#" },
+//       { name: "Awards", href: "#" },
+//     ],
+//     services: [
+//       { name: "Reservations", href: "#" },
+//       { name: "Delivery", href: "#" },
+//       { name: "Catering", href: "#" },
+//       { name: "Private Dining", href: "#" },
+//       { name: "Events", href: "#" },
+//     ],
+//     legal: [
+//       { name: "Privacy Policy", href: "#" },
+//       { name: "Terms of Service", href: "#" },
+//       { name: "Allergen Info", href: "#" },
+//       { name: "Nutrition Info", href: "#" },
+//       { name: "Accessibility", href: "#" },
+//     ],
+//   },
+//   socialLinks: [
+//     { name: "Facebook", icon: Facebook, href: "#" },
+//     { name: "Instagram", icon: Instagram, href: "#" },
+//     { name: "Twitter", icon: Twitter, href: "#" },
+//     { name: "Yelp", icon: MapPin, href: "#" },
+//   ],
+//   contact: {
+//     email: "info@tastebuds.com",
+//     phone: "+1 (555) 123-4567",
+//     address: "456 Gourmet Ave, Foodie City, FC 54321",
+//   },
+//   copyright: {
+//     text: "© 2024 TasteBuds Restaurant. All rights reserved.",
+//     madeWithText: "Made with",
+//     byText: "by our culinary team",
+//   },
+// };
+
+export interface FooterSectionProps {
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
+  showSocial?: boolean;
+  showContact?: boolean;
+  showLinks?: boolean;
+  className?: string;
+}
+
+export const FooterSection: React.FC<FooterSectionProps> = ({
+  variant = "primary",
+  size = "lg",
+  showSocial = true,
+  showContact = true,
+  showLinks = true,
+  className = "",
+}) => {
+  const sizeClasses = {
+    sm: "py-12",
+    md: "py-16",
+    lg: "py-24",
   };
 
+  const getVariantStyles = () => {
+    switch (variant) {
+      case "primary":
+        return {
+          backgroundColor: "var(--color-background)",
+          color: "var(--color-foreground)",
+          borderTop: "1px solid var(--color-border)",
+        };
+      case "secondary":
+        return {
+          backgroundColor: "var(--color-background-secondary)",
+          color: "var(--color-foreground)",
+          borderTop: "1px solid var(--color-border)",
+        };
+      case "outline":
+        return {
+          backgroundColor: "var(--color-background)",
+          color: "var(--color-foreground)",
+          borderTop: "1px solid var(--color-border)",
+        };
+      default:
+        return {
+          backgroundColor: "var(--color-background)",
+          color: "var(--color-foreground)",
+          borderTop: "1px solid var(--color-border)",
+        };
+    }
+  };
+
+  const footerLinks = defaultConfig.footerLinks;
+  const socialLinks = defaultConfig.socialLinks;
+
   return (
-    <footer className={`${sizeClasses[size]} ${variantClasses[variant]} ${className}`}>
+    <footer
+      className={`${sizeClasses[size]} ${className}`}
+      style={getVariantStyles()}
+    >
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2">CompanyName</h3>
-              <p className="text-gray-400 leading-relaxed">
-                Building the future of web development with modern, accessible, and performant components.
+              <h3
+                className="text-2xl font-bold mb-2"
+                style={{ color: "var(--color-foreground)" }}
+              >
+                {defaultConfig.company.name}
+              </h3>
+              <p
+                className="leading-relaxed"
+                style={{ color: "var(--color-foreground-secondary)" }}
+              >
+                {defaultConfig.company.description}
               </p>
             </div>
-            
+
             {showSocial && (
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                    style={{
+                      backgroundColor: "var(--color-background-hover)",
+                      color: "var(--color-foreground-secondary)",
+                    }}
                     aria-label={social.name}
                   >
                     <social.icon className="w-5 h-5" />
@@ -127,13 +237,19 @@ const FooterSection: React.FC<FooterSectionProps> = ({
           {showLinks && (
             <>
               <div>
-                <h4 className="text-lg font-semibold mb-4">Product</h4>
+                <h4
+                  className="text-lg font-semibold mb-4"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  Product
+                </h4>
                 <ul className="space-y-2">
                   {footerLinks.product.map((link) => (
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="transition-colors"
+                        style={{ color: "var(--color-foreground-secondary)" }}
                       >
                         {link.name}
                       </a>
@@ -143,13 +259,19 @@ const FooterSection: React.FC<FooterSectionProps> = ({
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-4">Company</h4>
+                <h4
+                  className="text-lg font-semibold mb-4"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  Company
+                </h4>
                 <ul className="space-y-2">
                   {footerLinks.company.map((link) => (
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="transition-colors"
+                        style={{ color: "var(--color-foreground-secondary)" }}
                       >
                         {link.name}
                       </a>
@@ -159,13 +281,19 @@ const FooterSection: React.FC<FooterSectionProps> = ({
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-4">Support</h4>
+                <h4
+                  className="text-lg font-semibold mb-4"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  Support
+                </h4>
                 <ul className="space-y-2">
                   {footerLinks.support.map((link) => (
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="transition-colors"
+                        style={{ color: "var(--color-foreground-secondary)" }}
                       >
                         {link.name}
                       </a>
@@ -177,81 +305,77 @@ const FooterSection: React.FC<FooterSectionProps> = ({
           )}
         </div>
 
-        {/* Newsletter */}
-        {showNewsletter && (
-          <div className="border-t border-gray-800 pt-8 mb-8">
-            <div className="max-w-md">
-              <h4 className="text-lg font-semibold mb-2">Stay updated</h4>
-              <p className="text-gray-400 mb-4">
-                Get the latest updates, news and product offerings sent straight to your inbox.
-              </p>
-              <form onSubmit={handleNewsletterSubmit} className="flex space-x-2">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                  className="flex-1"
-                  required
-                />
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="md"
-                  className="whitespace-nowrap"
-                >
-                  Subscribe
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </form>
-            </div>
-          </div>
-        )}
-
         {/* Contact Info */}
         {showContact && (
-          <div className="border-t border-gray-800 pt-8 mb-8">
+          <div
+            className="pt-8 mb-8"
+            style={{ borderTop: "1px solid var(--color-border)" }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">hello@company.com</span>
+                <Mail
+                  className="w-5 h-5"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                />
+                <span style={{ color: "var(--color-foreground-secondary)" }}>
+                  {defaultConfig.contact.email}
+                </span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <Phone
+                  className="w-5 h-5"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                />
+                <span style={{ color: "var(--color-foreground-secondary)" }}>
+                  {defaultConfig.contact.phone}
+                </span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-gray-400" />
-                <span className="text-gray-400">123 Innovation St, Tech City, TC 12345</span>
+                <MapPin
+                  className="w-5 h-5"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                />
+                <span style={{ color: "var(--color-foreground-secondary)" }}>
+                  {defaultConfig.contact.address}
+                </span>
               </div>
             </div>
           </div>
         )}
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 pt-8">
+        <div
+          className="pt-8"
+          style={{ borderTop: "1px solid var(--color-border)" }}
+        >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-4">
-              <span className="text-gray-400">
-                © 2024 CompanyName. All rights reserved.
+              <span style={{ color: "var(--color-foreground-secondary)" }}>
+                {defaultConfig.copyright.text}
               </span>
               <div className="flex space-x-4">
                 {footerLinks.legal.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                    className="transition-colors text-sm"
+                    style={{ color: "var(--color-foreground-secondary)" }}
                   >
                     {link.name}
                   </a>
                 ))}
               </div>
             </div>
-            
-            <div className="flex items-center space-x-2 text-gray-400">
-              <span className="text-sm">Made with</span>
+
+            <div
+              className="flex items-center space-x-2"
+              style={{ color: "var(--color-foreground-secondary)" }}
+            >
+              <span className="text-sm">
+                {defaultConfig.copyright.madeWithText}
+              </span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span className="text-sm">by our team</span>
+              <span className="text-sm">{defaultConfig.copyright.byText}</span>
             </div>
           </div>
         </div>
@@ -259,5 +383,3 @@ const FooterSection: React.FC<FooterSectionProps> = ({
     </footer>
   );
 };
-
-export default FooterSection; 
