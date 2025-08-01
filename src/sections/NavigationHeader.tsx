@@ -26,22 +26,26 @@ export interface NavigationHeaderProps {
   className?: string;
 }
 
-const NavigationHeader: React.FC<NavigationHeaderProps> = ({
+// Default content - can be easily modified by AI agents (not exported to avoid Fast Refresh issues)
+const defaultMenuItems = [
+  { label: "Home", href: "#" },
+  { label: "Features", href: "#" },
+  { label: "Pricing", href: "#" },
+  { label: "About", href: "#" },
+  { label: "Contact", href: "#" },
+];
+
+export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   variant = 'primary',
   size = 'md',
   logo,
   logoText = "Brand",
-  menuItems = [
-    { label: "Home", href: "#" },
-    { label: "Features", href: "#" },
-    { label: "Pricing", href: "#" },
-    { label: "About", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
+  menuItems = defaultMenuItems,
   showSearch = true,
   showNotifications = true,
   showUserMenu = true,
   ctaText = "Get Started",
+  ctaHref,
   sticky = true,
   transparent = false,
   className = '',
@@ -66,19 +70,19 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   };
 
   const variantClasses = {
-    primary: isScrolled || !transparent ? 'bg-white shadow-lg' : 'bg-transparent',
-    secondary: isScrolled || !transparent ? 'bg-gray-900 shadow-lg' : 'bg-transparent',
-    outline: isScrolled || !transparent ? 'bg-white border-b border-gray-200' : 'bg-transparent',
+    primary: isScrolled || !transparent ? 'bg-background shadow-lg' : 'bg-transparent',
+    secondary: isScrolled || !transparent ? 'bg-background shadow-lg' : 'bg-transparent',
+    outline: isScrolled || !transparent ? 'bg-background border-b border-border' : 'bg-transparent',
   };
 
   const textClasses = {
-    primary: isScrolled || !transparent ? 'text-gray-900' : 'text-white',
-    secondary: isScrolled || !transparent ? 'text-white' : 'text-white',
-    outline: isScrolled || !transparent ? 'text-gray-900' : 'text-white',
+    primary: isScrolled || !transparent ? 'text-foreground' : 'text-white',
+    secondary: isScrolled || !transparent ? 'text-foreground' : 'text-white',
+    outline: isScrolled || !transparent ? 'text-foreground' : 'text-white',
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${variantClasses[variant]} ${className}`}>
+    <header className={`w-full z-50 transition-all duration-300 ${variantClasses[variant]} ${className}`}>
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between ${sizeClasses[size]}`}>
           {/* Logo */}
@@ -98,7 +102,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
               <a
                 key={index}
                 href={item.href}
-                className={`text-sm font-medium hover:text-blue-600 transition-colors ${textClasses[variant]}`}
+                className={`text-sm font-medium hover:text-primary transition-colors ${textClasses[variant]}`}
               >
                 {item.label}
               </a>
@@ -109,14 +113,14 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
           <div className="flex items-center space-x-4">
             {/* Search */}
             {showSearch && (
-              <button className={`p-2 rounded-lg hover:bg-gray-100 transition-colors ${textClasses[variant]}`}>
+              <button className={`p-2 rounded-lg bg-muted/50 hover:bg-muted hover:scale-105 transition-all duration-200 cursor-pointer ${textClasses[variant]}`}>
                 <Search className="w-5 h-5" />
               </button>
             )}
 
             {/* Notifications */}
             {showNotifications && (
-              <button className={`p-2 rounded-lg hover:bg-gray-100 transition-colors relative ${textClasses[variant]}`}>
+              <button className={`p-2 rounded-lg bg-muted/50 hover:bg-muted hover:scale-105 transition-all duration-200 cursor-pointer relative ${textClasses[variant]}`}>
                 <Bell className="w-5 h-5" />
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
@@ -124,23 +128,35 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
 
             {/* User Menu */}
             {showUserMenu && (
-              <button className={`p-2 rounded-lg hover:bg-gray-100 transition-colors ${textClasses[variant]}`}>
+              <button className={`p-2 rounded-lg bg-muted/50 hover:bg-muted hover:scale-105 transition-all duration-200 cursor-pointer ${textClasses[variant]}`}>
                 <User className="w-5 h-5" />
               </button>
             )}
 
             {/* CTA Button */}
-            <Button
-              variant="primary"
-              size="sm"
-              className="hidden sm:inline-flex"
-            >
-              {ctaText}
-            </Button>
+            {ctaHref ? (
+              <a href={ctaHref}>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="hidden sm:inline-flex"
+                >
+                  {ctaText}
+                </Button>
+              </a>
+            ) : (
+              <Button
+                variant="primary"
+                size="sm"
+                className="hidden sm:inline-flex"
+              >
+                {ctaText}
+              </Button>
+            )}
 
             {/* Mobile Menu Button */}
             <button
-              className={`md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors ${textClasses[variant]}`}
+              className={`md:hidden p-2 rounded-lg bg-muted/50 hover:bg-muted hover:scale-105 transition-all duration-200 cursor-pointer ${textClasses[variant]}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -150,26 +166,38 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-4">
               {menuItems.map((item, index) => (
                 <a
                   key={index}
                   href={item.href}
-                  className={`text-sm font-medium hover:text-blue-600 transition-colors ${textClasses[variant]}`}
+                  className={`text-sm font-medium hover:text-primary transition-colors ${textClasses[variant]}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
               <div className="pt-4">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full"
-                >
-                  {ctaText}
-                </Button>
+                {ctaHref ? (
+                  <a href={ctaHref}>
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      className="w-full"
+                    >
+                      {ctaText}
+                    </Button>
+                  </a>
+                ) : (
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full"
+                  >
+                    {ctaText}
+                  </Button>
+                )}
               </div>
             </nav>
           </div>
@@ -178,5 +206,3 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
     </header>
   );
 };
-
-export default NavigationHeader; 
