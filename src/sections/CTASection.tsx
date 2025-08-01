@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@/components/Button';
-import Badge from '@/components/Badge';
 import { ArrowRight, Download, Play, Star, Users, Zap } from 'lucide-react';
 
 export interface CTASectionProps {
@@ -8,34 +7,65 @@ export interface CTASectionProps {
   size?: 'sm' | 'md' | 'lg';
   type?: 'primary' | 'secondary' | 'download' | 'trial' | 'newsletter' | 'social';
   title?: string;
-  subtitle?: string;
   description?: string;
   primaryCTA?: string;
   secondaryCTA?: string;
   primaryIcon?: React.ReactNode;
   secondaryIcon?: React.ReactNode;
   backgroundImage?: string;
-  showBadge?: boolean;
   showStats?: boolean;
-  showSocial?: boolean;
   className?: string;
 }
 
-const CTASection: React.FC<CTASectionProps> = ({
+// ============================================================================
+// CONFIGURATION SECTION - AI AGENTS CAN EASILY MODIFY THESE VALUES
+// ============================================================================
+
+// Default configuration - modify these values to customize the content
+const defaultConfig = {
+  title: "Ready to get started?",
+  description: "Start building amazing applications today with our comprehensive component library. No credit card required.",
+  primaryCTA: "Get Started",
+  secondaryCTA: "Learn More",
+  backgroundImage: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+  stats: [
+    { label: "Active Users", value: "10K+" },
+    { label: "Countries", value: "50+" },
+    { label: "Satisfaction", value: "99%" }
+  ]
+};
+
+// Example: To customize for a SaaS product, modify the defaultConfig like this:
+// const defaultConfig = {
+//   title: "Start Your Free Trial Today",
+//   subtitle: "Join 50,000+ developers",
+//   description: "Get access to our powerful development tools and start building faster. 14-day free trial, no credit card required.",
+//   primaryCTA: "Start Free Trial",
+//   secondaryCTA: "View Demo",
+//   backgroundImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1170&h=600&fit=crop",
+//   stats: [
+//     { label: "Active Users", value: "50K+" },
+//     { label: "Countries", value: "120+" },
+//     { label: "Uptime", value: "99.9%" }
+//   ]
+// };
+
+// ============================================================================
+// COMPONENT SECTION - NO NEED TO MODIFY BELOW THIS LINE
+// ============================================================================
+
+export const CTASection: React.FC<CTASectionProps> = ({
   variant = 'primary',
   size = 'lg',
   type = 'primary',
-  title = "Ready to get started?",
-  subtitle = "Join thousands of users",
-  description = "Start building amazing applications today with our comprehensive component library. No credit card required.",
-  primaryCTA = "Get Started",
-  secondaryCTA = "Learn More",
+  title = defaultConfig.title,
+  description = defaultConfig.description,
+  primaryCTA = defaultConfig.primaryCTA,
+  secondaryCTA = defaultConfig.secondaryCTA,
   primaryIcon,
   secondaryIcon,
-  backgroundImage = "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-  showBadge = true,
+  backgroundImage = defaultConfig.backgroundImage,
   showStats = true,
-  showSocial = false,
   className = '',
 }) => {
   const sizeClasses = {
@@ -44,10 +74,30 @@ const CTASection: React.FC<CTASectionProps> = ({
     lg: 'py-24',
   };
 
-  const variantClasses = {
-    primary: 'bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700',
-    secondary: 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900',
-    outline: 'bg-white border border-gray-200',
+  const getBackgroundStyle = () => {
+    switch (variant) {
+      case 'primary':
+        return {
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
+          color: 'var(--color-background)'
+        };
+      case 'secondary':
+        return {
+          backgroundColor: 'var(--color-background-secondary)',
+          color: 'var(--color-foreground)'
+        };
+      case 'outline':
+        return {
+          backgroundColor: 'var(--color-background)',
+          color: 'var(--color-foreground)',
+          border: '1px solid var(--color-border)'
+        };
+      default:
+        return {
+          background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
+          color: 'var(--color-background)'
+        };
+    }
   };
 
   const getDefaultIcons = () => {
@@ -67,21 +117,13 @@ const CTASection: React.FC<CTASectionProps> = ({
   const primaryIconToUse = primaryIcon || defaultIcons.primary;
   const secondaryIconToUse = secondaryIcon || defaultIcons.secondary;
 
-  const stats = [
-    { label: "Active Users", value: "10K+" },
-    { label: "Countries", value: "50+" },
-    { label: "Satisfaction", value: "99%" },
-  ];
-
-  const socialLinks = [
-    { name: "Twitter", href: "#", icon: "🐦" },
-    { name: "LinkedIn", href: "#", icon: "💼" },
-    { name: "GitHub", href: "#", icon: "🐙" },
-    { name: "Discord", href: "#", icon: "🎮" },
-  ];
+  const backgroundStyle = getBackgroundStyle();
 
   return (
-    <section className={`relative ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}>
+    <section 
+      className={`relative ${sizeClasses[size]} ${className}`}
+      style={backgroundStyle}
+    >
       {/* Background Image */}
       {backgroundImage && variant !== 'outline' && (
         <div className="absolute inset-0 z-0">
@@ -90,7 +132,10 @@ const CTASection: React.FC<CTASectionProps> = ({
             alt="CTA background"
             className="w-full h-full object-cover opacity-10"
           />
-          <div className="absolute inset-0 bg-black/20" />
+          <div 
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
+          />
         </div>
       )}
 
@@ -98,23 +143,25 @@ const CTASection: React.FC<CTASectionProps> = ({
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          {showBadge && subtitle && (
-            <Badge variant="primary" className="mb-6 bg-white/10 text-white border-white/20">
-              {subtitle}
-            </Badge>
-          )}
+          {/* Removed Badge rendering */}
 
           {/* Title */}
-          <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
-            variant === 'outline' ? 'text-gray-900' : 'text-white'
-          }`}>
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            style={{ color: variant === 'outline' ? 'var(--color-foreground)' : 'var(--color-background)' }}
+          >
             {title}
           </h2>
 
           {/* Description */}
-          <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed ${
-            variant === 'outline' ? 'text-gray-600' : 'text-white/90'
-          }`}>
+          <p 
+            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed"
+            style={{ 
+              color: variant === 'outline' 
+                ? 'var(--color-foreground-secondary)' 
+                : 'rgba(255, 255, 255, 0.9)'
+            }}
+          >
             {description}
           </p>
 
@@ -123,7 +170,11 @@ const CTASection: React.FC<CTASectionProps> = ({
             <Button
               variant="primary"
               size="lg"
-              className={`group ${variant === 'outline' ? '' : 'bg-white text-blue-600 hover:bg-gray-100'}`}
+              className="group"
+              style={{
+                backgroundColor: variant === 'outline' ? 'var(--color-primary)' : 'var(--color-background)',
+                color: variant === 'outline' ? 'var(--color-background)' : 'var(--color-primary)'
+              }}
             >
               {primaryCTA}
               {primaryIconToUse && (
@@ -136,10 +187,12 @@ const CTASection: React.FC<CTASectionProps> = ({
             <Button
               variant="outline"
               size="lg"
-              className={`${variant === 'outline' 
-                ? 'border-gray-300 text-gray-700 hover:bg-gray-50' 
-                : 'border-white/20 text-white hover:bg-white/10'
-              }`}
+              className="border-white/20 hover:bg-white/10"
+              style={{
+                borderColor: variant === 'outline' ? 'var(--color-border)' : 'rgba(255, 255, 255, 0.2)',
+                color: variant === 'outline' ? 'var(--color-foreground)' : 'var(--color-background)',
+                backgroundColor: 'transparent'
+              }}
             >
               {secondaryCTA}
               {secondaryIconToUse && (
@@ -153,41 +206,29 @@ const CTASection: React.FC<CTASectionProps> = ({
           {/* Stats */}
           {showStats && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto mb-12">
-              {stats.map((stat, index) => (
+              {defaultConfig.stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className={`text-3xl font-bold mb-2 ${
-                    variant === 'outline' ? 'text-blue-600' : 'text-white'
-                  }`}>
+                  <div 
+                    className="text-3xl font-bold mb-2"
+                    style={{ 
+                      color: variant === 'outline' 
+                        ? 'var(--color-primary)' 
+                        : 'var(--color-background)'
+                    }}
+                  >
                     {stat.value}
                   </div>
-                  <div className={`text-sm ${
-                    variant === 'outline' ? 'text-gray-600' : 'text-white/70'
-                  }`}>
+                  <div 
+                    className="text-sm"
+                    style={{ 
+                      color: variant === 'outline' 
+                        ? 'var(--color-foreground-secondary)' 
+                        : 'rgba(255, 255, 255, 0.7)'
+                    }}
+                  >
                     {stat.label}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
-
-          {/* Social Links */}
-          {showSocial && (
-            <div className="flex justify-center items-center space-x-6">
-              <span className={`text-sm ${
-                variant === 'outline' ? 'text-gray-600' : 'text-white/70'
-              }`}>
-                Follow us:
-              </span>
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className={`text-2xl hover:scale-110 transition-transform ${
-                    variant === 'outline' ? 'text-gray-600 hover:text-blue-600' : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  {social.icon}
-                </a>
               ))}
             </div>
           )}
@@ -196,5 +237,3 @@ const CTASection: React.FC<CTASectionProps> = ({
     </section>
   );
 };
-
-export default CTASection; 
