@@ -23,22 +23,43 @@ export interface BlogGridSectionProps {
   showPagination?: boolean;
   showFeatured?: boolean;
   columns?: 2 | 3 | 4;
+  blogPosts?: Array<{
+    id: number;
+    title: string;
+    excerpt: string;
+    content: string;
+    author: {
+      name: string;
+      avatar: string;
+      role: string;
+    };
+    image: string;
+    category: string;
+    tags: string[];
+    publishDate: string;
+    readTime: string;
+    isFeatured: boolean;
+    likes: number;
+    comments: number;
+    views: number;
+  }>;
+  categories?: Array<{
+    id: string;
+    label: string;
+  }>;
+  className?: string;
 }
 
-export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
-  size = 'lg',
-  title = "Latest Blog Posts",
-  subtitle = "Insights & Updates",
-  description = "Stay up to date with our latest articles, insights, and industry news.",
-  showFilters = true,
-  showPagination = true,
-  showFeatured = true,
-  columns = 3
-}) => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
+// ============================================================================
+// CONFIGURATION SECTION - AI AGENTS CAN EASILY MODIFY THESE VALUES
+// ============================================================================
 
-  const blogPosts = [
+// Default configuration - modify these values to customize the content
+const defaultConfig = {
+  title: "Latest Blog Posts",
+  subtitle: "Insights & Updates",
+  description: "Stay up to date with our latest articles, insights, and industry news.",
+  blogPosts: [
     {
       id: 1,
       title: "The Future of Web Development in 2024",
@@ -159,16 +180,70 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
       comments: 23,
       views: 6540
     }
-  ];
-
-  const categories = [
+  ],
+  categories: [
     { id: 'all', label: 'All Posts' },
     { id: 'Technology', label: 'Technology' },
     { id: 'Development', label: 'Development' },
     { id: 'Design', label: 'Design' },
     { id: 'Performance', label: 'Performance' },
     { id: 'Accessibility', label: 'Accessibility' }
-  ];
+  ]
+};
+
+// Example: To customize for a cooking blog, modify the defaultConfig like this:
+// const defaultConfig = {
+//   title: "Latest Recipes",
+//   subtitle: "Delicious & Easy",
+//   description: "Discover amazing recipes, cooking tips, and culinary inspiration.",
+//   blogPosts: [
+//     {
+//       id: 1,
+//       title: "Perfect Homemade Pizza",
+//       excerpt: "Learn the secrets to making restaurant-quality pizza at home with our step-by-step guide.",
+//       author: {
+//         name: "Chef Maria",
+//         avatar: "https://example.com/chef-maria.jpg",
+//         role: "Head Chef"
+//       },
+//       image: "https://example.com/pizza-image.jpg",
+//       category: "Italian",
+//       tags: ["Pizza", "Italian", "Dough"],
+//       publishDate: "2024-01-15",
+//       readTime: "15 min read",
+//       isFeatured: true,
+//       likes: 2340,
+//       comments: 156,
+//       views: 45600
+//     }
+//   ],
+//   categories: [
+//     { id: 'all', label: 'All Recipes' },
+//     { id: 'Italian', label: 'Italian' },
+//     { id: 'Asian', label: 'Asian' },
+//     { id: 'Desserts', label: 'Desserts' }
+//   ]
+// };
+
+// ============================================================================
+// COMPONENT SECTION - NO NEED TO MODIFY BELOW THIS LINE
+// ============================================================================
+
+export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
+  size = 'lg',
+  title = defaultConfig.title,
+  subtitle = defaultConfig.subtitle,
+  description = defaultConfig.description,
+  showFilters = true,
+  showPagination = true,
+  showFeatured = true,
+  columns = 3,
+  blogPosts = defaultConfig.blogPosts,
+  categories = defaultConfig.categories,
+  className = ""
+}) => {
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredPosts = activeFilter === 'all' 
     ? blogPosts 
@@ -198,20 +273,35 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
   };
 
   return (
-    <section className={`relative ${sizeClasses[size]} bg-gradient-to-br from-slate-50 to-blue-50`}>
+    <section 
+      className={`relative ${sizeClasses[size]} ${className}`}
+      style={{
+        backgroundColor: "var(--color-background-secondary)",
+        color: "var(--color-foreground)"
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 
+            className="text-3xl sm:text-4xl font-bold mb-4"
+            style={{ color: "var(--color-foreground)" }}
+          >
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-blue-600 mb-4 font-medium">
+            <p 
+              className="text-xl mb-4 font-medium"
+              style={{ color: "var(--color-primary)" }}
+            >
               {subtitle}
             </p>
           )}
           {description && (
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p 
+              className="text-lg max-w-2xl mx-auto"
+              style={{ color: "var(--color-foreground-secondary)" }}
+            >
               {description}
             </p>
           )}
@@ -224,11 +314,20 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
               <button
                 key={category.id}
                 onClick={() => setActiveFilter(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer ${
                   activeFilter === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    ? 'text-white'
+                    : 'hover:bg-gray-100 border'
                 }`}
+                style={{
+                  backgroundColor: activeFilter === category.id 
+                    ? "var(--color-primary)" 
+                    : "var(--color-background)",
+                  color: activeFilter === category.id 
+                    ? "var(--color-background)" 
+                    : "var(--color-foreground)",
+                  borderColor: "var(--color-border)"
+                }}
               >
                 {category.label}
               </button>
@@ -254,17 +353,26 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                 <div className="p-6 lg:p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-4">
                     <Badge variant="secondary">{featuredPost.category}</Badge>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm">
+                    <div 
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: "var(--color-foreground-secondary)" }}
+                    >
                       <Calendar className="w-4 h-4" />
                       {formatDate(featuredPost.publishDate)}
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 
+                    className="text-2xl font-bold mb-4"
+                    style={{ color: "var(--color-foreground)" }}
+                  >
                     {featuredPost.title}
                   </h3>
                   
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p 
+                    className="mb-6 leading-relaxed"
+                    style={{ color: "var(--color-foreground-secondary)" }}
+                  >
                     {featuredPost.excerpt}
                   </p>
                   
@@ -275,15 +383,24 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                         <AvatarFallback>{featuredPost.author.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">
+                        <div 
+                          className="text-sm font-medium"
+                          style={{ color: "var(--color-foreground)" }}
+                        >
                           {featuredPost.author.name}
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div 
+                          className="text-xs"
+                          style={{ color: "var(--color-foreground-secondary)" }}
+                        >
                           {featuredPost.author.role}
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm">
+                    <div 
+                      className="flex items-center gap-2 text-sm"
+                      style={{ color: "var(--color-foreground-secondary)" }}
+                    >
                       <Clock className="w-4 h-4" />
                       {featuredPost.readTime}
                     </div>
@@ -294,12 +411,12 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                       Read More
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
-                    <div className="flex items-center gap-4 text-gray-500">
-                      <button className="flex items-center gap-1 hover:text-red-500">
+                    <div className="flex items-center gap-4" style={{ color: "var(--color-foreground-secondary)" }}>
+                      <button className="flex items-center gap-1 hover:text-red-500 cursor-pointer">
                         <Heart className="w-4 h-4" />
                         <span className="text-sm">{featuredPost.likes}</span>
                       </button>
-                      <button className="flex items-center gap-1 hover:text-blue-500">
+                      <button className="flex items-center gap-1 hover:text-blue-500 cursor-pointer">
                         <MessageCircle className="w-4 h-4" />
                         <span className="text-sm">{featuredPost.comments}</span>
                       </button>
@@ -316,7 +433,7 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
           {regularPosts.map((post) => (
             <Card key={post.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
               {/* Post Image */}
-              <div className="relative aspect-video overflow-hidden bg-gray-100">
+              <div className="relative aspect-video overflow-hidden" style={{ backgroundColor: "var(--color-background-hover)" }}>
                 <img
                   src={post.image}
                   alt={post.title}
@@ -325,14 +442,20 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                 <div className="absolute top-4 left-4 flex gap-2">
                   <Badge variant="secondary">{post.category}</Badge>
                 </div>
-                <button className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Bookmark className="w-4 h-4 text-gray-600" />
+                <button 
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                  style={{ 
+                    backgroundColor: "var(--color-background)",
+                    color: "var(--color-foreground-secondary)"
+                  }}
+                >
+                  <Bookmark className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Post Content */}
               <div className="p-6">
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                <div className="flex items-center gap-4 mb-4 text-sm" style={{ color: "var(--color-foreground-secondary)" }}>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
                     {formatDate(post.publishDate)}
@@ -343,11 +466,17 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <h3 
+                  className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors"
+                  style={{ color: "var(--color-foreground)" }}
+                >
                   {post.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p 
+                  className="mb-4 leading-relaxed"
+                  style={{ color: "var(--color-foreground-secondary)" }}
+                >
                   {post.excerpt}
                 </p>
 
@@ -356,7 +485,11 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                   {post.tags.slice(0, 2).map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                      className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full"
+                      style={{ 
+                        backgroundColor: "var(--color-background-hover)",
+                        color: "var(--color-foreground-secondary)"
+                      }}
                     >
                       <Tag className="w-3 h-3" />
                       {tag}
@@ -372,20 +505,26 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
                       <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="text-sm font-medium text-gray-900">
+                      <div 
+                        className="text-sm font-medium"
+                        style={{ color: "var(--color-foreground)" }}
+                      >
                         {post.author.name}
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div 
+                        className="text-xs"
+                        style={{ color: "var(--color-foreground-secondary)" }}
+                      >
                         {post.author.role}
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-500 text-sm">
-                    <button className="flex items-center gap-1 hover:text-red-500">
+                  <div className="flex items-center gap-3 text-sm" style={{ color: "var(--color-foreground-secondary)" }}>
+                    <button className="flex items-center gap-1 hover:text-red-500 cursor-pointer">
                       <Heart className="w-4 h-4" />
                       <span>{post.likes}</span>
                     </button>
-                    <button className="flex items-center gap-1 hover:text-blue-500">
+                    <button className="flex items-center gap-1 hover:text-blue-500 cursor-pointer">
                       <MessageCircle className="w-4 h-4" />
                       <span>{post.comments}</span>
                     </button>
@@ -410,23 +549,37 @@ export const BlogGridSection: React.FC<BlogGridSectionProps> = ({
         {showPagination && (
           <div className="flex justify-center">
             <div className="flex items-center gap-2">
-              <button className="px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50">
+              <button 
+                className="px-3 py-2 hover:text-gray-700 disabled:opacity-50 cursor-pointer"
+                style={{ color: "var(--color-foreground-secondary)" }}
+              >
                 Previous
               </button>
               {[1, 2, 3].map((page) => (
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium cursor-pointer ${
                     currentPage === page
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
+                      ? 'text-white'
+                      : 'hover:bg-gray-100'
                   }`}
+                  style={{
+                    backgroundColor: currentPage === page 
+                      ? "var(--color-primary)" 
+                      : "transparent",
+                    color: currentPage === page 
+                      ? "var(--color-background)" 
+                      : "var(--color-foreground)"
+                  }}
                 >
                   {page}
                 </button>
               ))}
-              <button className="px-3 py-2 text-gray-500 hover:text-gray-700">
+              <button 
+                className="px-3 py-2 hover:text-gray-700 cursor-pointer"
+                style={{ color: "var(--color-foreground-secondary)" }}
+              >
                 Next
               </button>
             </div>
