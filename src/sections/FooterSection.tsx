@@ -4,7 +4,7 @@ import {
   Phone,
   MapPin,
   Facebook,
-  Twitter,
+  X,
   Instagram,
   Linkedin,
   Github,
@@ -58,7 +58,7 @@ const defaultConfig = {
   // Social media links
   socialLinks: [
     { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
+    { name: "X", icon: X, href: "#" },
     { name: "Instagram", icon: Instagram, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
     { name: "GitHub", icon: Github, href: "#" },
@@ -118,7 +118,7 @@ const defaultConfig = {
 //   socialLinks: [
 //     { name: "Facebook", icon: Facebook, href: "#" },
 //     { name: "Instagram", icon: Instagram, href: "#" },
-//     { name: "Twitter", icon: Twitter, href: "#" },
+//     { name: "X", icon: X, href: "#" },
 //     { name: "Yelp", icon: MapPin, href: "#" },
 //   ],
 //   contact: {
