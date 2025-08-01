@@ -56,7 +56,7 @@ const defaultConfig = {
 // COMPONENT SECTION - NO NEED TO MODIFY BELOW THIS LINE
 // ============================================================================
 
-const AboutSection: React.FC<AboutSectionProps> = ({
+export const AboutSection: React.FC<AboutSectionProps> = ({
   size = "lg",
   title = defaultConfig.title,
   description = defaultConfig.description,
@@ -117,5 +117,3 @@ const AboutSection: React.FC<AboutSectionProps> = ({
     </section>
   );
 };
-
-export default AboutSection;

@@ -27,7 +27,7 @@ export interface ContactSectionProps {
   className?: string;
 }
 
-const ContactSection: React.FC<ContactSectionProps> = ({
+export const ContactSection: React.FC<ContactSectionProps> = ({
   size = 'lg',
   title = "Get in Touch",
   subtitle = "Contact Us",
@@ -255,5 +255,3 @@ const ContactSection: React.FC<ContactSectionProps> = ({
     </section>
   );
 };
-
-export default ContactSection; 
