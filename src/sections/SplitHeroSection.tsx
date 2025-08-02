@@ -25,29 +25,99 @@ export interface SplitHeroSectionProps {
   showFeatures?: boolean;
   showVideo?: boolean;
   imagePosition?: 'left' | 'right';
+  stats?: Stat[];
+  features?: string[];
+  badgeContent?: BadgeContent;
+  floatingElements?: FloatingElement[];
 }
+
+export interface Stat {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+}
+
+export interface BadgeContent {
+  text: string;
+  emoji?: string;
+}
+
+export interface FloatingElement {
+  type: 'demo' | 'rating';
+  title: string;
+  subtitle: string;
+  icon: React.ReactNode;
+  iconBgColor: string;
+  iconColor: string;
+}
+
+// Default content - can be easily modified by AI agents (not exported to avoid Fast Refresh issues)
+const defaultPrimaryCTA = {
+  text: "Get Started Free",
+  href: "#",
+  icon: <ArrowRight className="w-4 h-4" />
+};
+
+const defaultSecondaryCTA = {
+  text: "Watch Demo",
+  href: "#",
+  icon: <Play className="w-4 h-4" />
+};
+
+const defaultStats: Stat[] = [
+  { label: 'Active Users', value: '50K+', icon: <Users className="w-5 h-5" /> },
+  { label: 'Success Rate', value: '99.9%', icon: <Star className="w-5 h-5" /> },
+  { label: 'Performance', value: '10x Faster', icon: <Zap className="w-5 h-5" /> }
+];
+
+const defaultFeatures = [
+  "No setup required",
+  "Instant deployment",
+  "Global CDN",
+  "24/7 support"
+];
+
+const defaultBadgeContent: BadgeContent = {
+  text: "New Platform",
+  emoji: "🚀"
+};
+
+const defaultFloatingElements: FloatingElement[] = [
+  {
+    type: 'demo',
+    title: 'Live Demo',
+    subtitle: 'See it in action',
+    icon: <CheckCircle className="w-5 h-5" />,
+    iconBgColor: 'bg-green-100',
+    iconColor: 'text-green-600'
+  },
+  {
+    type: 'rating',
+    title: '4.9/5 Rating',
+    subtitle: 'From 2,000+ users',
+    icon: <Star className="w-5 h-5" />,
+    iconBgColor: 'bg-blue-100',
+    iconColor: 'text-blue-600'
+  }
+];
 
 export const SplitHeroSection: React.FC<SplitHeroSectionProps> = ({
   size = 'lg',
   title = "Build Something Amazing",
   subtitle = "Modern Development Platform",
   description = "Create, deploy, and scale your applications with our powerful platform. Join thousands of developers who trust us to power their next big idea.",
-  primaryCTA = {
-    text: "Get Started Free",
-    href: "#",
-    icon: <ArrowRight className="w-4 h-4" />
-  },
-  secondaryCTA = {
-    text: "Watch Demo",
-    href: "#",
-    icon: <Play className="w-4 h-4" />
-  },
-  imageUrl = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+  primaryCTA = defaultPrimaryCTA,
+  secondaryCTA = defaultSecondaryCTA,
+  imageUrl = "https://img.youtube.com/vi/X_JFUXkck38/maxresdefault.jpg",
   imageAlt = "Modern development workspace",
   showStats = true,
   showFeatures = true,
   showVideo = true,
-  imagePosition = 'right'
+  imagePosition = 'right',
+  stats = defaultStats,
+  features = defaultFeatures,
+  badgeContent = defaultBadgeContent,
+  floatingElements = defaultFloatingElements
 }) => {
   const sizeClasses = {
     sm: 'py-16',
@@ -55,40 +125,27 @@ export const SplitHeroSection: React.FC<SplitHeroSectionProps> = ({
     lg: 'py-24'
   };
 
-  const stats = [
-    { label: 'Active Users', value: '50K+', icon: <Users className="w-5 h-5" /> },
-    { label: 'Success Rate', value: '99.9%', icon: <Star className="w-5 h-5" /> },
-    { label: 'Performance', value: '10x Faster', icon: <Zap className="w-5 h-5" /> }
-  ];
-
-  const features = [
-    "No setup required",
-    "Instant deployment",
-    "Global CDN",
-    "24/7 support"
-  ];
-
   const ContentSection = () => (
     <div className="flex flex-col justify-center h-full">
       {/* Badge */}
       <Badge variant="primary" className="mb-6 w-fit">
-        🚀 New Platform
+        {badgeContent.emoji} {badgeContent.text}
       </Badge>
 
       {/* Title */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
         {title}
       </h1>
 
       {/* Subtitle */}
       {subtitle && (
-        <p className="text-xl sm:text-2xl text-blue-600 mb-4 font-medium">
+        <p className="text-xl sm:text-2xl text-primary mb-4 font-medium">
           {subtitle}
         </p>
       )}
 
       {/* Description */}
-      <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
+      <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl">
         {description}
       </p>
 
@@ -97,7 +154,7 @@ export const SplitHeroSection: React.FC<SplitHeroSectionProps> = ({
         <div className="mb-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-3 text-gray-700">
+              <div key={index} className="flex items-center gap-3 text-foreground">
                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <span className="text-sm font-medium">{feature}</span>
               </div>
@@ -108,39 +165,63 @@ export const SplitHeroSection: React.FC<SplitHeroSectionProps> = ({
 
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <Button
-          variant="primary"
-          size="lg"
-          className="shadow-lg hover:shadow-xl transition-all duration-300"
-          onClick={() => window.open(primaryCTA.href, '_blank')}
-        >
-          {primaryCTA.text}
-          {primaryCTA.icon && <span className="ml-2">{primaryCTA.icon}</span>}
-        </Button>
+        {primaryCTA.href ? (
+          <a href={primaryCTA.href}>
+            <Button
+              variant="primary"
+              size="lg"
+              className="shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              {primaryCTA.text}
+              {primaryCTA.icon && <span className="ml-2">{primaryCTA.icon}</span>}
+            </Button>
+          </a>
+        ) : (
+          <Button
+            variant="primary"
+            size="lg"
+            className="shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            {primaryCTA.text}
+            {primaryCTA.icon && <span className="ml-2">{primaryCTA.icon}</span>}
+          </Button>
+        )}
         
         {secondaryCTA && (
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-gray-300 hover:bg-gray-50"
-            onClick={() => window.open(secondaryCTA.href, '_blank')}
-          >
-            {secondaryCTA.text}
-            {secondaryCTA.icon && <span className="ml-2">{secondaryCTA.icon}</span>}
-          </Button>
+          secondaryCTA.href ? (
+            <a href={secondaryCTA.href}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-border hover:bg-muted"
+              >
+                {secondaryCTA.text}
+                {secondaryCTA.icon && <span className="ml-2">{secondaryCTA.icon}</span>}
+              </Button>
+            </a>
+          ) : (
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-border hover:bg-muted"
+            >
+              {secondaryCTA.text}
+              {secondaryCTA.icon && <span className="ml-2">{secondaryCTA.icon}</span>}
+            </Button>
+          )
         )}
       </div>
 
       {/* Stats */}
       {showStats && (
-        <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+        <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="flex items-center justify-center mb-2 text-blue-600">
+              <div className="flex items-center justify-center mb-2 text-primary">
                 {stat.icon}
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
+              <div className="text-2xl font-bold text-foreground mb-1">{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -162,46 +243,43 @@ export const SplitHeroSection: React.FC<SplitHeroSectionProps> = ({
           {/* Video Overlay */}
           {showVideo && (
             <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-              <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                <Play className="w-6 h-6 text-gray-900 ml-1" />
+              <div className="w-16 h-16 bg-background/90 rounded-full flex items-center justify-center shadow-lg">
+                <Play className="w-6 h-6 text-foreground ml-1" />
               </div>
             </div>
           )}
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-5 h-5 text-green-600" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-gray-900">Live Demo</div>
-              <div className="text-xs text-gray-500">See it in action</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-              <Star className="w-5 h-5 text-blue-600" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-gray-900">4.9/5 Rating</div>
-              <div className="text-xs text-gray-500">From 2,000+ users</div>
+        {floatingElements.map((element, index) => (
+          <div 
+            key={index} 
+            className={`absolute bg-background/95 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-border ${
+              index === 0 ? '-top-4 -right-4' : '-bottom-4 -left-4'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 ${element.iconBgColor} rounded-full flex items-center justify-center`}>
+                <div className={element.iconColor}>
+                  {element.icon}
+                </div>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-white">{element.title}</div>
+                <div className="text-xs text-white/80">{element.subtitle}</div>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
 
         {/* Background Decoration */}
-        <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl -z-10 blur-xl" />
+        <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-3xl -z-10 blur-xl" />
       </div>
     </div>
   );
 
   return (
-    <section className={`relative ${sizeClasses[size]} bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden`}>
+    <section className={`relative ${sizeClasses[size]} bg-background overflow-hidden`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
