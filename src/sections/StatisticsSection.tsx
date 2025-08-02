@@ -15,9 +15,85 @@ export interface StatisticsSectionProps {
   showTrends?: boolean;
   animate?: boolean;
   className?: string;
+  stats?: Stat[];
 }
 
-const StatisticsSection: React.FC<StatisticsSectionProps> = ({
+export interface Stat {
+  id: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  value: number;
+  suffix: string;
+  badge: string;
+  trend: string;
+  description: string;
+}
+
+// Default content - can be easily modified by AI agents (not exported to avoid Fast Refresh issues)
+const defaultStats: Stat[] = [
+  {
+    id: 'users',
+    icon: Users,
+    label: "Active Users",
+    value: 50000,
+    suffix: "+",
+    badge: "Growing",
+    trend: "+12%",
+    description: "Developers using our platform",
+  },
+  {
+    id: 'countries',
+    icon: Globe,
+    label: "Countries",
+    value: 150,
+    suffix: "+",
+    badge: "Global",
+    trend: "+5%",
+    description: "Worldwide reach",
+  },
+  {
+    id: 'projects',
+    icon: Target,
+    label: "Projects Built",
+    value: 10000,
+    suffix: "+",
+    badge: "Successful",
+    trend: "+25%",
+    description: "Applications created",
+  },
+  {
+    id: 'satisfaction',
+    icon: Award,
+    label: "Satisfaction Rate",
+    value: 99,
+    suffix: "%",
+    badge: "Excellent",
+    trend: "+2%",
+    description: "Customer satisfaction",
+  },
+  {
+    id: 'performance',
+    icon: Zap,
+    label: "Performance Score",
+    value: 98,
+    suffix: "/100",
+    badge: "Fast",
+    trend: "+3%",
+    description: "Average performance rating",
+  },
+  {
+    id: 'uptime',
+    icon: TrendingUp,
+    label: "Uptime",
+    value: 99.9,
+    suffix: "%",
+    badge: "Reliable",
+    trend: "+0.1%",
+    description: "Service availability",
+  },
+];
+
+export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
   size = 'lg',
   title = "Our Impact in Numbers",
   subtitle = "Statistics",
@@ -28,6 +104,7 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
   showTrends = true,
   animate = true,
   className = '',
+  stats = defaultStats,
 }) => {
   const [counts, setCounts] = useState<{ [key: string]: number }>({});
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -38,69 +115,6 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
     md: 'py-16',
     lg: 'py-24',
   };
-
-  const stats = [
-    {
-      id: 'users',
-      icon: Users,
-      label: "Active Users",
-      value: 50000,
-      suffix: "+",
-      badge: "Growing",
-      trend: "+12%",
-      description: "Developers using our platform",
-    },
-    {
-      id: 'countries',
-      icon: Globe,
-      label: "Countries",
-      value: 150,
-      suffix: "+",
-      badge: "Global",
-      trend: "+5%",
-      description: "Worldwide reach",
-    },
-    {
-      id: 'projects',
-      icon: Target,
-      label: "Projects Built",
-      value: 10000,
-      suffix: "+",
-      badge: "Successful",
-      trend: "+25%",
-      description: "Applications created",
-    },
-    {
-      id: 'satisfaction',
-      icon: Award,
-      label: "Satisfaction Rate",
-      value: 99,
-      suffix: "%",
-      badge: "Excellent",
-      trend: "+2%",
-      description: "Customer satisfaction",
-    },
-    {
-      id: 'performance',
-      icon: Zap,
-      label: "Performance Score",
-      value: 98,
-      suffix: "/100",
-      badge: "Fast",
-      trend: "+3%",
-      description: "Average performance rating",
-    },
-    {
-      id: 'uptime',
-      icon: TrendingUp,
-      label: "Uptime",
-      value: 99.9,
-      suffix: "%",
-      badge: "Reliable",
-      trend: "+0.1%",
-      description: "Service availability",
-    },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -146,12 +160,12 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
     });
   };
 
-  const renderStatCard = (stat: typeof stats[0], index: number) => (
+  const renderStatCard = (stat: Stat, index: number) => (
     <Card key={index} variant="outline" className="group hover:shadow-lg transition-all duration-300">
       <CardContent className="p-6 text-center">
         {showIcons && (
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-            <stat.icon className="w-8 h-8 text-blue-600" />
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+            <stat.icon className="w-8 h-8 text-primary" />
           </div>
         )}
         
@@ -162,19 +176,19 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
         )}
 
         <div className="mb-2">
-          <span className="text-4xl font-bold text-gray-900">
+          <span className="text-4xl font-bold text-foreground">
             {hasAnimated ? counts[stat.id] || 0 : 0}
           </span>
-          <span className="text-2xl font-semibold text-gray-600">
+          <span className="text-2xl font-semibold text-muted-foreground">
             {stat.suffix}
           </span>
         </div>
 
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        <h3 className="text-lg font-semibold text-foreground mb-2">
           {stat.label}
         </h3>
 
-        <p className="text-gray-600 text-sm mb-3">
+        <p className="text-muted-foreground text-sm mb-3">
           {stat.description}
         </p>
 
@@ -189,7 +203,7 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
   );
 
   return (
-    <section ref={sectionRef} className={`${sizeClasses[size]} bg-white ${className}`}>
+    <section ref={sectionRef} className={`${sizeClasses[size]} bg-background ${className}`}>
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
@@ -198,10 +212,10 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
               {subtitle}
             </Badge>
           )}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             {title}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {description}
           </p>
         </div>
@@ -220,21 +234,21 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
               <Card key={index} variant="outline" className="text-center group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   {showIcons && (
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">
-                      <stat.icon className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
+                      <stat.icon className="w-6 h-6 text-primary" />
                     </div>
                   )}
                   
                   <div className="mb-2">
-                    <span className="text-3xl font-bold text-gray-900">
+                    <span className="text-3xl font-bold text-foreground">
                       {hasAnimated ? counts[stat.id] || 0 : 0}
                     </span>
-                    <span className="text-xl font-semibold text-gray-600">
+                    <span className="text-xl font-semibold text-muted-foreground">
                       {stat.suffix}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-semibold text-gray-900 mb-1">
+                  <h3 className="text-base font-semibold text-foreground mb-1">
                     {stat.label}
                   </h3>
 
@@ -259,22 +273,22 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       {showIcons && (
-                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                          <stat.icon className="w-6 h-6 text-blue-600" />
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <stat.icon className="w-6 h-6 text-primary" />
                         </div>
                       )}
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{stat.label}</h3>
-                        <p className="text-gray-600 text-sm">{stat.description}</p>
+                        <h3 className="text-lg font-semibold text-foreground">{stat.label}</h3>
+                        <p className="text-muted-foreground text-sm">{stat.description}</p>
                       </div>
                     </div>
                     
                     <div className="text-right">
                       <div className="mb-1">
-                        <span className="text-3xl font-bold text-gray-900">
+                        <span className="text-3xl font-bold text-foreground">
                           {hasAnimated ? counts[stat.id] || 0 : 0}
                         </span>
-                        <span className="text-xl font-semibold text-gray-600">
+                        <span className="text-xl font-semibold text-muted-foreground">
                           {stat.suffix}
                         </span>
                       </div>
@@ -303,5 +317,3 @@ const StatisticsSection: React.FC<StatisticsSectionProps> = ({
     </section>
   );
 };
-
-export default StatisticsSection; 
