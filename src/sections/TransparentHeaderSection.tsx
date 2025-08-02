@@ -28,7 +28,6 @@ export interface TransparentHeaderSectionProps {
   scrollThreshold?: number;
   menuItems?: MenuItem[];
   dropdownContent?: DropdownContent;
-  heroContent?: HeroContent;
 }
 
 export interface MenuItem {
@@ -48,11 +47,7 @@ export interface DropdownItem {
   href: string;
 }
 
-export interface HeroContent {
-  title: string;
-  subtitle: string;
-  ctaText: string;
-}
+
 
 // Default content - can be easily modified by AI agents (not exported to avoid Fast Refresh issues)
 const defaultMenuItems: MenuItem[] = [
@@ -78,11 +73,7 @@ const defaultDropdownContent: DropdownContent = {
   ]
 };
 
-const defaultHeroContent: HeroContent = {
-  title: "Transparent Header Demo",
-  subtitle: "Scroll down to see the header transform from transparent to solid",
-  ctaText: "Learn More"
-};
+
 
 export const TransparentHeaderSection: React.FC<TransparentHeaderSectionProps> = ({
   logo = "🚀",
@@ -95,7 +86,7 @@ export const TransparentHeaderSection: React.FC<TransparentHeaderSectionProps> =
   scrollThreshold = 100,
   menuItems = defaultMenuItems,
   dropdownContent = defaultDropdownContent,
-  heroContent = defaultHeroContent
+
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -331,29 +322,7 @@ export const TransparentHeaderSection: React.FC<TransparentHeaderSectionProps> =
         )}
       </header>
 
-      {/* Hero Section for Demo */}
-      <section className="relative min-h-screen bg-gradient-to-br from-primary via-purple-600 to-indigo-800 flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            {heroContent.title}
-          </h1>
-          <p className="text-xl sm:text-2xl mb-8 max-w-2xl mx-auto">
-            {heroContent.subtitle}
-          </p>
-          <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
-            {heroContent.ctaText}
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse" />
-          </div>
-        </div>
-      </section>
+
     </>
   );
 }; 
