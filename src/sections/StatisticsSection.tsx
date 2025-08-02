@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Card, CardContent } from '@/components/Card';
 import Badge from '@/components/Badge';
 import { TrendingUp, Users, Globe, Award, Zap, Target } from 'lucide-react';
@@ -116,27 +116,7 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
     lg: 'py-24',
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated && animate) {
-            setHasAnimated(true);
-            animateCounts();
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated, animate]);
-
-  const animateCounts = () => {
+  const animateCounts = useCallback(() => {
     const duration = 2000; // 2 seconds
     const steps = 60;
     const stepDuration = duration / steps;
@@ -158,7 +138,27 @@ export const StatisticsSection: React.FC<StatisticsSectionProps> = ({
         }));
       }, stepDuration);
     });
-  };
+  }, [stats]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated && animate) {
+            setHasAnimated(true);
+            animateCounts();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated, animate, animateCounts]);
 
   const renderStatCard = (stat: Stat, index: number) => (
     <Card key={index} variant="outline" className="group hover:shadow-lg transition-all duration-300">
