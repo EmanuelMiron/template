@@ -1,6 +1,6 @@
 import { TextareaExample } from "@/components/examples/TextareaExample";
 import { useTheme } from "../contexts/ThemeContext";
-import Button  from "@/components/Button";
+import Button from "@/components/Button";
 import { SelectExample } from "@/components/examples/SelectExample";
 import { RadioGroupExample } from "@/components/examples/RadioGroupExample";
 import { InputExample } from "@/components/examples/InputExample";
@@ -43,14 +43,14 @@ import { TabsExample } from "@/components/examples/TabsExample";
 import { ToggleExample } from "@/components/examples/ToggleExample";
 import { ToggleGroupExample } from "@/components/examples/ToggleGroupExample";
 import { TooltipExample } from "@/components/examples/TooltipExample";
-import HeroSection from "@/sections/HeroSection";
-import FeaturesSection from "@/sections/FeaturesSection";
-import AboutSection from "@/sections/AboutSection";
-import NavigationHeader from "@/sections/NavigationHeader";
-import FooterSection from "@/sections/FooterSection";
-import { TransparentHeaderSection } from '@/sections/TransparentHeaderSection';
-import { PricingTablesSection } from '@/sections/PricingTablesSection';
-import { PortfolioGridSection } from '@/sections/PortfolioGridSection';
+import { HeroSection } from "@/sections/HeroSection";
+import { FeaturesSection } from "@/sections/FeaturesSection";
+import { AboutSection } from "@/sections/AboutSection";
+import { NavigationHeader } from "@/sections/NavigationHeader";
+import { FooterSection } from "@/sections/FooterSection";
+import { TransparentHeaderSection } from "@/sections/TransparentHeaderSection";
+import { PricingTablesSection } from "@/sections/PricingTablesSection";
+import { PortfolioGridSection } from "@/sections/PortfolioGridSection";
 
 const themeIcons: Record<string, string> = {
   light: "🌞",
