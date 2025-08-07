@@ -75,7 +75,7 @@ const Button: React.FC<ButtonProps> = ({
   const classes = [
     ...baseClasses,
     sizeClasses[size],
-    ...variantClasses[variant],
+    ...variantClasses[variant] || variantClasses.primary,
     className,
   ].join(' ');
 
