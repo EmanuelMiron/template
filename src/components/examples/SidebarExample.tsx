@@ -29,7 +29,7 @@ import {
   SidebarRail,
   SidebarTrigger,
 } from '../Sidebar';
-import Button from '../Button';
+import { Button } from '../Button';
 import { 
   Home, 
   Inbox, 

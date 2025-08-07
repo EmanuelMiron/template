@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@/components/Button';
-import Badge from '@/components/Badge';
+import { Button } from '@/components/Button';
+import { Badge } from '@/components/Badge';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
 
 export interface SplitHeroSectionProps {

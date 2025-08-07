@@ -1,5 +1,5 @@
 import { AlertCircle, Info, InfoIcon, Settings, Star, X } from "lucide-react";
-import Badge from "../Badge";
+import { Badge } from "../Badge";
 import {
   Collapsible,
   CollapsibleContent,

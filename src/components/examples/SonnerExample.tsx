@@ -5,8 +5,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Button from '../Button';
-import Sonner from '../Sonner';
+import { Button } from '../Button';
+import { Sonner } from '../Sonner';
 
 export const SonnerExample = () => {
   const showBasicToast = () => {

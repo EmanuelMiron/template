@@ -3,9 +3,9 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Label from '../Label';
+import { Label } from '../Label';
 import { Checkbox as ShadCheckbox } from '../ui/checkbox';
-import Input from '../Input';
+import { Input } from '../Input';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { Switch } from '../ui/switch';
 

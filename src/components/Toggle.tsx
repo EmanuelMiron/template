@@ -93,4 +93,4 @@ const Toggle = React.forwardRef<
 
 Toggle.displayName = 'Toggle';
 
-export default Toggle; 
+export { Toggle }; 

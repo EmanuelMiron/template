@@ -11,7 +11,7 @@ import {
   InputOTPSlot,
   InputOTPSeparator,
 } from '../InputOTP';
-import Button from '../Button';
+import { Button } from '../Button';
 
 export const InputOTPExample = () => {
   const [controlledValue, setControlledValue] = useState('');

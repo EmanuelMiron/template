@@ -23,7 +23,7 @@ This project includes a reusable Button component built with React, TypeScript, 
 ### Basic Button Usage
 
 ```tsx
-import Button from './components/Button';
+import { Button } from './components/Button';
 
 // Primary button (default)
 <Button>Click me</Button>

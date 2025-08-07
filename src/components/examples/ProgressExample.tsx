@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Progress from '../Progress';
+import { Progress } from '../Progress';
 
 export const ProgressExample = () => {
   const [progress, setProgress] = useState(13);

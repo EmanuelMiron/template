@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../Collapsible";
-import Input from "../Input";
+import { Input } from "../Input";
 
 export const InputExample = () => {
   return (

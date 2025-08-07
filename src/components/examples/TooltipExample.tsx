@@ -6,7 +6,7 @@ import {
   CollapsibleTrigger,
 } from '../Collapsible';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '../Tooltip';
-import Button from '../Button';
+import { Button } from '../Button';
 
 export const TooltipExample = () => {
   return (

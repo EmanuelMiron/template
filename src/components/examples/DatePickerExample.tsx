@@ -5,7 +5,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import DatePicker from '../DatePicker';
+import { DatePicker } from '../DatePicker';
 
 export const DatePickerExample = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(undefined);

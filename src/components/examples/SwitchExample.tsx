@@ -4,8 +4,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Switch from '../Switch';
-import Button from '../Button';
+import { Switch } from '../Switch';
+import { Button } from '../Button';
 
 export const SwitchExample = () => {
   const [airplaneMode, setAirplaneMode] = useState(false);

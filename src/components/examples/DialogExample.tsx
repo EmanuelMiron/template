@@ -15,8 +15,8 @@ import {
   DialogTrigger,
   DialogClose,
 } from '../Dialog';
-import Button from '../Button';
-import Input from '../Input';
+import { Button } from '../Button';
+import { Input } from '../Input';
 
 export const DialogExample = () => {
   const [formData, setFormData] = React.useState({

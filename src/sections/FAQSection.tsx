@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/Accordion';
-import Badge from '@/components/Badge';
+import { Badge } from '@/components/Badge';
 import { HelpCircle, Search } from 'lucide-react';
 
 // ============================================================================

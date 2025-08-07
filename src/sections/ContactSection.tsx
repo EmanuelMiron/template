@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/Card';
-import Input from '@/components/Input';
-import Textarea from '@/components/Textarea';
-import Button from '@/components/Button';
+import { Input } from '@/components/Input';
+import { Textarea } from '@/components/Textarea';
+import { Button } from '@/components/Button';
 import { Alert, AlertDescription } from '@/components/Alert';
 import { 
   Mail, 

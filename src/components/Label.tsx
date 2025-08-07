@@ -71,4 +71,4 @@ const Label: React.FC<LabelProps> = ({
 
 Label.displayName = 'Label';
 
-export default Label; 
+export { Label }; 

@@ -129,4 +129,4 @@ const Progress: React.FC<ProgressProps> = ({
 
 Progress.displayName = 'Progress';
 
-export default Progress; 
+export { Progress }; 

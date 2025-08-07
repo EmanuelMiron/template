@@ -1,4 +1,4 @@
-import Button from "../Button";
+import { Button } from "../Button";
 import {
   Card,
   CardTitle,
@@ -13,7 +13,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../Collapsible";
-import Input from "../Input";
+import { Input } from "../Input";
 
 export const CardExample = () => {
   return (

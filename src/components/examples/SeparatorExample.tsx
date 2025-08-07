@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Separator from '../Separator';
+import { Separator } from '../Separator';
 
 export const SeparatorExample = () => {
   return (

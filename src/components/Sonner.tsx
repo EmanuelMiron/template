@@ -134,4 +134,4 @@ const Sonner: React.FC<SonnerProps> = ({
 
 Sonner.displayName = 'Sonner';
 
-export default Sonner; 
+export { Sonner }; 

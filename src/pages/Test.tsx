@@ -1,6 +1,6 @@
 import { TextareaExample } from "@/components/examples/TextareaExample";
 import { useTheme } from "../contexts/ThemeContext";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 import { SelectExample } from "@/components/examples/SelectExample";
 import { RadioGroupExample } from "@/components/examples/RadioGroupExample";
 import { InputExample } from "@/components/examples/InputExample";

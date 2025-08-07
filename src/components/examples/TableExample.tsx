@@ -27,8 +27,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/Collapsible";
-import CustomButton from "@/components/Button";
-import CustomCheckbox from "@/components/Checkbox";
+import { Button as CustomButton } from "@/components/Button";
+import { Checkbox as CustomCheckbox } from "@/components/Checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +38,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuItem,
 } from "@/components/DropdownMenu";
-import CustomInput from "@/components/Input";
+import { Input as CustomInput } from "@/components/Input";
 import { ChevronDown, ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 

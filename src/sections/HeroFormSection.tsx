@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Button from '@/components/Button';
-import Input from '@/components/Input';
-import Textarea from '@/components/Textarea';
-import Badge from '@/components/Badge';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import { Textarea } from '@/components/Textarea';
+import { Badge } from '@/components/Badge';
 import { ArrowRight, Mail, Phone, MapPin, CheckCircle, Shield } from 'lucide-react';
 
 // ============================================================================

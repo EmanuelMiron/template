@@ -215,4 +215,4 @@ const Combobox: React.FC<ComboboxProps> = ({
 
 Combobox.displayName = 'Combobox';
 
-export default Combobox; 
+export { Combobox }; 

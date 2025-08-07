@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../Collapsible";
-import Textarea from "../Textarea";
+import { Textarea } from "../Textarea";
 
 export const TextareaExample = () => {
   return (

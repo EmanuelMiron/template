@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Button from '@/components/Button';
+import { Button } from '@/components/Button';
 import { ArrowRight, Play, Sparkles, Zap, Target, Rocket } from 'lucide-react';
 
 // ============================================================================

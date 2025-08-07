@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/Card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/Avatar';
-import Badge from '@/components/Badge';
+import { Badge } from '@/components/Badge';
 import { Star, Quote } from 'lucide-react';
 
 export interface TestimonialsSectionProps {

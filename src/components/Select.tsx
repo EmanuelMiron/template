@@ -236,4 +236,4 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
 Select.displayName = 'Select';
 
-export default Select; 
+export { Select }; 

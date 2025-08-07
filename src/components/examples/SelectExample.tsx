@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../Collapsible";
-import Select from "../Select";
+import { Select } from "../Select";
 
 export const SelectExample = () => {
   const [SelectValue, setSelectValue] = useState("");

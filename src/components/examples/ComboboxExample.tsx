@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../Collapsible";
-import Combobox from "../Combobox";
+import { Combobox } from "../Combobox";
 
 export const ComboboxExample = () => {
   return (

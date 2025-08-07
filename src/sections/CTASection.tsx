@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@/components/Button';
+import { Button } from '@/components/Button';
 import { ArrowRight, Download, Play, Star, Users, Zap } from 'lucide-react';
 
 export interface CTASectionProps {

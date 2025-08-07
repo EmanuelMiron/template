@@ -5,7 +5,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Toggle from '../Toggle';
+import { Toggle } from '../Toggle';
 
 export const ToggleExample = () => {
   const [boldPressed, setBoldPressed] = useState(false);

@@ -14,9 +14,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '../Sheet';
-import Button from '../Button';
-import Input from '../Input';
-import Label from '../Label';
+import { Button } from '../Button';
+import { Input } from '../Input';
+import { Label } from '../Label';
 
 export const SheetExample = () => {
   const [formData, setFormData] = useState({

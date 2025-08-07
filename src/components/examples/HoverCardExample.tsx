@@ -10,7 +10,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '../HoverCard';
-import Button from '../Button';
+import { Button } from '../Button';
 import { Button as ShadButton } from '../ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 

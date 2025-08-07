@@ -6,8 +6,8 @@ import {
   CollapsibleTrigger,
 } from '../Collapsible';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../Tabs';
-import Button from '../Button';
-import Input from '../Input';
+import { Button } from '../Button';
+import { Input } from '../Input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Label } from '../ui/label';
 

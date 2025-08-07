@@ -152,4 +152,4 @@ const Checkbox = React.forwardRef<React.ElementRef<typeof ShadCheckbox>, Checkbo
 
 Checkbox.displayName = 'Checkbox';
 
-export default Checkbox; 
+export { Checkbox }; 

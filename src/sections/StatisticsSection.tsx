@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Card, CardContent } from '@/components/Card';
-import Badge from '@/components/Badge';
+import { Badge } from '@/components/Badge';
 import { TrendingUp, Users, Globe, Award, Zap, Target } from 'lucide-react';
 
 export interface StatisticsSectionProps {

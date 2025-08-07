@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Skeleton from '../Skeleton';
+import { Skeleton } from '../Skeleton';
 
 export const SkeletonExample = () => {
   return (

@@ -69,4 +69,4 @@ const Separator: React.FC<SeparatorProps> = ({
 
 Separator.displayName = 'Separator';
 
-export default Separator; 
+export { Separator }; 

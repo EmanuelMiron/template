@@ -4,7 +4,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '../Collapsible';
-import Slider from '../Slider';
+import { Slider } from '../Slider';
 
 export const SliderExample = () => {
   const [value1, setValue1] = useState([50]);

@@ -152,4 +152,4 @@ const Slider = React.forwardRef<
 
 Slider.displayName = 'Slider';
 
-export default Slider; 
+export { Slider }; 

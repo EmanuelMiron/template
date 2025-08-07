@@ -15,8 +15,8 @@ import {
   DrawerTrigger,
   DrawerClose,
 } from '../Drawer';
-import Button from '../Button';
-import Input from '../Input';
+import { Button } from '../Button';
+import { Input } from '../Input';
 
 export const DrawerExample = () => {
   const [goal, setGoal] = React.useState(350);
